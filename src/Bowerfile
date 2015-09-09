@@ -1,0 +1,6 @@
+# Check out https://github.com/42dev/bower-rails#ruby-dsl-configuration for more options
+# Add front end packages here instead of Gemfile
+# Need to run rake bower:install
+
+asset 'bootstrap-sass-official'
+asset 'angular'
