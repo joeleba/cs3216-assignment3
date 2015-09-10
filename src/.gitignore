@@ -15,3 +15,8 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore front-end dependencies.
+/vendor/assets/bower_components
+/vendor/assets/.bowerrc
+/vendor/assets/bower.json
