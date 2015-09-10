@@ -38,6 +38,9 @@ gem 'unicorn'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+# Redis
+gem 'redis', '~> 3.2.1'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
