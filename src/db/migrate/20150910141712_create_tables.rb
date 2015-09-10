@@ -1,13 +1,13 @@
 class CreateTables < ActiveRecord::Migration
   def change
     create_table :users do |t|
-      t.string :fb_id
-      t.text :access_token
-      t.integer :credit
+      t.string :fb_id, null: false
+      t.text :access_token, null: false
+      t.integer :credit, null: false
     end
 
     create_table :services do |t|
-      t.string :name
+      t.string :name, null: false
     end
 
     # One bus might have multiple timings depends on the time of the day
