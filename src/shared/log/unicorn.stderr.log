@@ -1,0 +1,27 @@
+I, [2015-09-10T14:10:44.140671 #14284]  INFO -- : Refreshing Gem list
+F, [2015-09-10T14:10:46.397712 #14284] FATAL -- : error adding listener addr=/home/zhengyi/Desktop/nexbus/src/shared/sockets/unicorn.sock
+/home/zhengyi/.rvm/gems/ruby-2.2.1/gems/unicorn-4.9.0/lib/unicorn/socket_helper.rb:158:in `initialize': No such file or directory - connect(2) for /home/zhengyi/Desktop/nexbus/src/shared/sockets/unicorn.sock (Errno::ENOENT)
+	from /home/zhengyi/.rvm/gems/ruby-2.2.1/gems/unicorn-4.9.0/lib/unicorn/socket_helper.rb:158:in `new'
+	from /home/zhengyi/.rvm/gems/ruby-2.2.1/gems/unicorn-4.9.0/lib/unicorn/socket_helper.rb:158:in `bind_listen'
+	from /home/zhengyi/.rvm/gems/ruby-2.2.1/gems/unicorn-4.9.0/lib/unicorn/http_server.rb:242:in `listen'
+	from /home/zhengyi/.rvm/gems/ruby-2.2.1/gems/unicorn-4.9.0/lib/unicorn/http_server.rb:813:in `block in bind_new_listeners!'
+	from /home/zhengyi/.rvm/gems/ruby-2.2.1/gems/unicorn-4.9.0/lib/unicorn/http_server.rb:813:in `each'
+	from /home/zhengyi/.rvm/gems/ruby-2.2.1/gems/unicorn-4.9.0/lib/unicorn/http_server.rb:813:in `bind_new_listeners!'
+	from /home/zhengyi/.rvm/gems/ruby-2.2.1/gems/unicorn-4.9.0/lib/unicorn/http_server.rb:138:in `start'
+	from /home/zhengyi/.rvm/gems/ruby-2.2.1/gems/unicorn-4.9.0/bin/unicorn:126:in `<top (required)>'
+	from /home/zhengyi/.rvm/gems/ruby-2.2.1/bin/unicorn:23:in `load'
+	from /home/zhengyi/.rvm/gems/ruby-2.2.1/bin/unicorn:23:in `<main>'
+	from /home/zhengyi/.rvm/gems/ruby-2.2.1/bin/ruby_executable_hooks:15:in `eval'
+	from /home/zhengyi/.rvm/gems/ruby-2.2.1/bin/ruby_executable_hooks:15:in `<main>'
+I, [2015-09-10T14:11:44.136009 #14327]  INFO -- : Refreshing Gem list
+I, [2015-09-10T14:11:45.690923 #14327]  INFO -- : listening on addr=/home/zhengyi/Desktop/nexbus/src/shared/sockets/unicorn.sock fd=10
+I, [2015-09-10T14:11:45.691184 #14327]  INFO -- : worker=0 spawning...
+I, [2015-09-10T14:11:45.693677 #14327]  INFO -- : worker=1 spawning...
+I, [2015-09-10T14:11:45.696118 #14327]  INFO -- : master process ready
+I, [2015-09-10T14:11:45.698120 #14337]  INFO -- : worker=1 spawned pid=14337
+I, [2015-09-10T14:11:45.698472 #14335]  INFO -- : worker=0 spawned pid=14335
+I, [2015-09-10T14:11:45.704388 #14335]  INFO -- : worker=0 ready
+I, [2015-09-10T14:11:45.705841 #14337]  INFO -- : worker=1 ready
+I, [2015-09-10T14:12:07.408153 #14327]  INFO -- : reaped #<Process::Status: pid 14335 exit 0> worker=0
+I, [2015-09-10T14:12:07.408320 #14327]  INFO -- : reaped #<Process::Status: pid 14337 exit 0> worker=1
+I, [2015-09-10T14:12:07.408712 #14327]  INFO -- : master complete
