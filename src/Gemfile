@@ -38,7 +38,12 @@ gem 'unicorn'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+# Use an older version for compatibility with angular-rails-templates
 gem 'sprockets', '2.12.3'
+
+# Redis
+gem 'redis', '~> 3.2.1'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
