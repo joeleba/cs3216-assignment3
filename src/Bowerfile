@@ -2,7 +2,6 @@
 # Add front end packages here instead of Gemfile
 # Need to run rake bower:install
 
-asset 'bootstrap-sass-official'
 asset 'angular'
 asset 'angular-route'
 asset 'angular-resource'
