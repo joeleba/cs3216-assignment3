@@ -2,6 +2,9 @@
   padding: 0;
   background-color: #fff;
   height: 100vh;
+  @media screen and (min-width: 500px) {
+    background-image: image-url('subway-lines.png');
+  }
   .top-map {
     width: 100vw;
     opacity: 1;
