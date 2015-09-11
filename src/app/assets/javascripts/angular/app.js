@@ -2,7 +2,7 @@
   'use strict';
 
   var app = angular
-        .module('nexbus', ['ngRoute', 'templates']);
+        .module('nexbus', ['ngRoute', 'ngAnimate', 'ngTouch', 'templates']);
 
   app.config(['$routeProvider', function($routeProvider){
     $routeProvider
@@ -10,5 +10,19 @@
         templateUrl: 'ng-index.html',
         controller: 'MainController'
       })
+      .when('/login', {
+        templateUrl: 'login.html',
+        controller: 'LoginController'
+      })
+      .when('/main', {
+        templateUrl: 'card.html',
+        controller: 'TimingsController'
+      });
   }]);
+
+  app.directive('nbTimings', function() {
+    return {
+      templateUrl: 'timings.html'
+    };
+  });
 })();
