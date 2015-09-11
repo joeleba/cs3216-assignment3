@@ -1,0 +1,25 @@
+<table class="timings-table">
+  <thead>
+    <th>
+      <h1>Service</h1>
+    </th>
+
+    <th class="text-right">
+      <h1>Next Bus</h1>
+    </th>
+  </thead>
+
+  <tbody class="arrivals-data">
+    <tr ng-repeat="bus in busData"
+        ng-swipe-right="bus.showLastSeen = true"
+        ng-swipe-left="bus.showLastSeen = false">
+      <td ng-show ="!bus.showLastSeen">
+        <span class="capacity-indicator" ng-class="bus.capacity">{{bus.name}}</span>
+      </td>
+      <td ng-show ="bus.showLastSeen">
+        <span class="last-seen text-left">{{bus.lastSeen}}</span>
+      </td>
+      <td class="arrival-timing" align="right">{{bus.arrivalTiming}}</td>
+    </tr>
+  </tbody>
+</table>
