@@ -53,7 +53,9 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  namespace :api do
-    resources :services, :stops, :users
+  namespace :api, defaults: {format: 'json'} do
+    namespace :v1 do
+      resources :services, :stops, :users
+    end
   end
 end
