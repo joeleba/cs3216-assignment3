@@ -6,10 +6,6 @@ class CreateTables < ActiveRecord::Migration
       t.integer :credit, null: false
     end
 
-    create_table :services do |t|
-      t.string :name, null: false
-    end
-
     # One bus might have multiple timings depends on the time of the day
     # But I think currently can ignore this
     create_table :timings do |t|
@@ -24,6 +20,10 @@ class CreateTables < ActiveRecord::Migration
       t.foreign_key :services, column: :service_id
     end
 
+    create_table :services do |t|
+      t.string :name, null: false
+    end
+
     create_table :stops do |t|
       t.text :name, null: false
       t.decimal :longitude, :precision => 15, :scale => 13
@@ -31,11 +31,8 @@ class CreateTables < ActiveRecord::Migration
     end
 
     create_table :services_stops do |t|
-      t.integer :service_id, null: false
-      t.foreign_key :services, column: :service_id
-
-      t.integer :stop_id, null: false
-      t.foreign_key :stops, column: :stop_id
+      t.belongs_to :services, index: true
+      t.belongs_to :stops, index:true
     end
   end
 end
