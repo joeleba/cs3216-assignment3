@@ -1,0 +1,56 @@
+.timings-card {
+  background-color: #fff;
+  box-shadow: 1px 1px 4px #666;
+  margin: 3vh 0vw;
+  padding: 2vw;
+  min-height: 94vh;
+  overflow: auto;
+  .timings-table {
+    width: 100%;
+    h1 {
+      font-size: 1.7em;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -.1em;
+      margin: 0;
+    }
+    thead th {
+      padding-bottom: 2vh;
+    }
+    .arrivals-data {
+      text-align: center;
+      .capacity-indicator {
+        font-size: 1.2em;
+        border-radius: 50%;
+        color: #fff;
+        width: 60px;
+        height: 60px;
+        display: block;
+        padding-top: 1.3em;
+        margin-bottom: .3em;
+      }
+      .full {
+        background-color: #ff3366;
+      }
+      .empty {
+        background-color: #99cc00;
+      }
+      .average {
+        background-color: #ff9933;
+      }
+      .arrival-timing {
+        font-family: $body-font;
+        font-size: 3.7em;
+        font-weight: lighter;
+        color: #222;
+        text-transform: uppercase;
+      }
+      .last-seen {
+        font-family: $body-font;
+        font-size: 1.4em;
+        font-style: italic;
+        color: #aaa;
+      }
+    }
+  }
+}
