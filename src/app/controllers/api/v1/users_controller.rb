@@ -10,6 +10,18 @@ module Api
       # POST /api/users
       def create
       end
+
+      # GET /api/users/:id/credit
+      def get_credit
+      end
+
+      # PUT /api/users/:id/credit
+      def update_credit
+      end
+
+      # DELETE /api/users/:id
+      def destroy
+      end
     end
   end
 end
