@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  root to: 'main#index'
+
+  # Put in /api namespace to make it clearer
+  # /v1 indicate the api version. For maintainability.
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
       scope :services do
