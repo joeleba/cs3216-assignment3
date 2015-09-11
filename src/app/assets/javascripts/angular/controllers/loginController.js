@@ -4,5 +4,6 @@
   .controller('LoginController', LoginController);
 
 function LoginController($scope) {
-  
+
 }
+})();
