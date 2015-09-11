@@ -77,7 +77,6 @@ Rails.application.routes.draw do
           post '/' => 'user#create'
           delete '/' => 'user#destroy'
           scope '/credit' do
-            get '/' => 'users#get_credit'
             put '/' => 'users#update_credit'
           end
         end
