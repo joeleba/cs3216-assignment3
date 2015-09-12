@@ -8,7 +8,7 @@ module Api
       respond_to :json
 
       # GET /api/services
-      #
+      # List all services
       # Return val: array of service objects
       # [{
       #   "id"    : 1,
@@ -24,7 +24,7 @@ module Api
       end
 
       # GET /api/services/:id
-      #
+      # Get a particular service by :id
       # Return val: service object
       # {
       #   "id"    : 1,
@@ -40,7 +40,7 @@ module Api
       # Return val: array of stops objects
       # [{
       #    "id"         : 2,
-      #    "name"       : "a1",
+      #    "name"       : "pgp",
       #    "longitude"  : null,
       #    "latitude"   : null
       # }]
