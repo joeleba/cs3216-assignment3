@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-xs-12 report-wrapper" ng-controller="ReportController as report">
+    <p>Finally! The bus</p>
+    <span ng-repeat="type in busTypes">
+      {{type}}
+    </span>
+    <p>just arrived and it's</p>
+    <span ng-repeat="level in fullnessLevels">
+      {{level}}
+    </span>
+  </div>
+</div>
