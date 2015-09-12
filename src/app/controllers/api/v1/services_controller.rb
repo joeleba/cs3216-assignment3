@@ -50,6 +50,11 @@ module Api
 
         respond_with @stops
       end
+
+      # GET /api/services/:id/next
+      # Currently placeholder
+      def next_timing
+      end
     end
   end
 end
