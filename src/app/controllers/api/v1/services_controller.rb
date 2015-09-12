@@ -8,21 +8,45 @@ module Api
       respond_to :json
 
       # GET /api/services
+      #
+      # Return val: array of service objects
+      # [{
+      #   "id"    : 1,
+      #   "name"  : "a1"
+      #  },
+      #  {
+      #   "id"    : 2,
+      #   "name"  : "a2"
+      #  }]
       def index
         @services = Service.all
         respond_with @services
       end
 
       # GET /api/services/:id
+      #
+      # Return val: service object
+      # {
+      #   "id"    : 1,
+      #   "name"  : "a1"
+      # }
       def show
         @service = Service.find(params[:id])
         respond_with @service
       end
 
       # GET /api/services/:id/stops
+      # Get the stops of a particular service
+      # Return val: array of stops objects
+      # [{
+      #    "id"         : 2,
+      #    "name"       : "a1",
+      #    "longitude"  : null,
+      #    "latitude"   : null
+      # }]
       def stops
         @service = Service.find(params[:id])
-        @stops = @services.stops
+        @stops = @service.stops
 
         respond_with @stops
       end
