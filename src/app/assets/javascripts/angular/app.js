@@ -17,7 +17,11 @@
       .when('/main', {
         templateUrl: 'card.html',
         controller: 'TimingsController'
-      });
+      })
+      .when('/report', {
+        templateUrl: 'report.html',
+        controller: 'ReportController'
+      })
   }]);
 
   app.directive('nbTimings', function() {
