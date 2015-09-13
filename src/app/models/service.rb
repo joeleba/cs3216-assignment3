@@ -44,5 +44,3 @@ class Service < ActiveRecord::Base
   end
 
 end
-
-{a1:[pgp: '3', utown: '2']}
