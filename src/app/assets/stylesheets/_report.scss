@@ -11,6 +11,11 @@
   -webkit-justify-content: center;
   align-items: center;
   -webkit-align-items: center;
+  font-size: 180%;
+
+  p {
+    font-size: 120%;
+  }
 
   .bus-types {
     list-style-type: none;
