@@ -1,25 +1,20 @@
+---
 services:
   a1:
-    stops: ['PGP', 'Utown']
+    name: 'A1'
+    stops:
+    - name: 'PGP'
+      longitude: ''
+      latitude: ''
+
   a2:
-    stops: []
   a1e:
-    stops: []
   a2e_am:
-    stops: []
   a2e_pm:
-    stops: []
   d1:
-    stops: []
   d2:
-    stops: []
   ut_clb:
-    stops: []
   ut_fos:
-    stops: []
   b:
-    stops: []
   c:
-    stops: []
   btc:
-    stops: []
