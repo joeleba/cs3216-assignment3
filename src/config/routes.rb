@@ -10,6 +10,10 @@ Rails.application.routes.draw do
         scope '/:id' do
           get '/stops' => 'services#stops'
           get '/' => 'services#show'
+          scope :sighting do
+            get '/' => 'services#get_sighting'
+            post '/' => 'services#post_sighting'
+          end
         end
       end
 
