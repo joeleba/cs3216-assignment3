@@ -16,13 +16,18 @@
       })
       .when('/main', {
         templateUrl: 'card.html',
-        controller: 'TimingsController'
-      });
+        controller: 'CardController'
+      })
   }]);
 
   app.directive('nbTimings', function() {
     return {
       templateUrl: 'timings.html'
+    };
+  });
+  app.directive('nbReport', function() {
+    return {
+      templateUrl: 'report.html'
     };
   });
 })();

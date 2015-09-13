@@ -2,16 +2,17 @@
   padding: 0;
   background-color: #fff;
   height: 100vh;
-  @media screen and (min-width: 500px) {
+  @media screen and (min-width: 480px) {
     background-image: image-url('subway-lines.png');
   }
   .top-map {
     width: 100vw;
     opacity: 1;
     transition: opacity 1s;
-    @media screen and (min-width: 500px) {
+    @media screen and (min-width: 480px) {
       opacity: 0;
       transition: opacity 1s;
+      height: 100vh;
     }
   }
 
@@ -30,7 +31,7 @@
     -webkit-align-items: center;
     .landing-icon, .nexbus {
       width: 50vw;
-      @media screen and (min-width: 500px) {
+      @media screen and (min-width: 480px) {
         width: 30vw;
       }
     }
@@ -48,7 +49,7 @@
     opacity: 1;
     transition: opacity 1s;
     z-index: 0;
-    @media screen and (min-width: 500px) {
+    @media screen and (min-width: 480px) {
       opacity: 0;
       transition: opacity 1s;
     }
