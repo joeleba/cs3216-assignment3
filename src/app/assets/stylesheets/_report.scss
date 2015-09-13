@@ -1,8 +1,8 @@
 .report-wrapper {
   position: absolute;
   top: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   display: -webkit-flex;
   flex-direction: column;
@@ -11,4 +11,13 @@
   -webkit-justify-content: center;
   align-items: center;
   -webkit-align-items: center;
+}
+
+.bus-types {
+  list-style-type: none;
+  text-align: center;
+}
+
+.bus-types li {
+  display: inline;
 }
