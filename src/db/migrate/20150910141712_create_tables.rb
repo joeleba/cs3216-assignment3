@@ -21,6 +21,7 @@ class CreateTables < ActiveRecord::Migration
     create_table :services_stops, id: false do |t|
       t.belongs_to :service, index: true
       t.belongs_to :stop, index:true
+      t.index [:service_id, :stop_id], unique: true
     end
 
     # One bus might have multiple timings depends on the time of the day
