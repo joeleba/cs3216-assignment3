@@ -9,6 +9,7 @@ function ReportController($scope, $http) {
   $scope.submitReport = function(busType, fullnessLevel) {
     alert('submitting bus type: ' + $("#bus-type").val() + ' and fullness level: ' + $("#fullness-level").val());
     //$http.post('path', { busType: $("#bus-type").val(), fullessLevel: $("#fullness-level").val() });
+    initializeReportForm();
   }
 
   $(document).ready(initializeReportForm);
