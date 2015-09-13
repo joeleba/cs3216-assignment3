@@ -7,7 +7,7 @@ module Api
     class ServicesController < ApplicationController
       respond_to :json
 
-      # GET /api/services
+      # GET /api/v1/services
       # List all services
       # Return val: array of service objects
       # [{
@@ -23,7 +23,7 @@ module Api
         respond_with @services
       end
 
-      # GET /api/services/:id
+      # GET /api/v1/services/:id
       # Get a particular service by :id
       # Return val: service object
       # {
@@ -35,7 +35,7 @@ module Api
         respond_with @service
       end
 
-      # GET /api/services/:id/stops
+      # GET /api/v1/services/:id/stops
       # Get the stops of a particular service
       # Return val: array of stops objects
       # [{
