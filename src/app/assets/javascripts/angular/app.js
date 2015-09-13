@@ -16,7 +16,7 @@
       })
       .when('/main', {
         templateUrl: 'card.html',
-        controller: 'TimingsController'
+        controller: 'CardController'
       })
       .when('/report', {
         templateUrl: 'report.html',

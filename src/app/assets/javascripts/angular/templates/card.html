@@ -1,9 +1,18 @@
 <div class="row">
-  <div class="col-xs-12 timings-wrapper">
-    <div class="timings-table" ng-controller="TimingsController as timings">
-      <div class="timings-card">
-        <div nb-timings></div>
-      </div>
+  <div class="col-xs-12 page-indicators">
+    <div class="currPage"></div>
+    <div class="otherPage"></div>
+  </div>
+</div>
+
+<div class="row" ng-controller="CardController as cardCtrl">
+  <div class="col-xs-12 card-wrapper">
+      <div
+           class="card-content">
+        <div ng-show="showSchedule"
+             ng-controller="TimingsController as timingsCtrl"
+             nb-timings></div>
+        <div ng-show="!showSchedule">Test</div>
     </div>
   </div>
 </div>
