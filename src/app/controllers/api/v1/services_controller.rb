@@ -51,9 +51,14 @@ module Api
         respond_with @stops
       end
 
-      # GET /api/services/:id/next
-      # Currently placeholder
-      def next_timing
+      # GET /api/services/:id/sighting
+      # Get last seen information of a service.
+      def get_sighting
+      end
+
+      # POST /api/services/:id/sighting
+      # Post a user report
+      def post_sighting
       end
     end
   end
