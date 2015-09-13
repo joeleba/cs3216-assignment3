@@ -1,0 +1,40 @@
+<table class="timings-table">
+  <thead>
+    <tr>
+      <th colspan="3" class="busstop text-center">
+        <h1><span><%= image_tag 'refresh.png', class: 'btn-refresh' %></span></h1>
+      </th>
+    </tr>
+    <tr>
+    <th>
+      <h2>CLB Busstop</h2>
+    </th>
+
+    <th>
+    </th>
+
+    <th class="text-right">
+      <h2>Last Seen</h2>
+    </th>
+  </tr>
+  </thead>
+
+  <tbody class="arrivals-data">
+    <tr ng-repeat="bus in busData"
+        ng-swipe-right="bus.showArrivalTiming = true"
+        ng-swipe-left="bus.showArrivalTiming = false">
+      <td ng-show ="!bus.showArrivalTiming">
+        <span class="service text-left">{{bus.name}}</span>
+      </td>
+      <td ng-show ="bus.showArrivalTiming">
+        <span class="arrival-timing text-left">{{bus.arrivalTiming}}</span>
+      </td>
+      <td ng-switch="bus.capacity">
+      <span ng-switch-when="full"><%= image_tag 'full.png', class: 'capacity-icon' %></span>
+      <span ng-switch-when="empty"><%= image_tag 'empty.png', class: 'capacity-icon' %></span>
+      <span ng-switch-default><%= image_tag 'ok.png', class: 'capacity-icon' %></span>
+      </td>
+      <td class="last-seen" align="right">{{bus.lastSeen}}</td>
+    </tr>
+  </tbody>
+</table>

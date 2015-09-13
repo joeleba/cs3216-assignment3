@@ -1,9 +1,21 @@
 <div class="row">
-  <div class="col-xs-12 timings-wrapper">
-    <div class="timings-table" ng-controller="TimingsController as timings">
-      <div class="timings-card">
-        <div nb-timings></div>
-      </div>
+  <div class="col-xs-12 page-indicators">
+    <div ng-class="{currPage: showSchedule, otherPage: !showSchedule}"></div>
+    <div ng-class="{currPage: !showSchedule, otherPage: showSchedule}"></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 card-wrapper">
+      <div ng-swipe-right="showSchedule = true"
+           ng-swipe-left="showSchedule = false"
+           class="card-content">
+        <div ng-show="showSchedule"
+             ng-controller="TimingsController as timingsCtrl"
+             nb-timings></div>
+        <div ng-show="!showSchedule"
+             ng-controller="ReportController as reportCtrl"
+             nb-report></div>
     </div>
   </div>
 </div>
