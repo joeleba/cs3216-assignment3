@@ -8,12 +8,14 @@ class CreateTables < ActiveRecord::Migration
 
     create_table :services do |t|
       t.string :name, null: false
+      t.index :name, unique: true
     end
 
     create_table :stops do |t|
       t.text :name, null: false
       t.decimal :longitude, :precision => 15, :scale => 13
       t.decimal :latitude, :precision => 15, :scale => 13
+      t.index :name, unique: true
     end
 
     create_table :services_stops, id: false do |t|
