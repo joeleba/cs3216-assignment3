@@ -10,5 +10,15 @@ function ReportController($scope, $http) {
     alert('submit');
     //$http.post('path', { busType: $("#bus-type").val(), fullessLevel: $("#fullness-level").val() });
   }
+
+  $(document).ready(function() {
+    var firstBusType = $(".bus-type").first();
+    firstBusType.css('color', 'green');
+    $("#bus-type").val(firstBusType.text());
+
+    var firstFullnessLevel = $(".fullness-level").first();
+    firstFullnessLevel.css('color', 'green');
+    $("#fullness-level").val(firstFullnessLevel.text());
+  });
 }
 })();
