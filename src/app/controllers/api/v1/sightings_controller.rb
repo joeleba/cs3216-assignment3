@@ -11,7 +11,7 @@ module Api
       # Get last seen information of a service.
       #
       # Params:
-      # {
+      # sighting: {
       #   service_id: ...
       #   stop_id: ...
       # }
@@ -26,19 +26,23 @@ module Api
       #   this_stop: <time>
       # }
       def get_sighting
-        respond_with Sighting.get_sighting(params)
+        respond_with Sighting.get_sighting(params[:sighting])
       end
 
       # POST /api/v1/sighting
       # Post a user report
       #
       # Params:
-      # {
+      # sighting: {
       #   user_id: ...
       #   service_id: ...
       #   stop_id: ...
       # }
+      #
+      # Return val:
+      # { status: <failed/success> }
       def post_sighting
+        respond_with Sighting.post_sighting(params[:sighting])
       end
     end
   end
