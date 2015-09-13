@@ -50,27 +50,6 @@ module Api
 
         respond_with @stops
       end
-
-      # GET /api/services/:id/sighting
-      # Get last seen information of a service.
-      # Return val: an object containing last seen location of a service and
-      # the time elapsed since it last left this current stop
-      # {
-      #   prev_stops: {
-      #     stop: <name>
-      #     last_seen: <time>
-      #   },
-      #   this_stop: <time>
-      # }
-      def get_sighting
-        @service = Service.find(params[:id])
-        respond_with @service.get_sighting(params[:stop_id])
-      end
-
-      # POST /api/services/:id/sighting
-      # Post a user report
-      def post_sighting
-      end
     end
   end
 end
