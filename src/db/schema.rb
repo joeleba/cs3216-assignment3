@@ -20,10 +20,13 @@ ActiveRecord::Schema.define(version: 20150910141712) do
     t.string "name", null: false
   end
 
-  create_table "services_stops", force: :cascade do |t|
-    t.integer "service_id", null: false
-    t.integer "stop_id",    null: false
+  create_table "services_stops", id: false, force: :cascade do |t|
+    t.integer "service_id"
+    t.integer "stop_id"
   end
+
+  add_index "services_stops", ["service_id"], name: "index_services_stops_on_service_id", using: :btree
+  add_index "services_stops", ["stop_id"], name: "index_services_stops_on_stop_id", using: :btree
 
   create_table "stops", force: :cascade do |t|
     t.text    "name",                                null: false
@@ -42,12 +45,15 @@ ActiveRecord::Schema.define(version: 20150910141712) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string  "fb_id",        null: false
-    t.text    "access_token", null: false
-    t.integer "credit",       null: false
+    t.integer  "credit",           null: false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
-  add_foreign_key "services_stops", "services"
-  add_foreign_key "services_stops", "stops"
   add_foreign_key "timings", "services"
 end

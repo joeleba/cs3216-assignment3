@@ -33,4 +33,10 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  # Authentication Routes
+  match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+  match 'auth/failure', to: redirect('/'), via: [:get]
+  match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get]
+
 end
