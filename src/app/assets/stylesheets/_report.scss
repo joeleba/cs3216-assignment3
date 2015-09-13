@@ -15,9 +15,20 @@
   .bus-types {
     list-style-type: none;
     text-align: center;
+    margin-left: -40px;
   }
 
   .bus-types li {
+    display: inline;
+  }
+
+  .fullness-levels {
+    list-style-type: none;
+    text-align: center;
+    margin-left: -40px;
+  }
+
+  .fullness-levels li {
     display: inline;
   }
 }
