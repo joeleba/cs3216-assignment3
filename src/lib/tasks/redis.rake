@@ -8,7 +8,7 @@ namespace :redis do
       puts "\e[32mDone with service #{sv.name}.\e[0m"
     }
     puts "\e[32mAll done!\e[0m"
-    puts "Run \e[33m$redis.hgetall('tracking')\e[0m in rails console to view the structure."
+    puts "\e[32mRun \e[33m$redis.hgetall('tracking')\e[0m \e[32min rails console to view the structure.\e[0m"
   end
 
   desc "Clear all existing data in current redis db"
