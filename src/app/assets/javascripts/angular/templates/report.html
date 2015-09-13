@@ -1,12 +1,23 @@
 <div class="row">
-  <div class="col-xs-12 report-wrapper" ng-controller="ReportController as report">
+  <div class="col-xs-12 report-wrapper" ng-controller="ReportController as reportCtrl">
     <p>Finally! The bus</p>
-    <span ng-repeat="type in busTypes">
-      {{type}}
-    </span>
+    <ul class="bus-types">
+      <li ng-repeat="busType in busTypes" onclick="selectBusType(this)">{{busType}}</li>
+    </ul>
     <p>just arrived and it's</p>
-    <span ng-repeat="level in fullnessLevels">
-      {{level}}
-    </span>
+    <span ng-repeat="fullnessLevel in fullnessLevels" onclick="selectFullnessLevel(this)">{{fullnessLevel}}</span>
+    <form name="reportForm" ng-submit="submitReport()" novalidate>
+      <input id="bus-type" name="bus-type" type="hidden"  required/>
+      <input id="fullness-level" name="fullness-level" type="hidden" required/>
+      <input class="report-submit" type="submit" value="Submit" />
+    </form>
   </div>
 </div>
+<script>
+  function selectBusType(o) {
+    $("#bus-type").val(o.innerHTML.trim());
+  }
+  function selectFullnessLevel(o) {
+    $("#fullness-level").val(o.innerHTML.trim());
+  }
+</script>
