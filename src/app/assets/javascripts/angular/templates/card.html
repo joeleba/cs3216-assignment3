@@ -1,13 +1,14 @@
 <div class="row">
   <div class="col-xs-12 page-indicators">
-    <div class="currPage"></div>
-    <div class="otherPage"></div>
+    <div ng-class="{currPage: showSchedule, otherPage: !showSchedule}"></div>
+    <div ng-class="{currPage: !showSchedule, otherPage: showSchedule}"></div>
   </div>
 </div>
 
-<div class="row" ng-controller="CardController as cardCtrl">
+<div class="row">
   <div class="col-xs-12 card-wrapper">
-      <div
+      <div ng-swipe-right="showSchedule = true"
+           ng-swipe-left="showSchedule = false"
            class="card-content">
         <div ng-show="showSchedule"
              ng-controller="TimingsController as timingsCtrl"
