@@ -18,15 +18,16 @@
         templateUrl: 'card.html',
         controller: 'CardController'
       })
-      .when('/report', {
-        templateUrl: 'report.html',
-        controller: 'ReportController'
-      })
   }]);
 
   app.directive('nbTimings', function() {
     return {
       templateUrl: 'timings.html'
+    };
+  });
+  app.directive('nbReport', function() {
+    return {
+      templateUrl: 'report.html'
     };
   });
 })();
