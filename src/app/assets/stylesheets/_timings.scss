@@ -12,7 +12,7 @@
       h1 {
         font-family: $body-font;
         font-weight: 300;
-        font-size: 2.6em;
+        font-size: 2.5em;
         color: #000;
         margin: 0;
       }
@@ -26,6 +26,12 @@
       }
       th {
         padding-bottom: 2vh;
+      }
+      .btn-refresh {
+        display: inline;
+        width: 2.5em;
+        height: auto;
+        margin: 0 1em;
       }
       .arrivals-data {
         .service {
