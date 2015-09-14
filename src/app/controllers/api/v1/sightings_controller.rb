@@ -20,7 +20,7 @@ module Api
       # the time elapsed since it last left this current stop
       # {
       #   prev_stops: {
-      #     stop: <name>
+      #     stop: <stop object>
       #     last_seen: <time>
       #   },
       #   this_stop: <time>

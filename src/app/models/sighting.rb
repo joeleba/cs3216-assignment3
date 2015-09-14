@@ -19,9 +19,9 @@ class Sighting
     this_stop = Stop.find(params[:stop_id])
 
     # Hash of all stops that belongs to this service
-    # { stop_name: last_seen }
+    # all_stops_timing = { stop_name: last_seen }
     all_stops_timing = $redis.hget('tracking', name_symbol)
-    all_stops_name = this_service.stops.map { |stop| stop.name }
+    all_stops = this_service.stops
 
     returnHash[:prev_stops] = get_latest_valid(all_stops_timing, all_stops_name, this_stop)
     returnHash[:this_stop] = elapsed(all_stops_timing[name_symbol])
@@ -71,14 +71,17 @@ class Sighting
   private
 
   # Get the latest valid timing from the previous stops (w.r.t. this current stop)
-  def get_latest_valid(stops_timings, stops_names, this_stop)
-    pos = stops_names.find_index(this_stop.name)
+  def get_latest_valid(stops_timings, stops, this_stop)
+    pos = stops.find_index(this_stop)
 
-    for i in (pos-1)..0
-      last_data = stops_timings[stops_names[i]]
+    # If the stop is the terminal: iteration starts from the penultimate stop
+    ite_start = pos == 0 ? (stops_timings.length - 1) : (pos - 1)
+
+    for i in ite_start..0
+      last_data = stops_timings[stops[i].name]
       if still_valid(last_data)
         return {
-          stop: stops_names[i],
+          stop: stops[i],
           last_seen: elapsed(last_data)
         }
       end
