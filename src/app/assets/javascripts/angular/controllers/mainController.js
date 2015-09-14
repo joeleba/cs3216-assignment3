@@ -1,6 +1,6 @@
 angular
   .module('nexbus')
-  .controller('MainController', ["$scope", MainController]);
+  .controller('MainController', [MainController]);
 
 function MainController($scope) {
 

@@ -1,7 +1,7 @@
 (function() {
   angular
   .module('nexbus')
-  .controller('CardController', ["$scope", CardController]);
+  .controller('CardController', [CardController]);
 
   function CardController($scope) {
     $scope.showSchedule = true;

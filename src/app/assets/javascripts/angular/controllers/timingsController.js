@@ -1,7 +1,7 @@
 (function() {
   angular
   .module('nexbus')
-  .controller('TimingsController', ["$scope", TimingsController]);
+  .controller('TimingsController', [TimingsController]);
 
 function TimingsController($scope) {
   $scope.busData = [{name: 'A1', capacity: 'full', arrivalTiming: '20 min', lastSeen: '5m ago at YIH', showArrivalTiming: false},
