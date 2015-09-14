@@ -23,18 +23,18 @@ Rails.application.routes.draw do
 
       scope :users do
         scope '/:id' do
-          get '/' => 'user#show'
-          post '/' => 'user#create'
-          delete '/' => 'user#destroy'
+          get '/' => 'users#show'
+          post '/' => 'users#create'
+          delete '/' => 'users#destroy'
           scope '/credit' do
             put '/' => 'users#update_credit'
           end
         end
       end
 
-      scope :sighting do
-        get '/' => 'sighting#get_sighting'
-        post '/' => 'sighting#post_sighting'
+      scope :sightings do
+        get '/' => 'sightings#get_sighting'
+        post '/' => 'sightings#post_sighting'
       end
     end
   end

@@ -7,14 +7,8 @@ module Api
     class SightingsController < ApplicationController
       respond_to :json
 
-      # GET /api/v1/sighting
+      # GET /api/v1/sightings?service_id=&stop_id=
       # Get last seen information of a service.
-      #
-      # Params:
-      # sighting: {
-      #   service_id: ...
-      #   stop_id: ...
-      # }
       #
       # Return val: an object containing last seen location of a service and
       # the time elapsed since it last left this current stop
@@ -26,10 +20,10 @@ module Api
       #   this_stop: <time>
       # }
       def get_sighting
-        respond_with Sighting.get_sighting(params[:sighting])
+        respond_with Sighting.get_sighting(params)
       end
 
-      # POST /api/v1/sighting
+      # POST /api/v1/sightings
       # Post a user report
       #
       # Params:
