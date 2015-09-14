@@ -1,7 +1,7 @@
 (function() {
   angular
   .module('nexbus')
-  .controller('LoginController', LoginController);
+  .controller('LoginController', [LoginController]);
 
 function LoginController($scope) {
 
