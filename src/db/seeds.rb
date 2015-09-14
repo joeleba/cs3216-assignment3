@@ -8,54 +8,54 @@
 
 services_and_stops = [
   {
-    service: 'A1',
+    name: 'A1',
     stops: ['PGP Terminal', 'KR MRT', 'LT29', 'University Hall', 'Opp. UHC', 'YIH', 'CLB',
             'LT13', 'AS7', 'COM2', 'BIZ2', 'Opp. House 12', 'House 7']
   },
   {
-    service: 'A2',
+    name: 'A2',
     stops: ['PGP Terminal', 'Btwn House 14 & 15', 'House 12', 'Opp. Hon Sui Sen Mem. Lib.',
             'Opp. NUSS', 'COM2', 'Ventus (Opp. LT 13)', 'Comp. Cen.', 'Opp. YIH', 'Museum',
             'UHC', 'Opp. University Hall', 'Blk S17', 'Opp. KR MRT', 'PGPR']
   },
   {
-    service: 'B',
+    name: 'B',
     stops: ['']
   },
   {
-    service: 'C',
+    name: 'C',
     stops: ['']
   },
   {
-    service: 'D1 (To BIZ2)',
+    name: 'D1 (To BIZ2)',
     stops: ['']
   },
   {
-    service: 'D1 (To UT)',
+    name: 'D1 (To UT)',
     stops: ['']
   },
   {
-    service: 'D2',
+    name: 'D2',
     stops: ['']
   },
   {
-    service: 'CLB-UT',
+    name: 'CLB-UT',
     stops: ['']
   },
   {
-    service: 'FoS-UT',
+    name: 'FoS-UT',
     stops: ['']
   },
   {
-    service: 'A1E',
+    name: 'A1E',
     stops: ['']
   },
   {
-    service: 'A2E (AM)',
+    name: 'A2E (AM)',
     stops: ['']
   },
   {
-    service: 'A2E (PM)',
+    name: 'A2E (PM)',
     stops: ['']
   }
 ]
@@ -69,3 +69,10 @@ def save_stop_ine(service, name)
     service.save!
   end
 end
+
+services_and_stops.each {|obj|
+  new_service = Service.create(name: obj[:name])
+  obj[:stops].each { |stop_name|
+    save_stop_ine(new_service, stop_name)
+  }
+}
