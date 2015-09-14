@@ -23,15 +23,21 @@ namespace :redis do
 
   # Create a hash in the format:
   # {
-  #   <stop_name> : ''
+  #   <stop_id> : {
+  #     name : <stop_name>,
+  #     last_seen : <time> // Default as ''
+  #   }
   # }
   # '' will be replaced with actual timing later on (when users post reports to server)
   def bus_stops_hash(service)
     stops = service.stops
-    last_seen_hash = {}
+    tracking_hash = {}
     stops.each { |s|
-      last_seen_hash[s.name] = ''
+      tracking_hash[s.id] = {
+        name: s.name,
+        last_seen: ''
+      }
     }
-    last_seen_hash
+    tracking_hash
   end
 end
