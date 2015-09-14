@@ -75,4 +75,5 @@ services_and_stops.each {|obj|
   obj[:stops].each { |stop_name|
     save_stop_ine(new_service, stop_name)
   }
+  puts "\e[32mFinished seeding #{obj[:name]}\e[0m"
 }
