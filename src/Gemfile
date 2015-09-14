@@ -37,8 +37,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'unicorn'
 
 # For facebook authentication
-gem 'omniauth'
-gem 'omniauth-facebook'
+gem 'omniauth', '~> 1.2.2'
+gem 'omniauth-facebook', '~> 2.0.1'
 
 # Use an older version for compatibility with angular-rails-templates
 gem 'sprockets', '2.12.3'
