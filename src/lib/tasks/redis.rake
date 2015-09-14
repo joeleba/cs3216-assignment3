@@ -1,3 +1,4 @@
+# Rake file for redis-related operations
 namespace :redis do
   desc "Set up the hash structure on redis"
   task populate: :environment do

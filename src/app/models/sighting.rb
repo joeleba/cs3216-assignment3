@@ -4,6 +4,15 @@ class Sighting
   REASONABLE_WINDOW = 60
   CREDIT_INCR = 1
 
+  # Logic for getting sighting from redis
+  # > Identify a service
+  # > Identify current stop
+  # > Get the list of stops of service
+  # > From the list, check if a prev bus stop (w.r.t. current stop) has a valid timing
+  #   - Valid timing is defined below
+  # > Also get the last seen timing of that service at this current stop
+  #
+  # Warning: the returnHash will have null value if no result is found
   def self.get_sighting(params)
     this_service = Service.find(params[:service_id])
     name_symbol = this_service.name.to_sym
@@ -20,6 +29,16 @@ class Sighting
     returnHash
   end
 
+  # Logic for handling user report
+  # > Identify this_service, this_stop and this_user
+  # > Make a transaction:
+  #   - Get list of current sightings of aforementioned this_service
+  #   - From the list, get the current sighting detail at this_stop
+  #   - If the reported sighting is legit (defined below) as compared to the existing one
+  #     = Update redis time sheet
+  #     = Add credit for user
+  #
+  # Return: { status: <failed/success> }
   def self.post_sighting(params)
     this_service = Service.find(params[:service_id])
     this_stop = Stop.find(params[:stop_id])
