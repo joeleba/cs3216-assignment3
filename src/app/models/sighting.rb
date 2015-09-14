@@ -23,7 +23,7 @@ class Sighting
     all_stops_timing = $redis.hget('tracking', name_symbol)
     all_stops = this_service.stops
 
-    returnHash[:prev_stops] = get_latest_valid(all_stops_timing, all_stops_name, this_stop)
+    returnHash[:prev_stops] = get_latest_valid(all_stops_timing, all_stops, this_stop)
     returnHash[:this_stop] = elapsed(all_stops_timing[name_symbol])
 
     returnHash
