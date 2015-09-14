@@ -11,13 +11,29 @@
   -webkit-justify-content: center;
   align-items: center;
   -webkit-align-items: center;
+  font-size: 180%;
+
+  p {
+    font-size: 120%;
+  }
 
   .bus-types {
     list-style-type: none;
     text-align: center;
+    margin-left: -40px;
   }
 
   .bus-types li {
+    display: inline;
+  }
+
+  .fullness-levels {
+    list-style-type: none;
+    text-align: center;
+    margin-left: -40px;
+  }
+
+  .fullness-levels li {
     display: inline;
   }
 }
