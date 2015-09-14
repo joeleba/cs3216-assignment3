@@ -10,6 +10,7 @@
 For Ubuntu: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-redis
 
 For Mac OS X:
+
 1. Install Homebrew: http://brew.sh/
 2. Install redis using homebrew: brew install redis
 3. Link the plist for launch agents: ln -sfv /usr/local/opt/redis/*.plist ~/Library/LaunchAgents
