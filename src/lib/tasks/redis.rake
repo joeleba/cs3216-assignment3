@@ -5,7 +5,8 @@
 #     <service_id> : {
 #       <stop_id> : {
 #         name: <stop_name>,
-#         last_seen: <timestamp>
+#         last_seen: <timestamp>,
+#         status : <0, 1, 2>
 #       },
 #       ...
 #     },
@@ -39,7 +40,8 @@ namespace :redis do
   # {
   #   <stop_id> : {
   #     name : <stop_name>,
-  #     last_seen : <time> // Default as ''
+  #     last_seen : <time>, // Default as ''
+  #     status : <0, 1, 2>
   #   }
   # }
   # '' will be replaced with actual timing later on (when users post reports to server)
@@ -49,7 +51,8 @@ namespace :redis do
     stops.each { |s|
       tracking_hash[s.id] = {
         name: s.name,
-        last_seen: ''
+        last_seen: '',
+        status: ''
       }
     }
     tracking_hash
