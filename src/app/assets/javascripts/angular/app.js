@@ -19,7 +19,7 @@
         controller: 'CardController'
       })
       .when('/location', {
-        templateUrl: '',
+        templateUrl: 'location.html',
         controller: 'LocationController'
       })
   }]);
@@ -32,6 +32,11 @@
   app.directive('nbReport', function() {
     return {
       templateUrl: 'report.html'
+    };
+  });
+  app.directive('nbLocation', function() {
+    return {
+      templateUrl: 'stop-selection.html'
     };
   });
 })();
