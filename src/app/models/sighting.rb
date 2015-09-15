@@ -1,3 +1,4 @@
+require 'active_support'
 class Sighting
   # CONSTANT FOR WINDOWS (in sec)
   VALID_WINDOW = 60
@@ -40,24 +41,23 @@ class Sighting
   #
   # Return: { status: <failed/success> }
   def self.post_sighting(params)
-    this_service = Service.find(params[:service_id])
-    this_stop = Stop.find(params[:stop_id])
-    this_user = User.find(params[:user_id])
+    params = ActiveSupport::JSON.decode(params)
+    this_service = Service.find(params['service_id'])
+    this_stop = Stop.find(params['stop_id'])
+    this_user = User.find(params['user_id'])
     status = 'failed'
 
-    service_name_symbol = this_service.name.to_sym
-    stop_name_symbol = this_stop.name.to_sym
-
     User.transaction do
-      time_sheet = $redis.hget('tracking', service_name_symbol)
-      existing_time = time_sheet[stop_name_symbol]
+      time_sheet = eval($redis.hget('tracking', this_service.id))
+      existing_time = time_sheet[this_stop.id][:last_seen]
 
       # If the time input is legit
       # Update the time sheet hash & push changes to redis
       # Update credit for user
-      if legit(existing_time)
-        time_sheet[stop_name_symbol] = Time.now
-        $redis.hset('tracking', service_name_symbol, time_sheet)
+      # Time is saved as timestamp
+      if is_legit(existing_time)
+        time_sheet[this_stop.id][:last_seen] = Time.now.to_i
+        $redis.hset('tracking', this_service.id, time_sheet)
 
         this_user.credit += CREDIT_INCR
         this_user.save!
@@ -88,18 +88,19 @@ class Sighting
     end
   end
 
-  def still_valid(time)
-    Time.now - time <= VALID_WINDOW
+  def self.still_valid(time)
+    Time.now.to_i - time.to_i <= VALID_WINDOW
   end
 
-  def legit(time)
+  def self.is_legit(time)
     # For now assume users don't post false reports.
     # Only check if the input is reasonable:
     # If it's VALID_WINDOW seconds after the last data then it's legit
-    Time.now - time >= REASONABLE_WINDOW
+    # Time.now.to_i - time.to_i >= REASONABLE_WINDOW
+    true
   end
 
-  def elapsed(time)
-    Time.now - time
+  def self.elapsed(time)
+    Time.now.to_i - time.to_i
   end
 end
