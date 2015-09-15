@@ -1,4 +1,18 @@
 # Rake file for redis-related operations
+# CURRENT REDIS STRUCTURE
+# {
+#   'tracking' : {
+#     <service_id> : {
+#       <stop_id> : {
+#         name: <stop_name>,
+#         last_seen: <timestamp>
+#       },
+#       ...
+#     },
+#     ...
+#   }
+# }
+
 namespace :redis do
   desc "Set up the hash structure on redis"
   task populate: :environment do
