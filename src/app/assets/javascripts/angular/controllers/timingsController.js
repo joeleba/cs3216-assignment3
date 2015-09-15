@@ -13,6 +13,10 @@ function TimingsController($scope) {
                     {name: 'UT-CLB', capacity: 'average', arrivalTiming: '2m', lastSeenTime: '1557', lastSeenLoc: 'CLB', showDetail: false}];
   $scope.toggleDetail = function(bus) {
     bus.showDetail = bus.showDetail === false ? true : false;
+  };
+  $scope.refreshSchedule = false;
+  $scope.toggleRefresh = function() {
+    $scope.refreshSchedule = $scope.refreshSchedule === false ? true : false;
   }
 }
 })();

@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th colspan="4" class="busstop text-center">
-        <h1><span><%= image_tag 'refresh_sm.png', class: 'btn-refresh' %></span></h1>
+        <span><i ng-click="toggleRefresh()" class="fa fa-refresh fa-2x btn-refresh" ng-class="{'fa-spin': refreshSchedule}"></i></span>
       </th>
     </tr>
     <tr>
