@@ -5,7 +5,7 @@ namespace :redis do
     puts "\e[32mCreating Redis bus structure...\e[0m"
     services = Service.all
     services.each { |sv|
-      $redis.hset('tracking', sv.name, bus_stops_hash(sv))
+      $redis.hset('tracking', sv.id, bus_stops_hash(sv))
       puts "\e[32mDone with service #{sv.name}.\e[0m"
     }
     puts "\e[32mAll done!\e[0m"
