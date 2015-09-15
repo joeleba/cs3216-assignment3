@@ -1,40 +1,46 @@
 <table class="timings-table">
   <thead>
     <tr>
-      <th colspan="3" class="busstop text-center">
-        <h1><span><%= image_tag 'refresh.png', class: 'btn-refresh' %></span></h1>
+      <th colspan="4" class="busstop text-center">
+        <h1><span><%= image_tag 'refresh_sm.png', class: 'btn-refresh' %></span></h1>
       </th>
     </tr>
     <tr>
     <th>
-      <h2>CLB Busstop</h2>
+      <h2 class="text-left">CLB</h2>
     </th>
 
-    <th>
-    </th>
-
-    <th class="text-right">
-      <h2>Last Seen</h2>
+    <th class="text-right" colspan="3">
+      <h2>Last Seen At</h2>
     </th>
   </tr>
   </thead>
 
-  <tbody class="arrivals-data">
-    <tr ng-repeat="bus in busData"
-        ng-swipe-right="bus.showArrivalTiming = true"
-        ng-swipe-left="bus.showArrivalTiming = false">
-      <td ng-show ="!bus.showArrivalTiming">
-        <span class="service text-left">{{bus.name}}</span>
+  <tbody class="arrivals-data" ng-repeat="bus in busData">
+    <tr ng-click="toggleDetail(bus)">
+      <td align="left">
+        <h3>{{bus.name}}</h3>
       </td>
-      <td ng-show ="bus.showArrivalTiming">
-        <span class="arrival-timing text-left">{{bus.arrivalTiming}}</span>
+
+      <td align="right">
+        <h4>{{bus.lastSeenLoc}}&nbsp;|&nbsp;</h4>
       </td>
-      <td ng-switch="bus.capacity">
-      <span ng-switch-when="full"><%= image_tag 'full.png', class: 'capacity-icon' %></span>
-      <span ng-switch-when="empty"><%= image_tag 'empty.png', class: 'capacity-icon' %></span>
-      <span ng-switch-default><%= image_tag 'ok.png', class: 'capacity-icon' %></span>
+
+      <td align="left">
+        <span class="lastSeenTime">{{bus.lastSeenTime}}</span>
       </td>
-      <td class="last-seen" align="right">{{bus.lastSeen}}</td>
+      <td align="left">
+        <i class="fa" ng-class="{'fa-caret-down': !bus.showDetail, 'fa-caret-up': bus.showDetail}"></i>
+      </td>
+    </tr>
+
+    <tr ng-click="toggleDetail(bus)" ng-show="bus.showDetail">
+      <td ng-switch="bus.capacity" align="center" colspan="4">
+      <span ng-switch-when="full"><%= image_tag 'full_sm.png', class: 'capacity-icon' %></span>
+      <span ng-switch-when="empty"><%= image_tag 'empty_sm.png', class: 'capacity-icon' %></span>
+      <span ng-switch-default><%= image_tag 'ok_sm.png', class: 'capacity-icon' %></span>
+      <span class="arrival-timing">Estimated arrival: {{bus.arrivalTiming}}</span>
+      </td>
     </tr>
   </tbody>
 </table>

@@ -23,34 +23,43 @@
         text-transform: uppercase;
         letter-spacing: -.1em;
         margin: 0;
+        @media screen and (min-width: 480px) {
+          font-size: 2.5em;
+        }
       }
       .btn-refresh {
         display: inline;
-        width: 2em;
+        width: 1.5em;
         height: auto;
         margin: 0 1em;
       }
       .arrivals-data {
-        .service {
+        h3 {
           font-family: $quicksand;
           font-size: 2em;
-          letter-spacing: -.1em;
+          color: #333;
+          margin: .3em 0;
+        }
+        h4 {
+          font-size: 1.5em;
+          margin: 0;
+        }
+        .lastSeenTime {
+          @extend h4;
+          color: $std-orange;
         }
         .arrival-timing {
-          font-size: 2em;
-          font-weight: lighter;
+          font-size: 1em;
+          color: #666;
           text-transform: uppercase;
-          letter-spacing: -.1em;
+          letter-spacing: .1em;
         }
         .capacity-icon {
           width: 15vw;
           height: auto;
-        }
-        .last-seen {
-          font-family: $quicksand;
-          font-size: 1.5em;
-          text-transform: uppercase;
-          letter-spacing: -.05em;
+          @media screen and (min-width: 480px) {
+            width: 6vw;
+          }
         }
       }
     }
