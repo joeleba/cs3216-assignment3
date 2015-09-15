@@ -24,6 +24,14 @@ module Api
       #   },
       #   "this_stop": 1442290502
       # }
+      # Note: Since the default last_seen data is set to '', a query in the initial state might return this
+      # {
+      #   "prev_stops": {
+      #     "stop": "",
+      #     "last_seen": ""
+      #   },
+      #   "this_stop": "No data :("
+      # }
       def get_sighting
         render json: Sighting.get_sighting(params)
       end
