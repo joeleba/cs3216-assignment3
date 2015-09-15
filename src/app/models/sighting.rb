@@ -101,8 +101,8 @@ class Sighting
     # For now assume users don't post false reports.
     # Only check if the input is reasonable:
     # If it's VALID_WINDOW seconds after the last data then it's legit
-    # Time.now.to_i - time.to_i >= REASONABLE_WINDOW
-    true
+    return true if time === ''
+    Time.now.to_i - time.to_i >= REASONABLE_WINDOW
   end
 
   def self.elapsed(time)
