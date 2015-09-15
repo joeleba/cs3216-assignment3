@@ -13,14 +13,19 @@ module Api
       # Return val: an object containing last seen location of a service and
       # the time elapsed since it last left this current stop
       # {
-      #   prev_stops: {
-      #     stop: <stop object>
-      #     last_seen: <time>
+      #   "prev_stops": {
+      #     "stop": {
+      #       "id": 1,
+      #       "name": "PGP Terminal",
+      #       "longitude": null,
+      #       "latitude": null
+      #     },
+      #     "last_seen": 2218
       #   },
-      #   this_stop: <time>
+      #   "this_stop": 1442290502
       # }
       def get_sighting
-        respond_with Sighting.get_sighting(params)
+        render json: Sighting.get_sighting(params)
       end
 
       # POST /api/v1/sightings
@@ -36,7 +41,7 @@ module Api
       # Return val:
       # { status: <failed/success> }
       def post_sighting
-        respond_with Sighting.post_sighting(params[:sighting])
+        render json: Sighting.post_sighting(params[:sighting])
       end
     end
   end
