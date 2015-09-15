@@ -18,6 +18,10 @@
         templateUrl: 'card.html',
         controller: 'CardController'
       })
+      .when('/location', {
+        templateUrl: '',
+        controller: 'LocationController'
+      })
   }]);
 
   app.directive('nbTimings', function() {
