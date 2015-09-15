@@ -43,43 +43,43 @@ services_and_stops = [
   },
   {
     name: 'B',
-    stops: ['']
+    stops: []
   },
   {
     name: 'C',
-    stops: ['']
+    stops: []
   },
   {
     name: 'D1 (To BIZ2)',
-    stops: ['']
+    stops: []
   },
   {
     name: 'D1 (To UT)',
-    stops: ['']
+    stops: []
   },
   {
     name: 'D2',
-    stops: ['']
+    stops: []
   },
   {
     name: 'CLB-UT',
-    stops: ['']
+    stops: []
   },
   {
     name: 'FoS-UT',
-    stops: ['']
+    stops: []
   },
   {
     name: 'A1E',
-    stops: ['']
+    stops: []
   },
   {
     name: 'A2E (AM)',
-    stops: ['']
+    stops: []
   },
   {
     name: 'A2E (PM)',
-    stops: ['']
+    stops: []
   }
 ]
 
