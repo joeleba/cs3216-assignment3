@@ -20,10 +20,10 @@ module Api
       #       "longitude": null,
       #       "latitude": null
       #     },
-      #     "last_seen": 2218
+      #     "last_seen": 2218,
+      #     "status": 0     // 0, 1, 2 indicate empty, ok, full
       #   },
-      #   "this_stop": 1442290502,
-      #   "status": 0     // 0, 1, 2 indicate empty, ok, full
+      #   "this_stop": 1442290502
       # }
       # Note: Since the default last_seen data is set to '', a query in the initial state might return this
       # {
