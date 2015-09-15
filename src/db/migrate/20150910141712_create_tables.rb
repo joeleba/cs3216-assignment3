@@ -18,8 +18,8 @@ class CreateTables < ActiveRecord::Migration
 
     create_table :stops do |t|
       t.text :name, null: false
-      t.decimal :longitude, :precision => 15, :scale => 13
-      t.decimal :latitude, :precision => 15, :scale => 13
+      t.string :longitude
+      t.string :latitude
       t.index :name, unique: true
     end
 
