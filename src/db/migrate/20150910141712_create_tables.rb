@@ -13,17 +13,20 @@ class CreateTables < ActiveRecord::Migration
 
     create_table :services do |t|
       t.string :name, null: false
+      t.index :name, unique: true
     end
 
     create_table :stops do |t|
       t.text :name, null: false
       t.decimal :longitude, :precision => 15, :scale => 13
       t.decimal :latitude, :precision => 15, :scale => 13
+      t.index :name, unique: true
     end
 
     create_table :services_stops, id: false do |t|
       t.belongs_to :service, index: true
       t.belongs_to :stop, index:true
+      t.index [:service_id, :stop_id], unique: true
     end
 
     # One bus might have multiple timings depends on the time of the day

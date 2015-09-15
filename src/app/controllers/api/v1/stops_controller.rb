@@ -7,7 +7,7 @@ module Api
     class StopsController < ApplicationController
       respond_to :json
 
-      # GET /api/stops
+      # GET /api/v1/stops
       # Get the list of all stops
       # Return val: array of stop objects
       # [{
@@ -21,7 +21,7 @@ module Api
         respond_with @stops
       end
 
-      # GET /api/stops/:id
+      # GET /api/v1/stops/:id
       # Get one particular stop based on :id
       # Return val: 1 stop object
       # {
@@ -35,7 +35,7 @@ module Api
         respond_with @stop
       end
 
-      # GET /api/stops/:id/services
+      # GET /api/v1/stops/:id/services
       # Get the services available at a stop
       # Return val: array of service objects
       # [{
