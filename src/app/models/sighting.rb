@@ -1,7 +1,7 @@
 require 'active_support'
 class Sighting
   # CONSTANT FOR WINDOWS (in sec)
-  VALID_WINDOW = 60
+  VALID_WINDOW = 300
   REASONABLE_WINDOW = 60
   CREDIT_INCR = 1
 
