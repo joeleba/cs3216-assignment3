@@ -45,7 +45,8 @@ class Sighting
     this_service = Service.find(params['service_id'])
     this_stop = Stop.find(params['stop_id'])
     this_user = User.find(params['user_id'])
-    status = 'failed'
+    bus_status = params['status']
+    result = 'failed'
 
     User.transaction do
       time_sheet = eval($redis.hget('tracking', this_service.id))
@@ -57,15 +58,16 @@ class Sighting
       # Time is saved as timestamp
       if is_legit(existing_time)
         time_sheet[this_stop.id][:last_seen] = Time.now.to_i
+        time_sheet[this_stop.id][:status] = bus_status
         $redis.hset('tracking', this_service.id, time_sheet)
 
         this_user.credit += CREDIT_INCR
         this_user.save!
-        status = 'success'
+        result = 'success'
       end
     end
 
-    return { status: status }
+    return { result: result }
   end
 
   private
@@ -75,7 +77,8 @@ class Sighting
     pos = stops.find_index(this_stop)
     return_val = {
       stop: '',
-      last_seen: ''
+      last_seen: '',
+      status: ''
     }
     # If the stop is the terminal: iteration starts from the penultimate stop
     ite = pos == 0 ? (stops.length - 1) : (pos - 1)
@@ -85,6 +88,7 @@ class Sighting
       if still_valid(last_data)
         return_val[:stop] = stops[ite]
         return_val[:last_seen] = elapsed(last_data)
+        return_val[:status] = stops_timings[stops[ite].id][:status]
         break
       end
       ite -= 1

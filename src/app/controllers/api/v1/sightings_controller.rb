@@ -22,7 +22,8 @@ module Api
       #     },
       #     "last_seen": 2218
       #   },
-      #   "this_stop": 1442290502
+      #   "this_stop": 1442290502,
+      #   "status": 0     // 0, 1, 2 indicate empty, ok, full
       # }
       # Note: Since the default last_seen data is set to '', a query in the initial state might return this
       # {
@@ -44,10 +45,11 @@ module Api
       #   user_id: ...
       #   service_id: ...
       #   stop_id: ...
+      #   status: ...
       # }
       #
       # Return val:
-      # { status: <failed/success> }
+      # { result: <failed/success> }
       def post_sighting
         render json: Sighting.post_sighting(params[:sighting])
       end
