@@ -2,11 +2,11 @@
   <div class="col-xs-12 report-wrapper">
     <p>Finally! The bus</p>
     <ul class="bus-types">
-      <li class="bus-type" ng-repeat="busType in busTypes" onclick="selectBusType(this)">{{busType}} </li>
+      <li class="bus-type" ng-repeat="busType in busTypes" onclick="selectBusType(this)">{{busType}}</li>
     </ul>
     <p>just arrived and it's</p>
     <ul class="fullness-levels">
-      <li class="fullness-level" ng-repeat="fullnessLevel in fullnessLevels" onclick="selectFullnessLevel(this)">{{fullnessLevel}} </li>
+      <li class="fullness-level" ng-repeat="fullnessLevel in fullnessLevels" onclick="selectFullnessLevel(this)">{{fullnessLevel}}</li>
     </ul>
     <form name="reportForm" ng-submit="submitReport()" novalidate>
       <input id="bus-type" name="bus-type" type="hidden" required/>
