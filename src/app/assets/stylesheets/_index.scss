@@ -27,6 +27,7 @@
     align-items: center;
     .landing-icon, .nexbus {
       width: 50vw;
+      z-index: 1;
       @media screen and (min-width: 480px) {
         width: 30vw;
       }
@@ -40,6 +41,7 @@
 
   .bot-map {
     width: 100vw;
+    left: 0;
     bottom: 0;
     position: fixed;
     opacity: 1;
