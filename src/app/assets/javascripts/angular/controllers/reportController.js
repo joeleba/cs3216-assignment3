@@ -14,7 +14,7 @@ function ReportController($scope, $http) {
     $(".alert-block").text('Thank you for your submission!');
   }
 
-  $(document).ready(initializeReportForm);
+  $(window).load(initializeReportForm);
 
   function initializeReportForm() {
     var firstBusType = $(".bus-type").first()[0];
