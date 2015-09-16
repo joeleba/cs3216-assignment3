@@ -15,15 +15,11 @@ function ReportController($scope, $http) {
   $(document).ready(initializeReportForm);
 
   function initializeReportForm() {
-    $(".bus-type").removeClass("selected-bus");
-    var firstBusType = $(".bus-type").first();
-    firstBusType.addClass("selected-bus");
-    $("#bus-type").val(firstBusType.text());
+    var firstBusType = $(".bus-type").first()[0];
+    selectBusType(firstBusType);
 
-    $(".fullness-level").removeClass("selected-fullness");
-    var firstFullnessLevel = $(".fullness-level").first();
-    firstFullnessLevel.addClass("selected-fullness");
-    $("#fullness-level").val(firstFullnessLevel.text());
+    var firstFullnessLevel = $(".fullness-level").first()[0];
+    selectFullnessLevel(firstFullnessLevel);
   }
 }
 })();
