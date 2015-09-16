@@ -48,8 +48,16 @@
     color: green;
   }
 
+  .unselected-bus {
+    color: grey;
+  }
+
   .selected-fullness {
     border-style: solid;
     color: green;
+  }
+
+  .unselected-fullness {
+    color: grey;
   }
 }

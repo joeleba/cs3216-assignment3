@@ -19,11 +19,15 @@
   function selectBusType(o) {
     $("#bus-type").val(o.innerHTML.trim());
     $(".bus-type").removeClass("selected-bus");
+    $(".bus-type").addClass("unselected-bus");
+    $(o).removeClass("unselected-bus");
     $(o).addClass("selected-bus");
   }
   function selectFullnessLevel(o) {
     $("#fullness-level").val(o.innerHTML.trim());
     $(".fullness-level").removeClass("selected-fullness");
+    $(".fullness-level").addClass("unselected-fullness");
+    $(o).removeClass("unselected-fullness");
     $(o).addClass("selected-fullness");
   }
 </script>
