@@ -18,12 +18,12 @@
 <script>
   function selectBusType(o) {
     $("#bus-type").val(o.innerHTML.trim());
-    $(".bus-type").css('color', 'black');
-    o.style.color = "Green";
+    $(".bus-type").removeClass("selected-bus");
+    o.className += " selected-bus";
   }
   function selectFullnessLevel(o) {
     $("#fullness-level").val(o.innerHTML.trim());
-    $(".fullness-level").css('color', 'black');
-    o.style.color = "Green";
+    $(".fullness-level").removeClass("selected-fullness");
+    o.className += " selected-fullness";
   }
 </script>
