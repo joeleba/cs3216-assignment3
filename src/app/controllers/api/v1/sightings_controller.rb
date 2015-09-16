@@ -29,7 +29,8 @@ module Api
       # {
       #   "prev_stops": {
       #     "stop": "",
-      #     "last_seen": ""
+      #     "last_seen": "",
+      #     "status": ""
       #   },
       #   "this_stop": "No data :("
       # }
