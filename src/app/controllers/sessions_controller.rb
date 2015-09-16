@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     omniauth_hash = env['omniauth.auth']
     user = User.from_omniauth(omniauth_hash)
     session[:user_id] = user.id
-    redirect_to '#/main'
+    redirect_to '#/location'
   end
 
   def destroy

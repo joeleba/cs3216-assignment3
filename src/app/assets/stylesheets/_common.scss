@@ -3,7 +3,7 @@
   min-height: 100vh;
 }
 
-.ng-enter {
+.view-wrapper.ng-enter {
   animation: slideInRight 0.5s both ease-in;
 }
 
@@ -16,6 +16,7 @@ h1 {
 }
 
 h2 {
+  font-family: $quicksand;
   font-weight: 700;
   font-size: 2em;
   color: $std-blue;
