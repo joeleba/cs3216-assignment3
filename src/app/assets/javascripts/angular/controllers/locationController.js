@@ -53,6 +53,8 @@
       }
     };
 
+    $scope.locationRevealed = false;
+
     $scope.allStops = [];
     $scope.getAllStops = function () {
       $http.get('/api/v1/stops').
@@ -60,13 +62,11 @@
         $scope.allStops = response.data;
       }, function(response) {
         $scope.allStops = [{'Error': 'Oops, something went wrong, try refreshing the page'}];
-      })
-    }
+      });
+    };
 
-    $scope.toggleNearest = function () {
-      $scope.locationRevealed = $scope.locationRevealed === false ? true : false;
-      console.log($scope.locationRevealed);
+    $scope.getNearestStops = function () {
+      $scope.locationRevealed = true;
     }
-    $scope.locationRevealed = false;
   }
 })();
