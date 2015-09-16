@@ -36,4 +36,14 @@
   .fullness-levels li {
     display: inline;
   }
+
+  .selected-bus {
+    border-style: solid;
+    color: green;
+  }
+
+  .selected-fullness {
+    border-style: solid;
+    color: green;
+  }
 }
