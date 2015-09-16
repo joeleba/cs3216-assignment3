@@ -4,10 +4,6 @@ body {
   color: #222;
 }
 
-h1, h2 {
-  font-family: $quicksand;
-}
-
 .page-indicators {
   position: fixed;
   top: 0;
@@ -29,4 +25,18 @@ h1, h2 {
     @extend .page;
     background-color: #85e6e6;
   }
+}
+
+.page-left-button {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  color: #fff;
+}
+
+.page-right-button {
+  @extend .page-left-button;
+  align-items: flex-start;
 }
