@@ -44,8 +44,8 @@
   }
 
   .selected-bus {
-    border-style: solid;
-    color: green;
+    border: solid yellowgreen;
+    border-radius: 7px;
   }
 
   .unselected-bus {
@@ -53,8 +53,8 @@
   }
 
   .selected-fullness {
-    border-style: solid;
-    color: green;
+    border: solid yellowgreen;
+    border-radius: 5px;
   }
 
   .unselected-fullness {
