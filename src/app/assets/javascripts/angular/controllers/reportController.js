@@ -8,7 +8,8 @@ function ReportController($scope, $http) {
   $scope.fullnessLevels = ['empty', 'half full', 'full'];
   $scope.submitReport = function(busType, fullnessLevel) {
     alert('submitting bus type: ' + $("#bus-type").val() + ' and fullness level: ' + $("#fullness-level").val());
-    //$http.post('path', { busType: $("#bus-type").val(), fullessLevel: $("#fullness-level").val() });
+    var submitPath = window.location.host + '/api/v1/sightings';
+    //$http.post('submitPath', { busType: $("#bus-type").val(), fullessLevel: $("#fullness-level").val() });
     initializeReportForm();
     $(".alert-block").text('Thank you for your submission!');
   }
