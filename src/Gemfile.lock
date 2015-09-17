@@ -63,6 +63,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     font-awesome-sass (4.4.0)
       sass (>= 3.2)
+    geocoder (1.2.11)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     hashie (3.4.2)
@@ -186,6 +187,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   font-awesome-sass
+  geocoder
   jbuilder (~> 2.0)
   jquery-rails
   omniauth (~> 1.2.2)
