@@ -10,7 +10,7 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
 
   // Returns the selected Stop name given the stop_id
   $scope.getStopName = function(stop_id) {
-    $http.get('/api/v1/stops/' + stop_id).
+    $http.get('/api/v1/stops/' + stop_id, { cache: true }).
       then(function(res) {
         $scope.currentStopName = res.data.name;
       }, function(err) {
@@ -21,7 +21,7 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
 
   // Returns all the Services available at a particular Stop
   $scope.getServicesAt = function(stop_id) {
-    $http.get('/api/v1/stops/' + stop_id + '/services').
+    $http.get('/api/v1/stops/' + stop_id + '/services', { cache: true }).
       then(function(res) {
         $scope.serviceData = res.data;
         getSightingsForServices(params.stop_id, $scope.serviceData);
