@@ -7,39 +7,35 @@
     </tr>
     <tr>
     <th>
-      <h2 class="text-left">CLB</h2>
+      <h2 class="text-left">{{currentStopName}}</h2>
     </th>
 
-    <th class="text-right" colspan="3">
+    <th class="text-right" colspan="2">
       <h2>Last Seen At</h2>
     </th>
   </tr>
   </thead>
 
-  <tbody class="arrivals-data" ng-repeat="bus in busData">
+  <tbody class="arrivals-data" ng-repeat="bus in sightingsData">
     <tr ng-click="toggleDetail(bus)">
       <td align="left">
-        <h3>{{bus.name}}</h3>
+        <h3>{{bus.name.toUpperCase()}}</h3>
       </td>
 
       <td align="right">
-        <h4>{{bus.lastSeenLoc}}&nbsp;|&nbsp;</h4>
+        <span class="lastSeenTime">{{bus.thisLastSeen}}</span>
       </td>
-
-      <td align="left">
-        <span class="lastSeenTime">{{bus.lastSeenTime}}</span>
-      </td>
-      <td align="left">
-        <i class="fa" ng-class="{'fa-caret-down': !bus.showDetail, 'fa-caret-up': bus.showDetail}"></i>
+      <td align="right">
+        <i class="fa fa-2x" ng-class="{'fa-caret-down': !bus.detail, 'fa-caret-up': bus.detail}"></i>
       </td>
     </tr>
 
-    <tr ng-click="toggleDetail(bus)" ng-show="bus.showDetail">
-      <td ng-switch="bus.capacity" align="center" colspan="4">
-      <span ng-switch-when="full"><%= image_tag 'full_sm.png', class: 'capacity-icon' %></span>
-      <span ng-switch-when="empty"><%= image_tag 'empty_sm.png', class: 'capacity-icon' %></span>
+    <tr ng-click="toggleDetail(bus)" ng-show="bus.detail">
+      <td ng-switch="bus.capacity" align="center" colspan="3">
+      <span ng-switch-when="2"><%= image_tag 'full_sm.png', class: 'capacity-icon' %></span>
+      <span ng-switch-when="0"><%= image_tag 'empty_sm.png', class: 'capacity-icon' %></span>
       <span ng-switch-default><%= image_tag 'ok_sm.png', class: 'capacity-icon' %></span>
-      <span class="arrival-timing">Estimated arrival: {{bus.arrivalTiming}}</span>
+      <span class="arrival-timing">{{bus.otherLastSeen}}</span>
       </td>
     </tr>
   </tbody>
