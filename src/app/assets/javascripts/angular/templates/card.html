@@ -15,9 +15,11 @@
            class="card-content">
         <div ng-show="showSchedule"
              ng-controller="TimingsController as timingsCtrl"
+             class="timings-content"
              nb-timings></div>
         <div ng-show="!showSchedule"
              ng-controller="ReportController as reportCtrl"
+             class="report-content"
              nb-report></div>
     </div>
   </div>

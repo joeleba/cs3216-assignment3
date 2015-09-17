@@ -5,6 +5,7 @@
   @media screen and (min-width: 480px) {
     background-image: image-url('subway-lines.png');
   }
+
   .top-map {
     width: 100vw;
     opacity: 1;
@@ -25,6 +26,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     .landing-icon, .nexbus {
       width: 50vw;
       z-index: 1;
@@ -46,6 +48,7 @@
     position: fixed;
     opacity: 1;
     transition: opacity 1s;
+
     @media screen and (min-width: 480px) {
       opacity: 0;
       transition: opacity 1s;
