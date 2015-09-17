@@ -37,8 +37,8 @@ Rails.application.routes.draw do
         post '/' => 'sightings#post_sighting'
       end
 
-      scope :location do
-        get '/' => 'location#nearby'
+      scope :locations do
+        get '/' => 'locations#nearby'
       end
     end
   end
