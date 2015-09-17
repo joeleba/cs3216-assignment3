@@ -37,7 +37,7 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
     for (var i=0; i<services.length; i++) {
       var svc = services[i];
       getSighting(params.stop_id, svc.id, svc.name);
-      $timeout(()=> { $scope.refreshSchedule = false; }, 1500);
+      $timeout(function() { $scope.refreshSchedule = false; }, 1500);
     }
   };
 
