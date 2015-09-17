@@ -1,10 +1,12 @@
 (function() {
   angular
     .module('nexbus')
-    .controller('LocationController', ["$scope", "$http", LocationController]);
+    .controller('LocationController', ["$scope", "$http",
+    '$location', LocationController]);
 
-  function LocationController($scope, $http) {
-    $scope.nearestStops = [];
+  function LocationController($scope, $http, $location) {
+    $scope.allStops = [];
+    $scope.locationRevealed = false;
 
     // Callback when the location is handled correctly
     $scope.toServer = function (coords) {
@@ -14,7 +16,8 @@
 
       $http.get('/api/v1/locations' + query).then(function(res) {
         // Proper code will be added later after I wrote the back end.
-        $scope.nearestStops = res.data;
+        $scope.allStops = res.data;
+        $scope.locationRevealed = true;
       }, function(err) {
         console.log(err);
       });
@@ -37,10 +40,7 @@
           break;
       }
       $scope.$apply();
-
-      // =======================================================
-      // Add code to prepare list of stops to manually pick here
-      // =======================================================
+      $scope.getAllStops();
     };
 
     // Main function to get location
@@ -53,20 +53,18 @@
       }
     };
 
-    $scope.locationRevealed = false;
-
-    $scope.allStops = [];
     $scope.getAllStops = function () {
       $http.get('/api/v1/stops').
       then(function(response) {
         $scope.allStops = response.data;
-      }, function(response) {
-        $scope.allStops = [{'Error': 'Oops, something went wrong, try refreshing the page'}];
+      }, function(err) {
+        $scope.allStops = [];
+        $scope.error = err;
       });
     };
 
-    $scope.getNearestStops = function () {
-      $scope.locationRevealed = true;
+    if ($location.path() === '/location') {
+      $scope.getAllStops();
     }
   }
 })();
