@@ -52,6 +52,9 @@ gem 'font-awesome-sass'
 # Redis
 gem 'redis', '~> 3.2.1'
 
+# Geocoder
+gem 'geocoder'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

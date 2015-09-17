@@ -9,18 +9,24 @@
     $scope.locationRevealed = false;
 
     // Callback when the location is handled correctly
-    $scope.toServer = function (coords) {
-      var lat = coords.latitude
-        , lon = coords.longitude
+    $scope.toServer = function (geo) {
+      var lat = geo.coords.latitude
+        , lon = geo.coords.longitude
         , query = ['?lat=', lat, '&lon=', lon].join('');
 
-      $http.get('/api/v1/locations' + query).then(function(res) {
-        // Proper code will be added later after I wrote the back end.
-        $scope.allStops = res.data;
-        $scope.locationRevealed = true;
-      }, function(err) {
-        console.log(err);
-      });
+      // Only send request if lat and lon are present
+      if (lat==='' || lon==='') {
+        $scope.getAllStops();
+      } else {
+        $http.get('/api/v1/locations' + query).then(function (res) {
+          // Proper code will be added later after I wrote the back end.
+          console.log(res);
+          $scope.locationRevealed = true;
+          $scope.allStops = res.data.nearby_stops;
+        }, function (err) {
+          console.log(err);
+        });
+      }
     };
 
     // Callback to handle errors
@@ -46,7 +52,7 @@
     // Main function to get location
     $scope.getLocation = function () {
       if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition($scope.toServer, $scope.showError);
+        navigator.geolocation.getCurrentPosition($scope.toServer, $scope.showError, {timeout:10000});
       }
       else {
         $scope.error = "Geolocation is not supported by this browser.";
