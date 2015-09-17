@@ -2,7 +2,7 @@
   <div class="col-xs-12 report-wrapper">
     <p>Finally! The bus</p>
     <ul class="bus-types">
-      <li class="bus-type" ng-repeat="busType in busTypes" onclick="selectBusType(this)">{{busType}}</li>
+      <li class="bus-type" ng-repeat="service in serviceData" onclick="selectBusType(this)">{{service.name}}</li>
     </ul>
     <p>just arrived and it's</p>
     <ul class="fullness-levels">
