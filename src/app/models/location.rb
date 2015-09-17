@@ -5,7 +5,7 @@ class Location
     get_all_stops_coord.each { |stop_obj|
       stop_array_entry = {}
       stop_array_entry[:stop] = stop_obj[:stop]
-      stop_array_entry[:distance] = Geocoder::Calculations.distance_between(userLocation, stop_obj[:coord])*1000
+      stop_array_entry[:distance] = (Geocoder::Calculations.distance_between(userLocation, stop_obj[:coord])*1000).round(0)
       stops_array.push(stop_array_entry)
     }
     { nearby_stops: stops_array.sort_by! {|obj| obj[:distance]} }
