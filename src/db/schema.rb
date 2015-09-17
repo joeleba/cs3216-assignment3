@@ -32,9 +32,9 @@ ActiveRecord::Schema.define(version: 20150910141712) do
   add_index "services_stops", ["stop_id"], name: "index_services_stops_on_stop_id", using: :btree
 
   create_table "stops", force: :cascade do |t|
-    t.text    "name",                                null: false
-    t.decimal "longitude", precision: 15, scale: 13
-    t.decimal "latitude",  precision: 15, scale: 13
+    t.text   "name",      null: false
+    t.string "longitude"
+    t.string "latitude"
   end
 
   add_index "stops", ["name"], name: "index_stops_on_name", unique: true, using: :btree
