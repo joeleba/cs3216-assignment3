@@ -2,7 +2,7 @@
   <div class="col-xs-12 report-wrapper">
     <p>Finally! The bus</p>
     <ul class="bus-types">
-      <li class="bus-type" ng-repeat="service in serviceData" onclick="selectBusType(this)">{{service.name}}</li>
+      <li id="bus-{{service.id}}" class="bus-type" ng-repeat="service in serviceData" onclick="selectBusType(this)">{{service.name}}</li>
     </ul>
     <p>just arrived and it's</p>
     <ul class="fullness-levels">
@@ -25,7 +25,7 @@
         selectBusType(o);
       }, 100);
     } else {
-      $("#bus-type").val(o.innerHTML.trim());
+      $("#bus-type").val($(o).attr('id').split('-')[1]);
       $(".bus-type").removeClass("selected-bus");
       $(".bus-type").addClass("unselected-bus");
       $(o).removeClass("unselected-bus");

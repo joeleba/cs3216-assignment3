@@ -5,15 +5,20 @@
 
 function ReportController($scope, $http, $route, $location) {
   $scope.fullnessLevels = ['empty', 'half full', 'full'];
-  $scope.submitReport = function(busType, fullnessLevel) {
+
+  var params = $route.current.params;
+  var fullnessLevels = ["empty", "half-full", "full"];
+
+  $scope.submitReport = function(serviceId, fullnessLevel) {
     alert('submitting bus type: ' + $("#bus-type").val() + ' and fullness level: ' + $("#fullness-level").val());
     var submitPath = window.location.host + '/api/v1/sightings';
-    //$http.post('submitPath', { busType: $("#bus-type").val(), fullessLevel: $("#fullness-level").val() });
+    var serviceId = $("#bus-type").val();
+    var stopId = params.stop_id;
+    var fullnessStatus = fullnessLevels.indexOf($("#fullness-level").val());
+    //$http.post('submitPath', { user_id: , service_id: serviceId, stop_id: stopId, status: fullnessStatus });
     initializeReportForm();
     $(".alert-block").text('Thank you for your submission!');
   }
-
-  var params = $route.current.params;
 
   // Returns the selected Stop name given the stop_id
   $scope.getStopName = function(stop_id) {
