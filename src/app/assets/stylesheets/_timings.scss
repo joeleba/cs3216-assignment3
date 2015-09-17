@@ -3,36 +3,22 @@
     position: relative;
     background-color: #fff;
     box-shadow: 1px 1px 4px #666;
-    margin: 5vh 0vw;
+    margin: 5vh 2vw;
     padding: 3vw;
-    min-height: 90vh;
+    height: 90vh;
     overflow: auto;
+
     .timings-table {
       width: 100%;
-      h1 {
-        font-family: $body-font;
-        font-weight: 300;
-        font-size: 2.5em;
-        color: #000;
-        margin: 0;
-      }
-      h2 {
-        font-weight: 700;
-        font-size: 2em;
-        color: $std-blue;
-        text-transform: uppercase;
-        letter-spacing: -.1em;
-        margin: 0;
+
+      .btn-refresh {
+        height: 1em;
+        width: 12vw;
         @media screen and (min-width: 480px) {
-          font-size: 2.5em;
+          width: 6vw;
         }
       }
-      .btn-refresh {
-        display: inline;
-        width: 1.5em;
-        height: auto;
-        margin: 0 1em;
-      }
+
       .arrivals-data {
         h3 {
           font-family: $quicksand;
@@ -40,20 +26,24 @@
           color: #333;
           margin: .3em 0;
         }
+
         h4 {
           font-size: 1.5em;
           margin: 0;
         }
+
         .lastSeenTime {
           @extend h4;
           color: $std-orange;
         }
+
         .arrival-timing {
           font-size: 1em;
           color: #666;
           text-transform: uppercase;
           letter-spacing: .1em;
         }
+
         .capacity-icon {
           width: 15vw;
           height: auto;

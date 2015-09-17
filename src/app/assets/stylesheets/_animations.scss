@@ -1,0 +1,15 @@
+.timings-content {
+  animation: slideInUp 0.2s ease-in;
+}
+
+.timings-content.ng-hide {
+  opacity: 0;
+}
+
+.report-content {
+  animation:slideInUp 0.2s ease-in;
+}
+
+.report-content.ng-hide {
+  opacity: 0;
+}

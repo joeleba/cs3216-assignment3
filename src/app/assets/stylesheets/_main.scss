@@ -4,10 +4,6 @@ body {
   color: #222;
 }
 
-h1, h2 {
-  font-family: $quicksand;
-}
-
 .page-indicators {
   position: fixed;
   top: 0;
@@ -15,18 +11,35 @@ h1, h2 {
   flex-direction: row;
   justify-content: center;
   margin-top: 1vh;
+
   .page {
     border-radius: 50%;
     width: 10px;
     height: 10px;
     margin: 3px;
   }
+
   .currPage {
     @extend .page;
     background-color: #50B1B0;
   }
+
   .otherPage {
     @extend .page;
     background-color: #85e6e6;
   }
+}
+
+.page-left-button {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  color: #fff;
+}
+
+.page-right-button {
+  @extend .page-left-button;
+  align-items: flex-start;
 }

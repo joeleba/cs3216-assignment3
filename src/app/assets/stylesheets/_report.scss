@@ -1,16 +1,21 @@
+.card-content {
+  .report-content {
+    height: 100%;
+  }
+
+  .row {
+    height: inherit;
+  }
+}
+
 .report-wrapper {
-  position: absolute;
   top: 0;
   width: 100%;
   height: 100%;
   display: flex;
-  display: -webkit-flex;
   flex-direction: column;
-  -webkit-flex-direction: column;
   justify-content: center;
-  -webkit-justify-content: center;
   align-items: center;
-  -webkit-align-items: center;
   font-size: 180%;
 
   p {
@@ -18,6 +23,7 @@
   }
 
   .bus-types {
+    font-family: $quicksand;
     list-style-type: none;
     text-align: center;
     margin-left: -40px;
@@ -25,9 +31,12 @@
 
   .bus-types li {
     display: inline;
+    padding-left: 3px;
+    padding-right: 3px;
   }
 
   .fullness-levels {
+    font-family: $quicksand;
     list-style-type: none;
     text-align: center;
     margin-left: -40px;
@@ -35,5 +44,36 @@
 
   .fullness-levels li {
     display: inline;
+    padding: .1em;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+
+  .selected-bus {
+    border: solid yellowgreen;
+    border-radius: 7px;
+  }
+
+  .unselected-bus {
+    color: grey;
+  }
+
+  .selected-fullness {
+    border: solid yellowgreen;
+    border-radius: 5px;
+  }
+
+  .unselected-fullness {
+    color: grey;
+  }
+
+  .report-submit {
+    margin-top: 2em;
+  }
+
+  .alert-block {
+    margin-top: 10px;
+    text-align: center;
+    height: 10%;
   }
 }
