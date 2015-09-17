@@ -20,11 +20,14 @@ ActiveRecord::Schema.define(version: 20150910141712) do
     t.string "name", null: false
   end
 
+  add_index "services", ["name"], name: "index_services_on_name", unique: true, using: :btree
+
   create_table "services_stops", id: false, force: :cascade do |t|
     t.integer "service_id"
     t.integer "stop_id"
   end
 
+  add_index "services_stops", ["service_id", "stop_id"], name: "index_services_stops_on_service_id_and_stop_id", unique: true, using: :btree
   add_index "services_stops", ["service_id"], name: "index_services_stops_on_service_id", using: :btree
   add_index "services_stops", ["stop_id"], name: "index_services_stops_on_stop_id", using: :btree
 
@@ -33,6 +36,8 @@ ActiveRecord::Schema.define(version: 20150910141712) do
     t.decimal "longitude", precision: 15, scale: 13
     t.decimal "latitude",  precision: 15, scale: 13
   end
+
+  add_index "stops", ["name"], name: "index_stops_on_name", unique: true, using: :btree
 
   create_table "timings", force: :cascade do |t|
     t.integer "time_before"
