@@ -32,7 +32,7 @@ module Api
       #     "last_seen": "",
       #     "status": ""
       #   },
-      #   "this_stop": "No data :("
+      #   "this_stop": "No data"
       # }
       def get_sighting
         render json: Sighting.get_sighting(params)
@@ -43,7 +43,6 @@ module Api
       #
       # Params:
       # sighting: {
-      #   user_id: ...
       #   service_id: ...
       #   stop_id: ...
       #   status: ...
