@@ -108,8 +108,9 @@ class Sighting
     Time.now.to_i - time.to_i >= REASONABLE_WINDOW
   end
 
+  # Return time elapsed (in minutes, round up to closet min)
   def self.elapsed(time)
     return 'No data' if time === ''
-    Time.now.to_i - time.to_i
+    (Time.now.to_i - time.to_i).div(60).ceil
   end
 end
