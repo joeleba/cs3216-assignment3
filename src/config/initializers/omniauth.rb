@@ -5,6 +5,5 @@ OmniAuth.config.on_failure = Proc.new do |env|
 end
 
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :developer unless Rails.env.production?
   provider :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET']
 end

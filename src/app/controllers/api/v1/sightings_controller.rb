@@ -32,7 +32,7 @@ module Api
       #     "last_seen": "",
       #     "status": ""
       #   },
-      #   "this_stop": "No data :("
+      #   "this_stop": "No data"
       # }
       def get_sighting
         render json: Sighting.get_sighting(params)
@@ -43,7 +43,6 @@ module Api
       #
       # Params:
       # sighting: {
-      #   user_id: ...
       #   service_id: ...
       #   stop_id: ...
       #   status: ...
@@ -52,6 +51,7 @@ module Api
       # Return val:
       # { result: <failed/success> }
       def post_sighting
+        params[:sighting][:user_id] = session[:user_id]
         render json: Sighting.post_sighting(params[:sighting])
       end
     end
