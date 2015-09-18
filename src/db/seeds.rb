@@ -55,8 +55,7 @@ services_and_stops = [
             {name: 'Comp. Cen.', longitude: '103.7727580000000000', latitude: '1.2974720000000000'},
             {name: 'Opp. YIH', longitude: '103.7741510000000000', latitude: '1.2989920000000000'},
             {name: 'Raffles Hall', longitude: '103.7733500000000000', latitude: '1.3009000000000000'},
-            {name: 'Fac. of Engg.', longitude: '103.7701330000000000', latitude: '1.3005730000000000'},
-            {name: 'KR Bus Terminal', longitude: '103.7696501294700000', latitude: '1.2946755187001000'}]
+            {name: 'Fac. of Engg.', longitude: '103.7701330000000000', latitude: '1.3005730000000000'}]
   },
   {
     name: 'C',
@@ -70,8 +69,7 @@ services_and_stops = [
             {name: 'U Hall', longitude: '103.7787329547930600', latitude: '1.2971604522020967'},
             {name: 'Opp. UHC', longitude: '103.7755640000000000', latitude: '1.2987660000000000'},
             {name: 'Raffles Hall', longitude: '103.7733500000000000', latitude: '1.3009000000000000'},
-            {name: 'Fac. of Engg.', longitude: '103.7701330000000000', latitude: '1.3005730000000000'},
-            {name: 'KR Bus Terminal', longitude: '103.7696501294700000', latitude: '1.2946755187001000'}]
+            {name: 'Fac. of Engg.', longitude: '103.7701330000000000', latitude: '1.3005730000000000'}]
   },
   {
     name: 'D1 (To BIZ2)',
@@ -124,17 +122,14 @@ services_and_stops = [
     stops: [{name: 'Opp. KR MRT', longitude: '103.7850630000000000', latitude: '1.2941130000000000'},
             {name: 'Ventus', longitude: '103.7706549545700000', latitude: '1.2956382610565000'},
             {name: 'Comp. Cen.', longitude: '103.7727580000000000', latitude: '1.2974720000000000'},
-            {name: 'Blk S17', longitude: '103.7814260000000000', latitude: '1.2974930000000000'},
-            {name: 'Opp. KR MRT', longitude: '103.7850630000000000', latitude: '1.2941130000000000'}
-    ]
+            {name: 'Blk S17', longitude: '103.7814260000000000', latitude: '1.2974930000000000'}]
   },
   {
     name: 'A2E (PM)',
     stops: [{name: 'Ventus', longitude: '103.7706549545700000', latitude: '1.2956382610565000'},
             {name: 'Comp. Cen.', longitude: '103.7727580000000000', latitude: '1.2974720000000000'},
             {name: 'Blk S17', longitude: '103.7814260000000000', latitude: '1.2974930000000000'},
-            {name: 'Opp. KR MRT', longitude: '103.7850630000000000', latitude: '1.2941130000000000'},
-            {name: 'Ventus', longitude: '103.7706549545700000', latitude: '1.2956382610565000'}]
+            {name: 'Opp. KR MRT', longitude: '103.7850630000000000', latitude: '1.2941130000000000'}]
   }
 ]
 
