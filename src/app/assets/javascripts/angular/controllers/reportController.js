@@ -11,13 +11,21 @@ function ReportController($scope, $http, $route, $location) {
 
   $scope.submitReport = function(serviceId, fullnessLevel) {
     alert('submitting bus type: ' + $("#bus-type").val() + ' and fullness level: ' + $("#fullness-level").val());
-    var submitPath = window.location.host + '/api/v1/sightings';
+    //var submitPath = window.location.host + '/api/v1/sightings';
     var serviceId = $("#bus-type").val();
     var stopId = params.stop_id;
     var fullnessStatus = fullnessLevels.indexOf($("#fullness-level").val());
-    //$http.post('submitPath', { user_id: , service_id: serviceId, stop_id: stopId, status: fullnessStatus });
-    initializeReportForm();
-    $(".alert-block").text('Thank you for your submission!');
+
+    $http.post('/api/v1/sightings', { service_id: serviceId, stop_id: stopId, status: fullnessStatus }).
+      then(function(res) {
+        initializeReportForm();
+        $(".alert-block").text('Thank you for your submission!');
+      }, function(err) {
+        // ========================
+        //  Add error handler here
+        // ========================
+        console.log(err);
+      });
   }
 
   // Returns the selected Stop name given the stop_id
