@@ -2,7 +2,12 @@
   <thead>
     <tr>
       <th class="text-center" colspan="2">
-        <i ng-click="getLocation()" class="fa fa-location-arrow fa-3x"></i>
+        <button class="btn btn-comp btn-xs btn-fill"
+           ng-click="getLocation()">
+           <i class="fa fa-map-marker"></i>
+           <span ng-show="!locationRevealed">Get Bus Stops Near Me</span>
+           <span ng-show="locationRevealed">Update My Location</span>
+       </button>
       </th>
     </tr>
     <tr>
