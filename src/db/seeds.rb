@@ -20,13 +20,13 @@ services_and_stops = [
             {name: 'AS7', longitude: '103.7720125177797200', latitude: '1.2934648958163953'},
             {name: 'COM2', longitude: '103.7736903995500000', latitude: '1.2943139822027000'},
             {name: 'BIZ2', longitude: '103.7751080857900000', latitude: '1.2936685240305000'},
-            {name: 'Opp. House 12', longitude: '103.7772924895500000', latitude: '1.2937199340425000'},
+            {name: 'Opp. Hse 12', longitude: '103.7772924895500000', latitude: '1.2937199340425000'},
             {name: 'House 7', longitude: '103.7779805420300000', latitude: '1.2933090582670000'}]
   },
   {
     name: 'A2',
     stops: [{name: 'PGP Terminal', longitude: '103.7804949540100000', latitude: '1.2919256943123000'},
-            {name: 'Btwn House 14 & 15', longitude: '103.7779056448900000', latitude: '1.2930153180155000'},
+            {name: 'Btwn Hse 14 & 15', longitude: '103.7779056448900000', latitude: '1.2930153180155000'},
             {name: 'House 12', longitude: '103.7771674911300000', latitude: '1.2935856087691000'},
             {name: 'Opp. HSSML', longitude: '103.775070', latitude: '1.292996'},
             {name: 'Opp. NUSS', longitude: '103.772478', latitude: '1.293370'},
