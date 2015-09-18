@@ -41,11 +41,10 @@ class Sighting
   #
   # Return: { status: <failed/success> }
   def self.post_sighting(params)
-    params = ActiveSupport::JSON.decode(params)
-    this_service = Service.find(params['service_id'])
-    this_stop = Stop.find(params['stop_id'])
-    this_user = User.find(params['user_id'])
-    bus_status = params['status']
+    this_service = Service.find(params[:service_id])
+    this_stop = Stop.find(params[:stop_id])
+    this_user = User.find(params[:user_id])
+    bus_status = params[:status]
     result = 'failed'
 
     User.transaction do
