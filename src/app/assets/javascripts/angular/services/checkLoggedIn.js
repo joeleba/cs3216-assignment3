@@ -3,18 +3,18 @@
     .module('nexbus')
     .factory('checkLoggedIn', function($q, $http) {
       return function() {
+        // Async
         var deferred = $q.defer();
 
-        $http.get('/auth/signed_in').
+        // Send GET request to check whether user is signed in
+        return $http.get('/auth/signed_in').
           then(function(res) {
             if (res.data.user !== null) {
-              console.log("Signed In");
-              console.log(res);
-              deferred.resolve("Signed In");
+              deferred.resolve();
+              return deferred.promise;
             } else {
-              console.log("not signed in");
-              console.log(res);
               deferred.reject("Not Signed In");
+              return deferred.promise;
             }
           }, function(err) {
             console.log(err);
