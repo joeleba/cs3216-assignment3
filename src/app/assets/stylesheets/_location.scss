@@ -1,6 +1,10 @@
 .stops-table {
     width: 100%;
 
+    .btn i {
+      margin: 0;
+    }
+
     .btn-comp {
       background-color: $std-orange;
       color: #fff;
