@@ -242,10 +242,9 @@ input.ct-red + span + label + span.switch-right {
     background-color: #66615B;
     opacity: 1;
     filter: alpha(opacity=100); }
-    .navbar .navbar-nav > li > a.btn.btn-fill:hover, .navbar .navbar-nav > li > a.btn.btn-fill:focus, .navbar .navbar-nav > li > a.btn.btn-fill:active, .navbar .navbar-nav > li > a.btn.btn-fill.active, .open > .navbar .navbar-nav > li > a.btn.btn-fill.dropdown-toggle, .btn.btn-fill:hover, .btn.btn-fill:focus, .btn.btn-fill:active, .btn.btn-fill.active, .open > .btn.btn-fill.dropdown-toggle {
-      background-color: #403D39;
+    .navbar .navbar-nav > li > a.btn.btn-fill:hover, .navbar .navbar-nav > li > a.btn.btn-fill:focus, .navbar .navbar-nav > li > a.btn.btn-fill:active, .navbar .navbar-nav > li > a.btn.btn-fill.active, .open > .navbar .navbar-nav > li > a.btn.btn-fill.dropdown-toggle, .btn.btn-fill:focus, .btn.btn-fill:active, .btn.btn-fill.active, .open > .btn.btn-fill.dropdown-toggle {
       color: #FFFFFF;
-      border-color: #403D39; }
+      border-color: #FF9933; }
     .navbar .navbar-nav > li > a.btn.btn-fill .caret, .btn.btn-fill .caret {
       border-top-color: #FFFFFF; }
   .navbar .navbar-nav > li > a.btn.btn-simple:hover, .navbar .navbar-nav > li > a.btn.btn-simple:focus, .navbar .navbar-nav > li > a.btn.btn-simple:active, .navbar .navbar-nav > li > a.btn.btn-simple.active, .open > .navbar .navbar-nav > li > a.btn.btn-simple.dropdown-toggle, .btn.btn-simple:hover, .btn.btn-simple:focus, .btn.btn-simple:active, .btn.btn-simple.active, .open > .btn.btn-simple.dropdown-toggle {
