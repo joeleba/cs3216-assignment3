@@ -53,7 +53,6 @@ Rails.application.routes.draw do
     end
     get '/failure' => redirect('#')
     get '/signed_in' => 'sessions#signed_in'
+    post '/signout' => 'sessions#destroy'
   end
-
-  get 'signout' => 'sessions#destroy'
 end
