@@ -7,7 +7,7 @@
 
         $http.get('/auth/signed_in').
           then(function(res) {
-            if (res) {
+            if (res.data.user !== null) {
               console.log("Signed In");
               console.log(res);
               deferred.resolve("Signed In");
