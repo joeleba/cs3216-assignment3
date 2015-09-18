@@ -33,10 +33,12 @@
           }
         }
       })
+      .otherwise({redirectTo: '/location'});
     }])
-    .run(function ($rootScope) {
+    .run(function ($rootScope, $location) {
       $rootScope.$on("$routeChangeError", function (event, current, previous, rejection) {
         console.log(rejection);
+        $location.path('/');
       });
     });
 
