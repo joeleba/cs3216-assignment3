@@ -48,4 +48,5 @@ Rails.application.routes.draw do
   post 'auth/:provider/callback' => 'sessions#create'
   get 'auth/failure' => redirect('/')
   get 'signout' => 'sessions#destroy'
+  get 'auth/signed_in' => 'session#signed_in'
 end
