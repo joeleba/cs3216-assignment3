@@ -51,7 +51,7 @@ Rails.application.routes.draw do
         post '/' => 'sessions#create'
       end
     end
-    get '/failure' => redirect('/')
+    get '/failure' => redirect('#')
     get '/signed_in' => 'sessions#signed_in'
   end
 
