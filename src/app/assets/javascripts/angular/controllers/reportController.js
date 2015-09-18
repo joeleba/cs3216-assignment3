@@ -11,7 +11,6 @@ function ReportController($scope, $http, $route, $location) {
 
   $scope.submitReport = function(serviceId, fullnessLevel) {
     alert('submitting bus type: ' + $("#bus-type").val() + ' and fullness level: ' + $("#fullness-level").val());
-    //var submitPath = window.location.host + '/api/v1/sightings';
     var serviceId = $("#bus-type").val();
     var stopId = params.stop_id;
     var fullnessStatus = fullnessLevels.indexOf($("#fullness-level").val());
