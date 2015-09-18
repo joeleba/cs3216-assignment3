@@ -110,7 +110,7 @@ class Sighting
   end
 
   def self.elapsed(time)
-    return 'No data :(' if time === ''
+    return 'No data' if time === ''
     Time.now.to_i - time.to_i
   end
 end
