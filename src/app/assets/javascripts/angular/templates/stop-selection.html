@@ -1,22 +1,27 @@
 <table class="stops-table">
   <thead>
     <tr>
-      <th class="text-center">
-        <i ng-click="getAllStops()" class="fa fa-location-arrow fa-3x"></i>
+      <th class="text-center" colspan="2">
+        <i ng-click="getLocation()" class="fa fa-location-arrow fa-3x"></i>
       </th>
     </tr>
     <tr>
-      <th class="text-center">
+      <th class="text-center" colspan="2">
         <h2 ng-show="!locationRevealed">All Bus Stops</h2>
         <h2 ng-show="locationRevealed">Bus Stops Near You</h2>
       </th>
-    </ttr>
+    </tr>
   </thead>
 
   <tbody>
     <tr ng-repeat="stop in allStops">
       <td class="stop-link"><i class="fa fa-angle-right fa-2x"></i>
-        <a ng-href="/#/main?stop_id={{stop.id}}">&nbsp; {{stop.name}}</a>
+          <a ng-show="!locationRevealed" ng-href="/#/main?stop_id={{stop.id}}">&nbsp; {{stop.name}}</a>
+          <a ng-show="locationRevealed" ng-href="/#/main?stop_id={{stop.stop.id}}">&nbsp; {{stop.stop.name}}</a>
+      </td>
+
+      <td>
+        <span ng-show="locationRevealed" class="distance-text">{{stop.distance}}m</span>
       </td>
     </tr>
   </tbody>

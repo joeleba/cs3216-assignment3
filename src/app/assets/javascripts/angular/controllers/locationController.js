@@ -1,23 +1,32 @@
 (function() {
   angular
     .module('nexbus')
-    .controller('LocationController', ["$scope", "$http", LocationController]);
+    .controller('LocationController', ["$scope", "$http",
+    '$location', LocationController]);
 
-  function LocationController($scope, $http) {
-    $scope.nearestStops = [];
+  function LocationController($scope, $http, $location) {
+    $scope.allStops = [];
+    $scope.locationRevealed = false;
 
     // Callback when the location is handled correctly
-    $scope.toServer = function (coords) {
-      var lat = coords.latitude
-        , lon = coords.longitude
+    $scope.toServer = function (geo) {
+      var lat = geo.coords.latitude
+        , lon = geo.coords.longitude
         , query = ['?lat=', lat, '&lon=', lon].join('');
 
-      $http.get('/api/v1/locations' + query).then(function(res) {
-        // Proper code will be added later after I wrote the back end.
-        $scope.nearestStops = res.data;
-      }, function(err) {
-        console.log(err);
-      });
+      // Only send request if lat and lon are present
+      if (lat==='' || lon==='') {
+        $scope.getAllStops();
+      } else {
+        $http.get('/api/v1/locations' + query).then(function (res) {
+          // Proper code will be added later after I wrote the back end.
+          console.log(res);
+          $scope.locationRevealed = true;
+          $scope.allStops = res.data.nearby_stops;
+        }, function (err) {
+          console.log(err);
+        });
+      }
     };
 
     // Callback to handle errors
@@ -37,36 +46,31 @@
           break;
       }
       $scope.$apply();
-
-      // =======================================================
-      // Add code to prepare list of stops to manually pick here
-      // =======================================================
+      $scope.getAllStops();
     };
 
     // Main function to get location
     $scope.getLocation = function () {
       if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition($scope.toServer, $scope.showError);
+        navigator.geolocation.getCurrentPosition($scope.toServer, $scope.showError, {timeout:10000});
       }
       else {
         $scope.error = "Geolocation is not supported by this browser.";
       }
     };
 
-    $scope.locationRevealed = false;
-
-    $scope.allStops = [];
     $scope.getAllStops = function () {
       $http.get('/api/v1/stops').
       then(function(response) {
         $scope.allStops = response.data;
-      }, function(response) {
-        $scope.allStops = [{'Error': 'Oops, something went wrong, try refreshing the page'}];
+      }, function(err) {
+        $scope.allStops = [];
+        $scope.error = err;
       });
     };
 
-    $scope.getNearestStops = function () {
-      $scope.locationRevealed = true;
+    if ($location.path() === '/location') {
+      $scope.getAllStops();
     }
   }
 })();
