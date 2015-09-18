@@ -18,6 +18,7 @@ function ReportController($scope, $http, $route, $location) {
     //$http.post('submitPath', { user_id: , service_id: serviceId, stop_id: stopId, status: fullnessStatus });
     initializeReportForm();
     $(".alert-block").text('Thank you for your submission!');
+    location.reload();
   }
 
   // Returns the selected Stop name given the stop_id
