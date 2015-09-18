@@ -7,12 +7,11 @@
   app
     .config(['$routeProvider', function($routeProvider, checkLoggedIn){
     $routeProvider
-      .when('/', {
-        templateUrl: 'ng-index.html',
+      .when('/#', {
         controller: 'MainController'
       })
       .when('/login', {
-        templateUrl: 'login.html',
+        templateUrl: 'ng-index.html',
         controller: 'LoginController'
       })
       .when('/main', {
@@ -38,7 +37,7 @@
     .run(function ($rootScope, $location) {
       $rootScope.$on("$routeChangeError", function (event, current, previous, rejection) {
         console.log(rejection);
-        $location.path('/');
+        $location.path('/login');
       });
     });
 
