@@ -41,11 +41,10 @@ class Sighting
   #
   # Return: { status: <failed/success> }
   def self.post_sighting(params)
-    params = ActiveSupport::JSON.decode(params)
-    this_service = Service.find(params['service_id'])
-    this_stop = Stop.find(params['stop_id'])
-    this_user = User.find(params['user_id'])
-    bus_status = params['status']
+    this_service = Service.find(params[:service_id])
+    this_stop = Stop.find(params[:stop_id])
+    this_user = User.find(params[:user_id])
+    bus_status = params[:status]
     result = 'failed'
 
     User.transaction do
@@ -109,8 +108,9 @@ class Sighting
     Time.now.to_i - time.to_i >= REASONABLE_WINDOW
   end
 
+  # Return time elapsed (in minutes, round up to closet min)
   def self.elapsed(time)
     return 'No data' if time === ''
-    Time.now.to_i - time.to_i
+    (Time.now.to_i - time.to_i).div(60).ceil
   end
 end

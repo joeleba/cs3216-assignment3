@@ -49,16 +49,20 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
       var busData = {};
       var detail = res.data.prev_stops.status;
       var lastSeen;
+      var thisStopMinutes = res.data.this_stop === 'No data' ? '' : ' m ago';
 
-      if (res.data.last_seen) {
-        lastSeen = res.data.prev_stops.stop.name + ' | ' + res.data.last_seen;
+      console.log(res);
+
+      if (res.data.prev_stops.last_seen) {
+        lastSeen = res.data.prev_stops.stop.name + ' | ' + res.data.prev_stops.last_seen + ' m ago';
       } else {
-        lastSeen = 'No data'
+        lastSeen = 'No data';
       }
+
       // This is quite messy and should be refactored in the future
       busData["name"] = service_name;
-      busData["thisLastSeen"] = res.data.this_stop;
-      busData["otherLastSeen"] = lastSeen
+      busData["thisLastSeen"] = res.data.this_stop + thisStopMinutes;
+      busData["otherLastSeen"] = lastSeen;
       busData["detail"] = detail === "" ? false : true;
       busData["capacity"] = detail;
       $scope.sightingsData.push(busData);
