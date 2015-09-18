@@ -17,7 +17,7 @@ module Api
       #    "latitude"   : null
       # }]
       def index
-        @stops = Stop.all
+        @stops = Stop.all.order(:name)
         respond_with @stops
       end
 

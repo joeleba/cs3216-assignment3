@@ -2,7 +2,7 @@
   <div class="col-xs-12 report-wrapper">
     <p>Finally! The bus</p>
     <ul class="bus-types">
-      <li class="bus-type" ng-repeat="busType in busTypes" onclick="selectBusType(this)">{{busType}}</li>
+      <li id="bus-{{service.id}}" class="bus-type" ng-repeat="service in serviceData" onclick="selectBusType(this)">{{service.name}}</li>
     </ul>
     <p>just arrived and it's</p>
     <ul class="fullness-levels">
@@ -19,17 +19,31 @@
 </div>
 <script>
   function selectBusType(o) {
-    $("#bus-type").val(o.innerHTML.trim());
-    $(".bus-type").removeClass("selected-bus");
-    $(".bus-type").addClass("unselected-bus");
-    $(o).removeClass("unselected-bus");
-    $(o).addClass("selected-bus");
+    if (o === undefined) {
+      setTimeout(function() {
+        o = $(".bus-type").first()[0];
+        selectBusType(o);
+      }, 100);
+    } else {
+      $("#bus-type").val($(o).attr('id').split('-')[1]);
+      $(".bus-type").removeClass("selected-bus");
+      $(".bus-type").addClass("unselected-bus");
+      $(o).removeClass("unselected-bus");
+      $(o).addClass("selected-bus");
+    }
   }
   function selectFullnessLevel(o) {
-    $("#fullness-level").val(o.innerHTML.trim());
-    $(".fullness-level").removeClass("selected-fullness");
-    $(".fullness-level").addClass("unselected-fullness");
-    $(o).removeClass("unselected-fullness");
-    $(o).addClass("selected-fullness");
+    if (o === undefined) {
+      setTimeout(function() {
+        o = $(".fullness-level").first()[0];
+        selectFullnessLevel(o);
+      }, 100);
+    } else {
+      $("#fullness-level").val(o.innerHTML.trim());
+      $(".fullness-level").removeClass("selected-fullness");
+      $(".fullness-level").addClass("unselected-fullness");
+      $(o).removeClass("unselected-fullness");
+      $(o).addClass("selected-fullness");
+    }
   }
 </script>
