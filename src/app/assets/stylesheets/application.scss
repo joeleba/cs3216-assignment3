@@ -12,17 +12,14 @@
  *
  */
  $icon-font-path: "bootstrap-sass/assets/fonts/bootstrap/";
- @import "bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
- @import "bootstrap-sass/assets/stylesheets/bootstrap";
+ @import "ratchet/sass/ratchet";
  @import "font-awesome-sprockets";
  @import "font-awesome";
  @import "variables";
- @import "theme";
  @import "animate";
- @import "animations";
  @import "common";
- @import "main";
  @import "index";
  @import "location";
  @import "timings";
  @import "report";
+ @import "leaderboards";

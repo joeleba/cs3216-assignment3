@@ -1,35 +1,14 @@
-.stops-table {
+.search {
+  padding: 2vh 2vw 0vh 2vw;
+}
+.bus-stop-cell {
+  padding-right: 0px;
+
+  .bus-stop-link {
     width: 100%;
 
-    .btn i {
-      margin: 0;
+    .bus-stop-right {
+      padding-top: 4px;
     }
-
-    .btn-comp {
-      background-color: $std-orange;
-      color: #fff;
-      border-color: $std-orange;
-      font-family: $theme-font;
-      text-transform: uppercase;
-    }
-
-    .btn-comp:focus, .btn-comp:hover {
-      background-color: #fff;
-      color: $std-orange;
-      border-color: $std-orange;
-    }
-
-    .fa.fa-angle-right {
-      font-size: 1.4em;
-    }
-
-    a {
-      font-size: 1.4em;
-      color: #333;
-      text-transform: uppercase;
-    }
-
-    .distance-text {
-      color: $std-orange;
-    }
+  }
 }

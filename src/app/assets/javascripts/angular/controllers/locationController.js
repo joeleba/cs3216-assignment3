@@ -5,6 +5,7 @@
     '$location', LocationController]);
 
   function LocationController($scope, $http, $location) {
+    $scope.page = $location.path();
     $scope.allStops = [];
     $scope.locationRevealed = false;
 
@@ -20,11 +21,10 @@
       } else {
         $http.get('/api/v1/locations' + query).then(function (res) {
           // Proper code will be added later after I wrote the back end.
-          console.log(res);
           $scope.locationRevealed = true;
           $scope.allStops = res.data.nearby_stops;
         }, function (err) {
-          console.log(err);
+          $scope.error = err;
         });
       }
     };
@@ -70,6 +70,8 @@
     };
 
     if ($location.path() === '/location') {
+      $scope.getLocation();
+    } else if ($location.path() === '/all') {
       $scope.getAllStops();
     }
   }

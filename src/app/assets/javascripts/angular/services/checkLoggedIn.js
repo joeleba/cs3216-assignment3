@@ -1,7 +1,7 @@
 (function() {
   angular
     .module('nexbus')
-    .factory('checkLoggedIn', function($q, $http) {
+    .factory('checkLoggedIn', ['$q', '$http', function($q, $http) {
       return function() {
         // Async
         var deferred = $q.defer();
@@ -20,5 +20,5 @@
             console.log(err);
           });
       }
-    });
+    }]);
 })();

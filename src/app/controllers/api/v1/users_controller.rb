@@ -7,6 +7,11 @@ module Api
     class UsersController < ApplicationController
       respond_to :json
 
+      # GET /api/users
+      def index
+        respond_with User.all.limit(20).order(credit: :desc)
+      end
+
       # GET /api/users/:id
       def show
         respond_with User.find(params[:id])

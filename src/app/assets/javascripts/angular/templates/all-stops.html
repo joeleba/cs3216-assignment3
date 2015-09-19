@@ -6,11 +6,9 @@
 <ul class="table-view">
   <li ng-repeat="stop in allStops | filter: searchText"
       class="table-view-cell bus-stop-cell">
-    <a ng-show="locationRevealed"
-       ng-href="/#/main?stop_id={{stop.stop.id}}"
+    <a ng-href="/#/main?stop_id={{stop.id}}"
        class="bus-stop-link">
-      {{stop.stop.name}}
-      <span ng-show="locationRevealed" class="distance-text">({{stop.distance}}m)</span>
+      {{stop.name}}
       <span class="fa fa-chevron-right pull-right bus-stop-right"></span>
     </a>
   </li>

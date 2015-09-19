@@ -1,29 +1,4 @@
-<div class="row">
-  <div class="col-xs-12 page-indicators">
-    <div ng-class="{currPage: showSchedule, otherPage: !showSchedule}"></div>
-    <div ng-class="{currPage: !showSchedule, otherPage: showSchedule}"></div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-3 hidden-xs page-left-button">
-    <i ng-click="showSchedule = true" class="fa fa-caret-left fa-3x"></i>
-  </div>
-  <div class="col-xs-12 col-sm-6 card-wrapper">
-      <div ng-swipe-right="showSchedule = true"
-           ng-swipe-left="showSchedule = false"
-           class="card-content">
-        <div ng-show="showSchedule"
-             ng-controller="TimingsController as timingsCtrl"
-             class="timings-content"
-             nb-timings></div>
-        <div ng-show="!showSchedule"
-             ng-controller="ReportController as reportCtrl"
-             class="report-content"
-             nb-report></div>
-    </div>
-  </div>
-  <div class="col-sm-3 hidden-xs page-right-button">
-    <i ng-click="showSchedule = false" class="fa fa-caret-right fa-3x"></i>
-  </div>
-</div>
+<div ng-show="!showSchedule"
+     ng-controller="ReportController as reportCtrl"
+     class="report-content"
+     nb-report></div>
