@@ -55,7 +55,9 @@ function ReportController($scope, $http, $route, $location) {
     $scope.getServicesAt(params.stop_id);
   }
 
-  $(window).load(initializeReportForm);
+  $(window).load(function() {
+    initializeReportForm();
+  });
 
   function initializeReportForm() {
     var firstBusType = $(".bus-type").first()[0];
