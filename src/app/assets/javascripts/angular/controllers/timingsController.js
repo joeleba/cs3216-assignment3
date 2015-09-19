@@ -80,6 +80,12 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
     getSightingsForServices(params.stop_id, $scope.serviceData);
   }
 
+  // Hack due to some push.js and angularjs compatibility issue
+  $scope.goTo = function(path) {
+    $location.path(path);
+    $location.search({});
+  }
+
   if ($location.path() === '/main') {
     $scope.getStopName(params.stop_id);
     $scope.getServicesAt(params.stop_id);

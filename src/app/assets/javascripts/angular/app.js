@@ -26,6 +26,10 @@
         templateUrl: 'all.html',
         controller: 'LocationController'
       })
+      .when('/leaderboards', {
+        templateUrl: 'leaderboards.html',
+        controller: 'LeaderboardsController'
+      });
   }]);
 
   app
@@ -52,6 +56,11 @@
   .directive('nbAllStops', function() {
     return {
       templateUrl: 'all-stops.html'
+    };
+  })
+  .directive('nbBoards', function() {
+    return {
+      templateUrl: 'leaderboard-table.html'
     };
   });
 })();
