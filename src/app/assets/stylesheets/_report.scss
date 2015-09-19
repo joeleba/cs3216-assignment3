@@ -16,10 +16,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 180%;
 
   p {
-    font-size: 120%;
+    color: black;
+    font-size: 17px;
   }
 
   .bus-types {
@@ -76,5 +76,15 @@
     margin-top: 10px;
     text-align: center;
     height: 10%;
+  }
+
+  .report-selector {
+    height: 7%;
+    min-height: 40px;
+
+    a {
+      vertical-align: middle;
+      font-size: 17px;
+    }
   }
 }

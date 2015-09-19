@@ -1,11 +1,11 @@
 <div class="content">
   <div class="report-wrapper">
     <p>Finally! The bus</p>
-    <div class="segmented-control">
+    <div class="segmented-control report-selector">
       <a id="bus-{{service.id}}" class="control-item bus-type" ng-repeat="service in serviceData" onclick="selectBusType(this)">{{service.name}}</a>
     </div>
     <p>just arrived and it's</p>
-    <div class="segmented-control">
+    <div class="segmented-control report-selector">
       <a class="control-item fullness-level" ng-repeat="fullnessLevel in fullnessLevels" onclick="selectFullnessLevel(this)">{{fullnessLevel}}</a>
     </div>
     <form name="reportForm" ng-submit="submitReport()" novalidate>
