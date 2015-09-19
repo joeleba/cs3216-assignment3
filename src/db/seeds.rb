@@ -55,7 +55,7 @@ services_and_stops = [
             {name: 'Comp. Cen.', longitude: '103.7727580000000000', latitude: '1.2974720000000000'},
             {name: 'Opp. YIH', longitude: '103.7741510000000000', latitude: '1.2989920000000000'},
             {name: 'Raffles Hall', longitude: '103.7733500000000000', latitude: '1.3009000000000000'},
-            {name: 'Fac. of Engg.', longitude: '103.7701330000000000', latitude: '1.3005730000000000'}]
+            {name: 'Opp. Blk. EA', longitude: '103.7701330000000000', latitude: '1.3005730000000000'}]
   },
   {
     name: 'C',
@@ -69,7 +69,7 @@ services_and_stops = [
             {name: 'U Hall', longitude: '103.7787329547930600', latitude: '1.2971604522020967'},
             {name: 'Opp. UHC', longitude: '103.7755640000000000', latitude: '1.2987660000000000'},
             {name: 'Raffles Hall', longitude: '103.7733500000000000', latitude: '1.3009000000000000'},
-            {name: 'Fac. of Engg.', longitude: '103.7701330000000000', latitude: '1.3005730000000000'}]
+            {name: 'Opp. Blk. EA', longitude: '103.7701330000000000', latitude: '1.3005730000000000'}]
   },
   {
     name: 'D1 (To BIZ2)',
@@ -130,6 +130,33 @@ services_and_stops = [
             {name: 'Comp. Cen.', longitude: '103.7727580000000000', latitude: '1.2974720000000000'},
             {name: 'Blk S17', longitude: '103.7814260000000000', latitude: '1.2974930000000000'},
             {name: 'Opp. KR MRT', longitude: '103.7850630000000000', latitude: '1.2941130000000000'}]
+  },
+  {
+    name: 'UT-CLB',
+    stops: [{name: 'UTown CREATE', longitude: '103.7747695170442600', latitude: '1.3037038207119909'},
+            {name: 'CLB', longitude: '103.7725430000000000', latitude: '1.2965130000000000'}]
+  },
+  {
+    name: 'UT-FoS',
+    stops: [{name: 'UTown CREATE', longitude: '103.7747695170442600', latitude: '1.3037038207119909'},
+            {name: 'LT29', longitude: '103.7810920000000000', latitude: '1.2973590000000000'}]
+  },
+  {
+    name: 'BTC',
+    stops: [{name: 'Japanese Pri Sch', longitude: '103.7698808354900000', latitude: '1.3007901663760000'},
+            {name: 'Museum', longitude: '103.7737270000000000', latitude: '1.3011720000000000'},
+            {name: 'YIH', longitude: '103.7742760000000000', latitude: '1.2986670000000000'},
+            {name: 'CLB', longitude: '103.7725430000000000', latitude: '1.2965130000000000'},
+            {name: 'LT13', longitude: '103.7706449546002900', latitude: '1.2945886967726710'},
+            {name: 'AS7', longitude: '103.7720125177797200', latitude: '1.2934648958163953'},
+            {name: 'BIZ2', longitude: '103.7751080857900000', latitude: '1.2936685240305000'},
+            {name: 'PGP Terminal', longitude: '103.7804949540100000', latitude: '1.2919256943123000'},
+            {name: 'Aft. College Grn', longitude: '103.816295', latitude: '1.323327', id: '41029'},
+            {name: 'Oei Tiong Ham Building', longitude: '103.818234', latitude: '1.319477'},
+            {name: 'Botanic Gardens MRT', longitude: '103.815510', latitude: '1.322642'},
+            # {name: 'Museum', longitude: '103.7737270000000000', latitude: '1.3011720000000000'},
+            {name: 'Opp. Blk. EA', longitude: '103.7701330000000000', latitude: '1.3005730000000000'}
+    ]
   }
 ]
 
