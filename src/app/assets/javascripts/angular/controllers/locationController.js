@@ -5,6 +5,7 @@
     '$location', LocationController]);
 
   function LocationController($scope, $http, $location) {
+    $scope.page = $location.path();
     $scope.allStops = [];
     $scope.locationRevealed = false;
 
@@ -68,16 +69,9 @@
       });
     };
 
-    $scope.getPage = function (page) {
-      console.log(page);
-      return $location.path() === page;
-    }
-
     if ($location.path() === '/location') {
-      $scope.page = 'loc';
       $scope.getLocation();
     } else if ($location.path() === '/all') {
-      $scope.page = 'all';
       $scope.getAllStops();
     }
   }
