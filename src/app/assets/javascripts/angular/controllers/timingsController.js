@@ -51,8 +51,6 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
       var lastSeen;
       var thisStopMinutes = res.data.this_stop === 'No data' ? '' : ' m ago';
 
-      console.log(res);
-
       if (res.data.prev_stops.last_seen) {
         lastSeen = res.data.prev_stops.stop.name + ' | ' + res.data.prev_stops.last_seen + ' m ago';
       } else {

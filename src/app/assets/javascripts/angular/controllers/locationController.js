@@ -20,11 +20,10 @@
       } else {
         $http.get('/api/v1/locations' + query).then(function (res) {
           // Proper code will be added later after I wrote the back end.
-          console.log(res);
           $scope.locationRevealed = true;
           $scope.allStops = res.data.nearby_stops;
         }, function (err) {
-          console.log(err);
+          $scope.error = err;
         });
       }
     };
@@ -69,7 +68,16 @@
       });
     };
 
+    $scope.getPage = function (page) {
+      console.log(page);
+      return $location.path() === page;
+    }
+
     if ($location.path() === '/location') {
+      $scope.page = 'loc';
+      $scope.getLocation();
+    } else if ($location.path() === '/all') {
+      $scope.page = 'all';
       $scope.getAllStops();
     }
   }
