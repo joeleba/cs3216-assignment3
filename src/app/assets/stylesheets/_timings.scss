@@ -1,57 +1,7 @@
-.card-wrapper {
-  .card-content {
-    position: relative;
-    background-color: #fff;
-    box-shadow: 1px 1px 4px #666;
-    margin: 5vh 2vw;
-    padding: 3vw;
-    height: 90vh;
-    overflow: auto;
+.navbar-link {
+  padding-top: 2vh;
+}
 
-    .timings-table {
-      width: 100%;
-
-      .btn-refresh {
-        height: 1em;
-        width: 12vw;
-        @media screen and (min-width: 480px) {
-          width: 6vw;
-        }
-      }
-
-      .arrivals-data {
-        h3 {
-          font-family: $quicksand;
-          font-size: 2em;
-          color: #333;
-          margin: .3em 0;
-        }
-
-        h4 {
-          font-size: 1.5em;
-          margin: 0;
-        }
-
-        .lastSeenTime {
-          @extend h4;
-          color: $std-orange;
-        }
-
-        .arrival-timing {
-          font-size: 1em;
-          color: #666;
-          text-transform: uppercase;
-          letter-spacing: .1em;
-        }
-
-        .capacity-icon {
-          width: 15vw;
-          height: auto;
-          @media screen and (min-width: 480px) {
-            width: 6vw;
-          }
-        }
-      }
-    }
-  }
+.capacity-icon {
+  width: 25px;
 }
