@@ -1,13 +1,13 @@
 <div class="content">
   <div class="report-wrapper">
     <p>Finally! The bus</p>
-    <ul class="bus-types">
-      <li id="bus-{{service.id}}" class="bus-type" ng-repeat="service in serviceData" onclick="selectBusType(this)">{{service.name}}</li>
-    </ul>
+    <div class="segmented-control">
+      <a id="bus-{{service.id}}" class="control-item bus-type" ng-repeat="service in serviceData" onclick="selectBusType(this)">{{service.name}}</a>
+    </div>
     <p>just arrived and it's</p>
-    <ul class="fullness-levels">
-      <li class="fullness-level" ng-repeat="fullnessLevel in fullnessLevels" onclick="selectFullnessLevel(this)">{{fullnessLevel}}</li>
-    </ul>
+    <div class="segmented-control">
+      <a class="control-item fullness-level" ng-repeat="fullnessLevel in fullnessLevels" onclick="selectFullnessLevel(this)">{{fullnessLevel}}</a>
+    </div>
     <form name="reportForm" ng-submit="submitReport()" novalidate>
       <input id="bus-type" name="bus-type" type="hidden" required/>
       <input id="fullness-level" name="fullness-level" type="hidden" required/>
