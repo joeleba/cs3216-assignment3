@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       end
 
       scope :users do
+        get '/' => 'users#index'
         scope '/:id' do
           get '/' => 'users#show'
           post '/' => 'users#create'
