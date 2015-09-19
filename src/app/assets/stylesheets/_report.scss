@@ -17,41 +17,24 @@
   justify-content: center;
   align-items: center;
 
-  p {
-    color: black;
-    font-size: 17px;
+  .report-text {
+      color: black;
+      font-size: 17px;
+      vertical-align: middle;
   }
 
   .bus-types {
-    font-family: $quicksand;
-    list-style-type: none;
-    text-align: center;
-    margin-left: -40px;
-  }
-
-  .bus-types li {
-    display: inline;
-    padding-left: 3px;
-    padding-right: 3px;
+    margin-top: 15px;
+    margin-bottom: 15px;
   }
 
   .fullness-levels {
-    font-family: $quicksand;
-    list-style-type: none;
-    text-align: center;
-    margin-left: -40px;
-  }
-
-  .fullness-levels li {
-    display: inline;
-    padding: .1em;
-    margin-left: 8px;
-    margin-right: 8px;
+    margin-top: 15px;
+    margin-bottom: 15px;
   }
 
   .selected-bus {
     border: solid yellowgreen;
-    border-radius: 7px;
   }
 
   .unselected-bus {
@@ -60,7 +43,6 @@
 
   .selected-fullness {
     border: solid yellowgreen;
-    border-radius: 5px;
   }
 
   .unselected-fullness {
@@ -81,10 +63,15 @@
   .report-selector {
     height: 7%;
     min-height: 40px;
+    width: 100%;
 
     a {
       vertical-align: middle;
       font-size: 17px;
+    }
+
+    .fullness-level {
+      width: 33%;
     }
   }
 }

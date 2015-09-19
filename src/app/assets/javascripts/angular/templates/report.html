@@ -1,17 +1,17 @@
 <div class="content">
   <div class="report-wrapper">
-    <p>Finally! The bus</p>
-    <div class="segmented-control report-selector">
+    <div class="report-text">Finally! The bus</div>
+    <div class="segmented-control report-selector bus-types">
       <a id="bus-{{service.id}}" class="control-item bus-type" ng-repeat="service in serviceData" onclick="selectBusType(this)">{{service.name}}</a>
     </div>
-    <p>just arrived and it's</p>
-    <div class="segmented-control report-selector">
+    <div class="report-text">just arrived and it's</div>
+    <div class="segmented-control report-selector fullness-levels">
       <a class="control-item fullness-level" ng-repeat="fullnessLevel in fullnessLevels" onclick="selectFullnessLevel(this)">{{fullnessLevel}}</a>
     </div>
     <form name="reportForm" ng-submit="submitReport()" novalidate>
       <input id="bus-type" name="bus-type" type="hidden" required/>
       <input id="fullness-level" name="fullness-level" type="hidden" required/>
-      <input class="btn btn-fill btn-primary report-submit" type="submit" value="Contribute!" />
+      <button class="btn btn-fill btn-primary report-submit" type="submit" ng-disabled="reportForm.$invalid">Contribute!</button>
     </form>
     <div class="alert-block">
     </div>
@@ -30,6 +30,7 @@
       $(".bus-type").addClass("unselected-bus");
       $(o).removeClass("unselected-bus");
       $(o).addClass("selected-bus");
+      $(o).addClass("active");
     }
   }
   function selectFullnessLevel(o) {
@@ -44,6 +45,7 @@
       $(".fullness-level").addClass("unselected-fullness");
       $(o).removeClass("unselected-fullness");
       $(o).addClass("selected-fullness");
+      $(o).addClass("active");
     }
   }
 </script>
