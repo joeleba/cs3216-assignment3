@@ -1,0 +1,12 @@
+<header class="bar bar-nav">
+  <a href="/#/location" data-transition="slide-in" class="pull-left navbar-link">
+    <i class="fa fa-chevron-left"></i></a>
+  <a href="/#/contribute" data-transition="slide-in" class="pull-right navbar-link">
+    <i class="fa fa-commenting"></i></a>
+  <h1 class="title">{{currentStopName}}</h1>
+</header>
+
+<div class="content">
+  <div ng-controller="TimingsController as timingsCtrl"
+       nb-timings></div>
+</div>

@@ -1,33 +1,15 @@
-<table class="stops-table">
-  <thead>
-    <tr>
-      <th class="text-center" colspan="2">
-        <button class="btn btn-comp btn-xs btn-fill"
-           ng-click="getLocation()">
-           <i class="fa fa-map-marker"></i>
-           <span ng-show="!locationRevealed">Get Bus Stops Near Me</span>
-           <span ng-show="locationRevealed">Update My Location</span>
-       </button>
-      </th>
-    </tr>
-    <tr>
-      <th class="text-center" colspan="2">
-        <h2 ng-show="!locationRevealed">All Bus Stops</h2>
-        <h2 ng-show="locationRevealed">Bus Stops Near You</h2>
-      </th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr ng-repeat="stop in allStops">
-      <td class="stop-link"><i class="fa fa-angle-right fa-2x"></i>
-          <a ng-show="!locationRevealed" ng-href="/#/main?stop_id={{stop.id}}">&nbsp; {{stop.name}}</a>
-          <a ng-show="locationRevealed" ng-href="/#/main?stop_id={{stop.stop.id}}">&nbsp; {{stop.stop.name}}</a>
-      </td>
-
-      <td>
-        <span ng-show="locationRevealed" class="distance-text">{{stop.distance}}m</span>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="search content-padded">
+  <input type="search" id="bus-stop-search" placeholder="Search for a bus stop" />
+</div>
+<ul class="table-view">
+  <li ng-repeat="stop in allStops"
+      class="table-view-cell bus-stop-cell">
+    <a ng-show="locationRevealed"
+       ng-href="/#/main?stop_id={{stop.stop.id}}"
+       class="bus-stop-link">
+      {{stop.stop.name}}
+      <span ng-show="locationRevealed" class="distance-text">({{stop.distance}}m)</span>
+      <span class="fa fa-chevron-right pull-right bus-stop-right"></span>
+    </a>
+  </li>
+</ul>
