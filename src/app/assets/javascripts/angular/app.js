@@ -20,7 +20,7 @@
         resolve: {
           authenticated: function(checkLoggedIn) {
             return checkLoggedIn();
-          };
+          }
         }
       })
       .when('/location', {
@@ -29,7 +29,7 @@
         resolve: {
           authenticated: function(checkLoggedIn) {
             return checkLoggedIn();
-          };
+          }
         }
       })
       .when('/all', {
@@ -38,7 +38,7 @@
         resolve: {
           authenticated: function(checkLoggedIn) {
             return checkLoggedIn();
-          };
+          }
         }
       })
       .when('/leaderboards', {
@@ -47,7 +47,7 @@
         resolve: {
           authenticated: function(checkLoggedIn) {
             return checkLoggedIn();
-          };
+          }
         }
       })
       .otherwise({redirectTo: '/location'});
