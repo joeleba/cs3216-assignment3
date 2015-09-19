@@ -11,4 +11,8 @@ class SessionsController < ApplicationController
     redirect_to '#'
   end
 
+  def signed_in
+    render json: { user: session[:user_id] }
+  end
+
 end

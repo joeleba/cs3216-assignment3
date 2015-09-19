@@ -4,33 +4,59 @@
   var app = angular
         .module('nexbus', ['ngRoute', 'ngAnimate', 'ngTouch', 'templates']);
 
-  app.config(['$routeProvider', function($routeProvider){
+  app
+    .config(['$routeProvider', function($routeProvider, checkLoggedIn){
     $routeProvider
-      .when('/', {
-        templateUrl: 'ng-index.html',
+      .when('/#', {
         controller: 'MainController'
       })
       .when('/login', {
-        templateUrl: 'login.html',
+        templateUrl: 'ng-index.html',
         controller: 'LoginController'
       })
       .when('/main', {
         templateUrl: 'timings.html',
-        controller: 'TimingsController'
+        controller: 'TimingsController',
+        resolve: {
+          authenticated: function(checkLoggedIn) {
+            return checkLoggedIn();
+          };
+        }
       })
       .when('/location', {
         templateUrl: 'location.html',
-        controller: 'LocationController'
+        controller: 'LocationController',
+        resolve: {
+          authenticated: function(checkLoggedIn) {
+            return checkLoggedIn();
+          };
+        }
       })
       .when('/all', {
         templateUrl: 'all.html',
-        controller: 'LocationController'
+        controller: 'LocationController',
+        resolve: {
+          authenticated: function(checkLoggedIn) {
+            return checkLoggedIn();
+          };
+        }
       })
       .when('/leaderboards', {
         templateUrl: 'leaderboards.html',
-        controller: 'LeaderboardsController'
-      });
-  }]);
+        controller: 'LeaderboardsController',
+        resolve: {
+          authenticated: function(checkLoggedIn) {
+            return checkLoggedIn();
+          };
+        }
+      })
+      .otherwise({redirectTo: '/location'});
+  }])
+  .run(function ($rootScope, $location) {
+    $rootScope.$on("$routeChangeError", function (event, current, previous, rejection) {
+      $location.path('/login');
+    });
+  });
 
   app
   .directive('nbHeader', function() {
