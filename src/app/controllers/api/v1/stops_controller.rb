@@ -1,11 +1,13 @@
 # WARNING:
 # Params are not finalized. Will need further discussion
 # I/O Documentations will be added later
+require 'actionpack/action_caching'
 
 module Api
   module V1
     class StopsController < ApplicationController
       respond_to :json
+      caches_action :index
 
       # GET /api/v1/stops
       # Get the list of all stops
