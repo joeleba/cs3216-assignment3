@@ -1,6 +1,7 @@
-.common-wrapper {
-  background-color: #66cccc;
-  min-height: 100vh;
+body {
+  background-color: #fff;
+  font-family: $theme-font;
+  color: #222;
 }
 
 h1 {
@@ -8,17 +9,4 @@ h1 {
   font-size: 2.5em;
   color: #000;
   margin: 0;
-}
-
-h2 {
-  font-family: $quicksand;
-  font-weight: 700;
-  font-size: 2em;
-  color: $std-blue;
-  text-transform: uppercase;
-  letter-spacing: -.1em;
-  margin: 0;
-  @media screen and (min-width: 480px) {
-    font-size: 2.5em;
-  }
 }
