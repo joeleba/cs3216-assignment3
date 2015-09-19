@@ -4,6 +4,7 @@
   <title>NUS NexBus</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <%= favicon_link_tag %>
   <%= favicon_link_tag 'apple-touch-icon-white.png', rel: 'apple-touch-icon', type: 'image/png', sizes: '192x192' %>
   <%= favicon_link_tag 'apple-touch-startup-image-1242x2148.png', rel: 'apple-touch-startup-image',
@@ -24,8 +25,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  
 
-<%= yield %>
 
+    <%= yield %>
 </body>
 </html>

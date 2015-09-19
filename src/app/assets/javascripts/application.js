@@ -18,5 +18,5 @@
 //= require angular-rails-templates
 //= require angular-animate
 //= require angular-touch
-//= require bootstrap-sass/assets/javascripts/bootstrap
+//= require ratchet/dist/js/ratchet.min.js
 //= require_tree .

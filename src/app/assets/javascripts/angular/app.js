@@ -15,28 +15,43 @@
         controller: 'LoginController'
       })
       .when('/main', {
-        templateUrl: 'card.html',
-        controller: 'CardController'
+        templateUrl: 'timings.html',
+        controller: 'TimingsController'
       })
       .when('/location', {
         templateUrl: 'location.html',
         controller: 'LocationController'
       })
+      .when('/all', {
+        templateUrl: 'all.html',
+        controller: 'LocationController'
+      })
   }]);
 
-  app.directive('nbTimings', function() {
+  app
+  .directive('nbHeader', function() {
     return {
-      templateUrl: 'timings.html'
+      templateUrl: 'header.html'
     };
-  });
-  app.directive('nbReport', function() {
+  })
+  .directive('nbTimings', function() {
+    return {
+      templateUrl: 'timings-list.html'
+    };
+  })
+  .directive('nbReport', function() {
     return {
       templateUrl: 'report.html'
     };
-  });
-  app.directive('nbLocation', function() {
+  })
+  .directive('nbLocation', function() {
     return {
       templateUrl: 'stop-selection.html'
+    };
+  })
+  .directive('nbAllStops', function() {
+    return {
+      templateUrl: 'all-stops.html'
     };
   });
 })();
