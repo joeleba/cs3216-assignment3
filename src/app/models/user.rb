@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   DEFAULT_CREDIT = 100
   before_create :set_default_credit
 
+  has_many :favorite_stops
+
   def update_credit(amount)
     credit = amount
   end

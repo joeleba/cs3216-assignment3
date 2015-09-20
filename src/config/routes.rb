@@ -41,6 +41,12 @@ Rails.application.routes.draw do
       scope :locations do
         get '/' => 'locations#nearby'
       end
+
+      scope :favorite_stops do
+        get '/' => 'favorite_stops#index'
+        post '/' => 'favorite_stops#create'
+        delete '/' => 'favorite_stops#destroy'
+      end
     end
   end
 
