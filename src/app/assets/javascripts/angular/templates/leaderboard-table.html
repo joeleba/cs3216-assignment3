@@ -4,9 +4,9 @@
          ng-model="searchText"/>
 </div>
 <ul class="table-view">
-  <li ng-repeat="user in allUsers | filter: searchText"
+  <li ng-repeat="user in leaderboard | filter: searchText"
       class="table-view-cell bus-stop-cell">
       <span class="pull-left">{{user.name}}</span>
-      <span class="pull-right credits">{{user.credits}}</span>
+      <span class="pull-right credits">{{user.credit}}</span>
   </li>
 </ul>

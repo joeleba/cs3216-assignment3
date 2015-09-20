@@ -6,7 +6,17 @@
 
   function LeaderboardsController($scope, $http, $location) {
     $scope.page = $location.path();
+    $scope.leaderboard = [];
 
-    $scope.allUsers = [{name: 'Colin', credits: '1000000'}];
+    function getLeaderboard() {
+      $http.get('/api/v1/users').
+      then(function(res) {
+        $scope.leaderboard = res.data;
+      }, function (err) {
+        $scope.error = err;
+      });
+    }
+
+    getLeaderboard();
   }
 })();
