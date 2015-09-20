@@ -17,7 +17,6 @@ function ReportController($scope, $http, $route, $location) {
 
     $http.post('/api/v1/sightings', { service_id: serviceId, stop_id: stopId, status: fullnessStatus }).
       then(function(res) {
-        initializeReportForm();
         $(".alert-block").text('Thank you for your submission!');
         location.reload();
       }, function(err) {
