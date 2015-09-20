@@ -7,13 +7,12 @@ function ReportController($scope, $http, $route, $location) {
   $scope.fullnessLevels = ['empty', 'half full', 'full'];
 
   var params = $route.current.params;
-  var fullnessLevels = ["empty", "half-full", "full"];
 
   $scope.submitReport = function(serviceId, fullnessLevel) {
     alert('submitting bus type: ' + $("#busType").val() + ' and fullness level: ' + $("#fullnessLevel").val());
     var serviceId = $("#busType").val();
     var stopId = params.stop_id;
-    var fullnessStatus = fullnessLevels.indexOf($("#fullnessLevel").val());
+    var fullnessStatus = $scope.fullnessLevels.indexOf($("#fullnessLevel").val());
 
     $http.post('/api/v1/sightings', { service_id: serviceId, stop_id: stopId, status: fullnessStatus }).
       then(function(res) {
@@ -43,6 +42,10 @@ function ReportController($scope, $http, $route, $location) {
     $http.get('/api/v1/stops/' + stop_id + '/services').
       then(function(res) {
         $scope.serviceData = res.data;
+        var initialBusService = $scope.serviceData[0].id;
+        $("#busType").val(initialBusService);
+        var initialFullnessLevel = $scope.fullnessLevels[0];
+        $("#fullnessLevel").val(initialFullnessLevel);
       }, function(err) {
         $scope.serviceData = {};
         $scope.error = err;
@@ -52,18 +55,6 @@ function ReportController($scope, $http, $route, $location) {
   if ($location.path() === '/main') {
     $scope.getStopName(params.stop_id);
     $scope.getServicesAt(params.stop_id);
-  }
-
-  $(window).load(function() {
-    initializeReportForm();
-  });
-
-  function initializeReportForm() {
-    var firstBusType = $(".bus-type").first()[0];
-    selectBusType(firstBusType);
-
-    var firstFullnessLevel = $(".fullness-level").first()[0];
-    selectFullnessLevel(firstFullnessLevel);
   }
 }
 })();
