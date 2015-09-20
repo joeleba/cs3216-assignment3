@@ -52,6 +52,9 @@ gem 'font-awesome-sass'
 # Redis
 gem 'redis', '~> 3.2.1'
 
+# Rails caching
+gem 'actionpack-action_caching'
+
 # Geocoder
 gem 'geocoder'
 

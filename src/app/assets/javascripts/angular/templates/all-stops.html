@@ -1,9 +1,12 @@
-<div class="search content-padded">
+<div class="loading content-padded">
+  <i class="fa fa-refresh fa-2x" ng-class="{'fa-spin': loading}" ng-show="loading"></i>
+</div>
+<div class="search content-padded" ng-hide="loading">
   <input type="search" id="bus-stop-search"
           placeholder="Search for a bus stop"
           ng-model="searchText"/>
 </div>
-<ul class="table-view">
+<ul class="table-view" ng-hide="loading">
   <li ng-repeat="stop in allStops | filter: searchText"
       class="table-view-cell bus-stop-cell">
     <a ng-href="/#/main?stop_id={{stop.id}}"

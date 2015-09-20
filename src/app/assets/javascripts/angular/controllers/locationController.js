@@ -8,6 +8,7 @@
     $scope.page = $location.path();
     $scope.allStops = [];
     $scope.locationRevealed = false;
+    $scope.loading = true;
 
     // Callback when the location is handled correctly
     $scope.toServer = function (geo) {
@@ -20,7 +21,7 @@
         $scope.getAllStops();
       } else {
         $http.get('/api/v1/locations' + query).then(function (res) {
-          // Proper code will be added later after I wrote the back end.
+          $scope.loading = false;
           $scope.locationRevealed = true;
           $scope.allStops = res.data.nearby_stops;
         }, function (err) {
@@ -62,6 +63,7 @@
     $scope.getAllStops = function () {
       $http.get('/api/v1/stops').
       then(function(response) {
+        $scope.loading = false;
         $scope.allStops = response.data;
       }, function(err) {
         $scope.allStops = [];
