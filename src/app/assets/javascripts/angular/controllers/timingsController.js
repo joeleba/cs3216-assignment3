@@ -90,5 +90,9 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
     $scope.getStopName(params.stop_id);
     $scope.getServicesAt(params.stop_id);
   }
+
+  $scope.closeModal = function() {
+    $('#contributeModal').removeClass('active');
+  }
 }
 })();

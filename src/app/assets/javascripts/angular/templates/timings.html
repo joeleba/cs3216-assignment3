@@ -15,9 +15,11 @@
 </div>
 
 <div id="contributeModal" class="modal">
-  <header class="bar bar-nav">
-    <a class="icon icon-close pull-right" href="#contributeModal"><i class"fa fa-close"></i></a>
-    <h1 class="title">Contribute</h1>
+  <header class="bar bar-nav report-nav">
+    <div class="report-close">
+      <btn class="pull-right modal-close" href="#contributeModal" ng-click="closeModal();"><i class="fa fa-times"></i></btn>
+      <h1 class="title">Contribute</h1>
+    </div>
   </header>
 
   <div id="report-modal" nb-report ng-controller="ReportController"></div>
