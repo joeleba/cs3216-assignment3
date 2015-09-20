@@ -10,10 +10,10 @@ function ReportController($scope, $http, $route, $location) {
   var fullnessLevels = ["empty", "half-full", "full"];
 
   $scope.submitReport = function(serviceId, fullnessLevel) {
-    alert('submitting bus type: ' + $("#bus-type").val() + ' and fullness level: ' + $("#fullness-level").val());
-    var serviceId = $("#bus-type").val();
+    alert('submitting bus type: ' + $("#busType").val() + ' and fullness level: ' + $("#fullnessLevel").val());
+    var serviceId = $("#busType").val();
     var stopId = params.stop_id;
-    var fullnessStatus = fullnessLevels.indexOf($("#fullness-level").val());
+    var fullnessStatus = fullnessLevels.indexOf($("#fullnessLevel").val());
 
     $http.post('/api/v1/sightings', { service_id: serviceId, stop_id: stopId, status: fullnessStatus }).
       then(function(res) {

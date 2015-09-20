@@ -9,9 +9,9 @@
       <a class="control-item fullness-level" ng-repeat="fullnessLevel in fullnessLevels" onclick="selectFullnessLevel(this)">{{fullnessLevel}}</a>
     </div>
     <form name="reportForm" ng-submit="submitReport()" novalidate>
-      <input id="bus-type" name="bus-type" type="hidden" required/>
-      <input id="fullness-level" name="fullness-level" type="hidden" required/>
-      <button class="btn btn-fill btn-primary report-submit" type="submit" ng-disabled="reportForm.$invalid">Contribute!</button>
+      <input id="busType" name="busType" type="hidden"/>
+      <input id="fullnessLevel" name="fullnessLevel" type="hidden"/>
+      <button id="report-submit" class="btn btn-fill btn-primary report-submit" type="submit" disabled="true">Contribute!</button>
     </form>
     <div class="alert-block">
     </div>
@@ -25,12 +25,11 @@
         selectBusType(o);
       }, 100);
     } else {
-      $("#bus-type").val($(o).attr('id').split('-')[1]);
-      $(".bus-type").removeClass("selected-bus");
-      $(".bus-type").addClass("unselected-bus");
-      $(o).removeClass("unselected-bus");
-      $(o).addClass("selected-bus");
+      $("#busType").val($(o).attr('id').split('-')[1]);
       $(o).addClass("active");
+      if ($("#busType").val().length !== 0 && $("#fullnessLevel").val().length !== 0) {
+        $("#report-submit").prop('disabled', false);
+      }
     }
   }
   function selectFullnessLevel(o) {
@@ -40,12 +39,11 @@
         selectFullnessLevel(o);
       }, 100);
     } else {
-      $("#fullness-level").val(o.innerHTML.trim());
-      $(".fullness-level").removeClass("selected-fullness");
-      $(".fullness-level").addClass("unselected-fullness");
-      $(o).removeClass("unselected-fullness");
-      $(o).addClass("selected-fullness");
+      $("#fullnessLevel").val(o.innerHTML.trim());
       $(o).addClass("active");
+      if ($("#busType").val().length !== 0 && $("#fullnessLevel").val().length !== 0) {
+        $("#report-submit").prop('disabled', false);
+      }
     }
   }
 </script>
