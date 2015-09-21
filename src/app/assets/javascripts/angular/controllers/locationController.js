@@ -1,10 +1,10 @@
 (function() {
   angular
     .module('nexbus')
-    .controller('LocationController', ['$scope', '$http', '$location',
+    .controller('LocationController', ['$scope', '$http', '$location',  '$timeout',
     '$localStorage', '$sessionStorage', LocationController]);
 
-  function LocationController($scope, $http, $location, $localStorage, $sessionStorage) {
+  function LocationController($scope, $http, $location, $timeout, $localStorage, $sessionStorage) {
     $scope.page = $location.path();
     $scope.allStops = [];
     $scope.locationRevealed = false;
@@ -21,9 +21,11 @@
         $scope.getAllStops();
       } else {
         $http.get('/api/v1/locations' + query).then(function (res) {
-          $scope.loading = false;
           $scope.locationRevealed = true;
           $scope.allStops = res.data.nearby_stops;
+          $timeout(function() {
+            $scope.loading, $scope.clientLoading = false;
+          }, 500);
           $sessionStorage.nearbyStops = $scope.allStops;
         }, function (err) {
           $scope.error = err;
@@ -69,6 +71,7 @@
     // Main function to get location
     $scope.getLocation = function () {
       if (navigator.geolocation) {
+        $scope.clientLoading = true; // Ensure loading due to interactions with caching
         navigator.geolocation.getCurrentPosition($scope.toServer, $scope.showError, {timeout:10000});
       }
       else {
