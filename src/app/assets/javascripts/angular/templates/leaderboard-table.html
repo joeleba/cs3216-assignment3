@@ -1,11 +1,11 @@
 <div class="search content-padded">
-  <input type="search" id="bus-stop-search"
-         placeholder="Search for a user"
+  <input type="search" id="user-search"
+         placeholder="Search for any user"
          ng-model="searchText"/>
 </div>
 <ul class="table-view">
   <li ng-repeat="user in leaderboard | filter: searchText"
-      class="table-view-cell bus-stop-cell">
+      class="table-view-cell user-cell">
       <span class="pull-left">{{user.name}}</span>
       <span class="pull-right credits">{{user.credit}}</span>
   </li>
