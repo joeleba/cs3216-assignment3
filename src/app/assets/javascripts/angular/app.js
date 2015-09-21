@@ -7,6 +7,7 @@
   app.config(['$routeProvider', function($routeProvider){
     $routeProvider
       .when('/#', {
+        templateUrl: 'ng-index.html',
         controller: 'MainController'
       })
       .when('/login', {
