@@ -83,7 +83,13 @@ class Sighting
     ite = pos == 0 ? (stops.length - 1) : (pos - 1)
 
     while ite >= 0
-      last_data = stops_timings[stops[ite].id][:last_seen]
+      last_data = stops_timings[stops[ite].id]
+      if last_data
+        last_data = last_data[:last_seen]
+      else
+        return return_val # Andhieka, fix for NilClass has no method "[]"
+      end
+
       if still_valid(last_data)
         return_val[:stop] = stops[ite]
         return_val[:last_seen] = elapsed(last_data)
