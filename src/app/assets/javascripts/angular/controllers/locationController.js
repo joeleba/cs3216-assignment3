@@ -1,10 +1,10 @@
 (function() {
   angular
     .module('nexbus')
-    .controller('LocationController', ["$scope", "$http",
-    '$location', LocationController]);
+    .controller('LocationController', ['$scope', '$http', '$location',
+    '$localStorage', '$sessionStorage', LocationController]);
 
-  function LocationController($scope, $http, $location) {
+  function LocationController($scope, $http, $location, $localStorage, $sessionStorage) {
     $scope.page = $location.path();
     $scope.allStops = [];
     $scope.locationRevealed = false;
@@ -24,6 +24,7 @@
           $scope.loading = false;
           $scope.locationRevealed = true;
           $scope.allStops = res.data.nearby_stops;
+          $sessionStorage.nearbyStops = $scope.allStops;
         }, function (err) {
           $scope.error = err;
         });
@@ -50,6 +51,21 @@
       $scope.getAllStops();
     };
 
+    // Returns true if it was able to retrieve from the cache
+    function retrievedCachedStops(onlyNearbyStops) {
+      if ($sessionStorage.nearbyStops && onlyNearbyStops) { // Short circuit on cache
+        $scope.loading = false,
+        $scope.locationRevealed = true;
+        $scope.allStops = $sessionStorage.nearbyStops;
+      } else if ($localStorage.allStops && !onlyNearbyStops) {
+        $scope.loading = false;
+        $scope.allStops = $localStorage.allStops;
+      } else {
+        return false
+      }
+      return true
+    }
+
     // Main function to get location
     $scope.getLocation = function () {
       if (navigator.geolocation) {
@@ -65,15 +81,16 @@
       then(function(response) {
         $scope.loading = false;
         $scope.allStops = response.data;
+        $localStorage.allStops = $scope.allStops;
       }, function(err) {
         $scope.allStops = [];
         $scope.error = err;
       });
     };
 
-    if ($location.path() === '/location') {
+    if ($location.path() === '/location' && !retrievedCachedStops(true)) {
       $scope.getLocation();
-    } else if ($location.path() === '/all') {
+    } else if ($location.path() === '/all' &&!retrievedCachedStops(false)) {
       $scope.getAllStops();
     }
   }
