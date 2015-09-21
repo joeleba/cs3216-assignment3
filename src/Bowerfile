@@ -2,12 +2,12 @@
 # Add front end packages here instead of Gemfile
 # Need to run rake bower:install
 
-asset 'bootstrap-sass'
 asset 'angular'
 asset 'angular-route'
 asset 'angular-resource'
 asset 'angular-animate'
 asset 'angular-touch'
+asset 'ngstorage'
 asset 'ratchet'
 
 # vim: ft=ruby

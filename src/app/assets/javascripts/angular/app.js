@@ -2,7 +2,8 @@
   'use strict';
 
   var app = angular
-        .module('nexbus', ['ngRoute', 'ngAnimate', 'ngTouch', 'templates']);
+        .module('nexbus', ['ngRoute', 'ngAnimate', 'ngTouch',
+                           'templates', 'ngStorage']);
 
   app.config(['$routeProvider', function($routeProvider){
     $routeProvider
