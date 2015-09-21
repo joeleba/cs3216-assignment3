@@ -28,8 +28,7 @@
       .when('/leaderboards', {
         templateUrl: 'leaderboards.html',
         controller: 'LeaderboardsController',
-      })
-      .otherwise({redirectTo: '/location'});
+      });
   }]);
   app
   .directive('nbHeader', function() {
