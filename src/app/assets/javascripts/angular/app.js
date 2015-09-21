@@ -6,7 +6,7 @@
 
   app.config(['$routeProvider', function($routeProvider){
     $routeProvider
-      .when('/#', {
+      .when('/', {
         templateUrl: 'ng-index.html',
         controller: 'MainController'
       })
