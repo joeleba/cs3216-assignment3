@@ -4,8 +4,7 @@
   var app = angular
         .module('nexbus', ['ngRoute', 'ngAnimate', 'ngTouch', 'templates']);
 
-  app
-    .config(['$routeProvider', function($routeProvider, checkLoggedIn){
+  app.config(['$routeProvider', function($routeProvider){
     $routeProvider
       .when('/#', {
         controller: 'MainController'
@@ -17,47 +16,21 @@
       .when('/main', {
         templateUrl: 'timings.html',
         controller: 'TimingsController',
-        resolve: {
-          authenticated: function(checkLoggedIn) {
-            return checkLoggedIn();
-          }
-        }
       })
       .when('/location', {
         templateUrl: 'location.html',
-        controller: 'LocationController',
-        resolve: {
-          authenticated: function(checkLoggedIn) {
-            return checkLoggedIn();
-          }
-        }
+        controller: 'LocationController'
       })
       .when('/all', {
         templateUrl: 'all.html',
         controller: 'LocationController',
-        resolve: {
-          authenticated: function(checkLoggedIn) {
-            return checkLoggedIn();
-          }
-        }
       })
       .when('/leaderboards', {
         templateUrl: 'leaderboards.html',
         controller: 'LeaderboardsController',
-        resolve: {
-          authenticated: function(checkLoggedIn) {
-            return checkLoggedIn();
-          }
-        }
       })
       .otherwise({redirectTo: '/location'});
-  }])
-  .run(function ($rootScope, $location) {
-    $rootScope.$on("$routeChangeError", function (event, current, previous, rejection) {
-      $location.path('/login');
-    });
-  });
-
+  }]);
   app
   .directive('nbHeader', function() {
     return {
