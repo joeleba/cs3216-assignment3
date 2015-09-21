@@ -50,7 +50,7 @@ module Api
       #  }]
       def services
         @stop = Stop.find(params[:id])
-        @services = @stop.services
+        @services = @stop.services.order(:name)
         respond_with @services
       end
     end
