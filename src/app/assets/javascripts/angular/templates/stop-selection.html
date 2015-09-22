@@ -5,7 +5,7 @@
   <input type="search" id="bus-stop-search"
           placeholder="Search for any bus stop"
           ng-model="searchText"/>
-  <i class="fa fa-refresh refresh-icon" ng-click="getLocation()" ng-class="{'fa-spin': clientLoading}"></i>
+  <i class="fa fa-refresh refresh-icon" ng-click="clientGetLocation()" ng-class="{'fa-spin': clientLoading}"></i>
 </div>
 <ul class="table-view" ng-show="locationRevealed">
   <li ng-repeat="stop in allStops | filter: searchText"

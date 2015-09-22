@@ -24,7 +24,8 @@
           $scope.locationRevealed = true;
           $scope.allStops = res.data.nearby_stops;
           $timeout(function() {
-            $scope.loading, $scope.clientLoading = false;
+            $scope.loading = false;
+            $scope.clientLoading = false;
           }, 500);
           $sessionStorage.nearbyStops = $scope.allStops;
         }, function (err) {
@@ -68,10 +69,14 @@
       return true
     }
 
+    function clientGetLocation() {
+      $scope.clientLoading = true; // Ensure loading due to interactions with caching
+      $scope.getLocation();
+    }
+
     // Main function to get location
     $scope.getLocation = function () {
       if (navigator.geolocation) {
-        $scope.clientLoading = true; // Ensure loading due to interactions with caching
         navigator.geolocation.getCurrentPosition($scope.toServer, $scope.showError, {timeout:10000});
       }
       else {
