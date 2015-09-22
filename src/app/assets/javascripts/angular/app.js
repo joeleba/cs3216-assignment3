@@ -66,5 +66,10 @@
     return {
       templateUrl: 'error.html'
     };
+  })
+  .directive('nbLoading', function() {
+    return {
+      templateUrl: 'loading.html'
+    };
   });
 })();
