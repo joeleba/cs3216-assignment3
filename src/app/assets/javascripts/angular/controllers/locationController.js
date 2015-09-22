@@ -1,10 +1,10 @@
 (function() {
   angular
     .module('nexbus')
-    .controller('LocationController', ["$scope", "$http",
-    '$location', LocationController]);
+    .controller('LocationController', ['$scope', '$http', '$location',  '$timeout',
+    '$localStorage', '$sessionStorage', LocationController]);
 
-  function LocationController($scope, $http, $location) {
+  function LocationController($scope, $http, $location, $timeout, $localStorage, $sessionStorage) {
     $scope.page = $location.path();
     $scope.allStops = [];
     $scope.locationRevealed = false;
@@ -16,16 +16,27 @@
       var lat = geo.coords.latitude
         , lon = geo.coords.longitude
         , query = ['?lat=', lat, '&lon=', lon].join('');
+      var currentCoords = {};
+      currentCoords.lat = lat;
+      currentCoords.lon = lon;
 
       // Only send request if lat and lon are present
       if (lat==='' || lon==='') {
         $scope.getAllStops();
       } else {
         $http.get('/api/v1/locations' + query).then(function (res) {
-          $scope.loading = false;
           $scope.locationRevealed = true;
           $scope.allStops = res.data.nearby_stops;
+          $timeout(function() {
+            $scope.loading = false;
+            $scope.clientLoading = false;
+          }, 500);
+          $sessionStorage.nearbyStops = $scope.allStops;
+          $sessionStorage.coords = currentCoords;
         }, function (err) {
+          if (hasNotMoved(currentCoords, $sessionStorage.coords)){
+            $scope.allStops = $sessionStorage.nearbyStops;
+          }
           $scope.handleError(err);
         });
       }
@@ -51,6 +62,35 @@
       $scope.getAllStops();
     };
 
+    // Returns true if it was able to retrieve from the cache
+    function retrievedCachedStops(onlyNearbyStops) {
+      if ($sessionStorage.nearbyStops && onlyNearbyStops) { // Short circuit on cache
+        $scope.loading = false,
+        $scope.locationRevealed = true;
+        $scope.allStops = $sessionStorage.nearbyStops;
+      } else if ($localStorage.allStops && !onlyNearbyStops) {
+        $scope.loading = false;
+        $scope.allStops = $localStorage.allStops;
+      } else {
+        return false
+      }
+      return true
+    }
+
+    function hasNotMoved(curr, last) {
+      var deltalat, deltalon;
+
+      deltalat = Math.abs(curr.lat - last.lat);
+      deltalon = Math.abs(curr.lon - last.lon);
+
+      return (deltalat <= 0.001 && deltalon <= 0.001);
+    }
+
+    function clientGetLocation() {
+      $scope.clientLoading = true; // Ensure loading due to interactions with caching
+      $scope.getLocation();
+    }
+
     // Main function to get location
     $scope.getLocation = function () {
       if (navigator.geolocation) {
@@ -66,8 +106,9 @@
       then(function(response) {
         $scope.loading = false;
         $scope.allStops = response.data;
+        $localStorage.allStops = $scope.allStops;
       }, function(err) {
-        $scope.allStops = [];
+        retrievedCachedStops(false);
         $scope.handleError(err);
       });
     };
@@ -77,9 +118,9 @@
       $scope.error = err;
     }
 
-    if ($location.path() === '/location') {
+    if ($location.path() === '/location' && !retrievedCachedStops(true)) {
       $scope.getLocation();
-    } else if ($location.path() === '/all') {
+    } else if ($location.path() === '/all' &&!retrievedCachedStops(false)) {
       $scope.getAllStops();
     }
   }

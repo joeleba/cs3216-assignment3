@@ -2,9 +2,10 @@
   angular
   .module('nexbus')
   .controller('LeaderboardsController',
-  ["$scope", "$http", "$location", "$window", LeaderboardsController]);
 
-  function LeaderboardsController($scope, $http, $location, $window) {
+  ["$scope", "$http", "$location", "$window", "$sessionStorage", LeaderboardsController]);
+
+  function LeaderboardsController($scope, $http, $location, $window, $sessionStorage) {
     $scope.page = $location.path();
     $scope.leaderboard = [];
 
@@ -12,6 +13,7 @@
       $http.get('/api/v1/users').
       then(function(res) {
         $scope.leaderboard = res.data;
+        $sessionStorage.leaderboardUsers = $scope.leaderboard;
       }, function (err) {
         $scope.error = err;
       });
@@ -23,6 +25,10 @@
       $window.location.href = '/auth/logout';
     }
 
-    getLeaderboard();
+    if ($sessionStorage.leaderboardUsers) {
+      $scope.leaderboard = $sessionStorage.leaderboardUsers;
+    } else {
+      getLeaderboard();
+    }
   }
 })();

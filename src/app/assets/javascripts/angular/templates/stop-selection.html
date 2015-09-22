@@ -4,8 +4,9 @@
 
 <div class="search content-padded" ng-show="locationRevealed">
   <input type="search" id="bus-stop-search"
-          placeholder="Search for a bus stop"
+          placeholder="Search for any bus stop"
           ng-model="searchText"/>
+  <i class="fa fa-refresh refresh-icon" ng-click="clientGetLocation()" ng-class="{'fa-spin': clientLoading}"></i>
 </div>
 
 <ul class="table-view" ng-show="locationRevealed" ng-hide="hasError">

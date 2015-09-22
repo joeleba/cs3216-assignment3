@@ -1,8 +1,19 @@
 .loading {
   text-align: center;
 }
+
 .search {
   padding: 2vh 2vw 0vh 2vw;
+}
+
+#bus-stop-search {
+  width: 90%;
+}
+
+.refresh-icon {
+  font-size: 20px;
+  line-height: 30px;
+  margin-left: 6px;
 }
 .bus-stop-cell {
   padding-right: 0px;
