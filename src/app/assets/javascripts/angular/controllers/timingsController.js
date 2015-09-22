@@ -8,7 +8,7 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
 
   var params = $route.current.params;
 
-  $scope.refreshSchedule = false;
+  $scope.loading = true;
   $scope.hasError = false;
 
   // Returns the selected Stop name given the stop_id
@@ -40,8 +40,8 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
     for (var i=0; i<services.length; i++) {
       var svc = services[i];
       getSighting(params.stop_id, svc.id, svc.name);
-      $timeout(function() { $scope.refreshSchedule = false; }, 1500);
     }
+    $timeout(function() { $scope.loading = false; }, 500);
   };
 
   // Returns the Sighting data for a particular Service
@@ -75,15 +75,6 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
   $scope.handleError = function(err) {
     $scope.hasError = true;
     $scope.error = err;
-  }
-
-  $scope.toggleDetail = function(bus) {
-    bus.detail = bus.detail === false ? true : false;
-  };
-
-  $scope.toggleRefresh = function() {
-    $scope.refreshSchedule = true;
-    getSightingsForServices(params.stop_id, $scope.serviceData);
   }
 
   // Hack due to some push.js and angularjs compatibility issue

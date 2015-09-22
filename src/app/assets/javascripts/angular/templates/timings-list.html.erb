@@ -1,7 +1,9 @@
+<nb-loading></nb-loading>
+
 <nb-error></nb-error>
 
 <ul class="table-view" ng-hide="hasError">
-  <li class="table-view-divider last-seen-header">
+  <li class="table-view-divider last-seen-header" ng-hide="loading">
     Last Seen
   </li>
   <li ng-repeat="bus in sightingsData"
