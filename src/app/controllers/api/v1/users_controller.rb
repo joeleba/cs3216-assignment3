@@ -7,17 +7,17 @@ module Api
     class UsersController < ApplicationController
       respond_to :json
 
-      # GET /api/users
+      # GET /api/v1/users
       def index
         respond_with User.all.limit(20).order(credit: :desc)
       end
 
-      # GET /api/users/:id
+      # GET /api/v1/users/:id
       def show
         respond_with User.find(params[:id])
       end
 
-      # POST /api/users
+      # POST /api/v1/users
       def create
         User.transaction do
           @user = User.new(create_params)
@@ -27,7 +27,7 @@ module Api
         respond_with @user
       end
 
-      # PUT /api/users/:id/credit
+      # PUT /api/v1/users/:id/credit
       def update_credit
         User.transaction do
           @user = User.find(params[:id])
@@ -38,7 +38,7 @@ module Api
         respond_with @user
       end
 
-      # DELETE /api/users/:id
+      # DELETE /api/v1/users/:id
       def destroy
         @user = User.find(params[:id])
         @user.destroy!
