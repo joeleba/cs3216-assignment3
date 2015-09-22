@@ -16,8 +16,6 @@ task :html5_manifest => :environment do
     end
     f.write("\nNETWORK:\n")
     f.write("*\n")
-    f.write("\nFALLBACK:\n")
-    f.write("/ /offline.html")
   end
   puts "\e[32mManifest file created at public/manifest.appcache\e[0m"
 end
