@@ -15,6 +15,9 @@
       var lat = geo.coords.latitude
         , lon = geo.coords.longitude
         , query = ['?lat=', lat, '&lon=', lon].join('');
+      var currentCoords = {};
+      currentCoords.lat = lat;
+      currentCoords.lon = lon;
 
       // Only send request if lat and lon are present
       if (lat==='' || lon==='') {
@@ -28,7 +31,11 @@
             $scope.clientLoading = false;
           }, 500);
           $sessionStorage.nearbyStops = $scope.allStops;
+          $sessionStorage.coords = currentCoords;
         }, function (err) {
+          if (hasNotMoved(currentCoords, $sessionStorage.coords)){
+            $scope.allStops = $sessionStorage.nearbyStops;
+          }
           $scope.error = err;
         });
       }
@@ -69,6 +76,15 @@
       return true
     }
 
+    function hasNotMoved(curr, last) {
+      var deltalat, deltalon;
+
+      deltalat = Math.abs(curr.lat - last.lat);
+      deltalon = Math.abs(curr.lon - last.lon);
+
+      return (deltalat <= 0.001 && deltalon <= 0.001);
+    }
+
     function clientGetLocation() {
       $scope.clientLoading = true; // Ensure loading due to interactions with caching
       $scope.getLocation();
@@ -91,7 +107,7 @@
         $scope.allStops = response.data;
         $localStorage.allStops = $scope.allStops;
       }, function(err) {
-        $scope.allStops = [];
+        retrievedCachedStops(false);
         $scope.error = err;
       });
     };
