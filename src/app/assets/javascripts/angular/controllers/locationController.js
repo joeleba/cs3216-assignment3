@@ -9,6 +9,7 @@
     $scope.allStops = [];
     $scope.locationRevealed = false;
     $scope.loading = true;
+    $scope.hasError = false;
 
     // Callback when the location is handled correctly
     $scope.toServer = function (geo) {
@@ -25,7 +26,7 @@
           $scope.locationRevealed = true;
           $scope.allStops = res.data.nearby_stops;
         }, function (err) {
-          $scope.error = err;
+          $scope.handleError(err);
         });
       }
     };
@@ -67,9 +68,14 @@
         $scope.allStops = response.data;
       }, function(err) {
         $scope.allStops = [];
-        $scope.error = err;
+        $scope.handleError(err);
       });
     };
+
+    $scope.handleError = function(err) {
+      $scope.hasError = true;
+      $scope.error = err;
+    }
 
     if ($location.path() === '/location') {
       $scope.getLocation();

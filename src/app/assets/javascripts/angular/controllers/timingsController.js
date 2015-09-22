@@ -8,6 +8,9 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
 
   var params = $route.current.params;
 
+  $scope.refreshSchedule = false;
+  $scope.hasError = false;
+
   // Returns the selected Stop name given the stop_id
   $scope.getStopName = function(stop_id) {
     $http.get('/api/v1/stops/' + stop_id, { cache: true }).
@@ -15,7 +18,7 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
         $scope.currentStopName = res.data.name;
       }, function(err) {
         $scope.currentStopName = '';
-        $scope.error = err;
+        $scope.handleError(err);
       })
   };
 
@@ -27,7 +30,7 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
         getSightingsForServices(params.stop_id, $scope.serviceData);
       }, function(err) {
         $scope.serviceData = {};
-        $scope.error = err;
+        $scope.handleError(err);
       });
   };
 
@@ -65,15 +68,18 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
       busData["capacity"] = detail;
       $scope.sightingsData.push(busData);
     }, function(err) {
-      $scope.error = err;
+      $scope.handleError(err);
     });
   };
+
+  $scope.handleError = function(err) {
+    $scope.hasError = true;
+    $scope.error = err;
+  }
 
   $scope.toggleDetail = function(bus) {
     bus.detail = bus.detail === false ? true : false;
   };
-
-  $scope.refreshSchedule = false;
 
   $scope.toggleRefresh = function() {
     $scope.refreshSchedule = true;
