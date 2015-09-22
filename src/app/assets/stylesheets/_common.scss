@@ -10,3 +10,20 @@ h1 {
   color: #000;
   margin: 0;
 }
+
+.error-list {
+  border-bottom: none;
+  .error-message-cell {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-bottom: 0;
+    padding: 11px 15px;
+  }
+
+  .error-icon {
+    width: 30vw;
+  }
+}

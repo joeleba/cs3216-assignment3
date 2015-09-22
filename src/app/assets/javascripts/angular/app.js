@@ -61,5 +61,10 @@
     return {
       templateUrl: 'leaderboard-table.html'
     };
+  })
+  .directive('nbError', function() {
+    return {
+      templateUrl: 'error.html'
+    };
   });
 })();
