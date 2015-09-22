@@ -1,13 +1,12 @@
-<div class="loading content-padded">
-  <i class="fa fa-refresh fa-2x" ng-class="{'fa-spin': loading}" ng-show="loading"></i>
-</div>
+<nb-loading></nb-loading>
+
+<nb-error></nb-error>
+
 <div class="search content-padded" ng-show="locationRevealed">
   <input type="search" id="bus-stop-search"
           placeholder="Search for a bus stop"
           ng-model="searchText"/>
 </div>
-
-<nb-error></nb-error>
 
 <ul class="table-view" ng-show="locationRevealed" ng-hide="hasError">
   <li ng-repeat="stop in allStops | filter: searchText"
