@@ -3,6 +3,7 @@
          placeholder="Search for a user"
          ng-model="searchText"/>
 </div>
+
 <ul class="table-view">
   <li ng-repeat="user in leaderboard | filter: searchText"
       class="table-view-cell bus-stop-cell">
