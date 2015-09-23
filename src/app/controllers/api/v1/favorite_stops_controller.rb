@@ -6,16 +6,18 @@ module Api
 
       def index
         @favorites = FavoriteStop.where(user_id: current_user.id)
-        respond_with @favorites
+        @favorite_stops = @favorites.map { |f| f.stop }
+        respond_with @favorite_stops
       end
 
       def create
-        render json: FavoriteStop.create(stop: @stop, user: current_user)
+        @favorite_stop = FavoriteStop.create(stop: @stop, user: current_user)
+        respond_with({status: :favorited, stop: @stop})
       end
 
       def destroy
         FavoriteStop.where(stop_id: @stop.id, user_id: current_user.id).first.destroy
-        redirect_to @stop, notice: 'Stop no longer in favorites'
+        respond_with({status: :deleted})
       end
 
       def set_stop
