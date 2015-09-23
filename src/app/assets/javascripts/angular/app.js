@@ -15,7 +15,7 @@
         templateUrl: 'ng-index.html',
         controller: 'LoginController'
       })
-      .when('/main', {
+      .when('/main/:type/:id', {
         templateUrl: 'timings.html',
         controller: 'TimingsController',
       })
