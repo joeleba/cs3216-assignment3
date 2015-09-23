@@ -4,7 +4,7 @@
          ng-model="searchText"/>
 </div>
 
-<ul class="table-view">
+<ul class="table-view leaderboard-table">
   <li ng-repeat="user in leaderboard | filter: searchText"
       class="table-view-cell user-cell">
       <span class="pull-left">{{user.name}}</span>
