@@ -13,7 +13,7 @@
   <li ng-repeat="stop in allStops | filter: searchText"
       class="table-view-cell bus-stop-cell">
     <a ng-show="locationRevealed"
-       ng-href="/#/main/stop/{{stop.stop.id}}"
+       ng-href="/#/main?stop_id={{stop.stop.id}}"
        class="bus-stop-link">
       {{stop.stop.name}}
       <span ng-show="locationRevealed" class="distance-text">({{stop.distance}}m)</span>
