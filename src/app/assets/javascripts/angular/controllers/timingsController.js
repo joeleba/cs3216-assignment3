@@ -82,10 +82,9 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
     $location.path(path);
     $location.search({});
   }
-  console.log($location.path().split('/'));
+
   if ($location.path().split('/')[1] === 'main' && $location.path().split('/')[2] === 'stop') {
     var stopId = $location.path().split('/')[3];
-    console.log('stop id: ' + stopId);
     $scope.getStopName(stopId);
     $scope.getServicesAt(stopId);
   }
