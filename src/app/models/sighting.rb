@@ -20,7 +20,7 @@ class Sighting
     returnHash = {}
 
     # Hash of all stops that belongs to this service
-    # all_stops_timing = { stop_id: {name: <>, last_seen: <>}, ... }
+    # all_stops_timing = { stop_id: {name: <>, last_seen: <>, status: <>}, ... }
     all_stops_timing = eval($redis.hget('tracking', this_service.id))
     all_stops = this_service.stops
 
