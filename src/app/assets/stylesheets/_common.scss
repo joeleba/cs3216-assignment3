@@ -12,6 +12,7 @@ h1 {
 }
 
 .error-list {
+  border-top: none;
   border-bottom: none;
   .error-message-cell {
     display: flex;

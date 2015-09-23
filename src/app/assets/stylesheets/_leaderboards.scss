@@ -1,6 +1,5 @@
 .points-explain {
   margin-top: 10px;
-  margin-bottom: -10px;
   text-align: center;
 }
 
@@ -12,5 +11,13 @@
 
   .credits {
     margin-right: 10px;
+  }
+}
+
+.logout-footer {
+  background-color: #fff;
+  .btn-logout {
+    background-color: #ddd;
+    border: none;
   }
 }
