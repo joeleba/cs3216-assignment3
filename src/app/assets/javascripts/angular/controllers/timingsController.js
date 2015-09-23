@@ -27,7 +27,7 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
     $http.get('/api/v1/stops/' + stop_id + '/services', { cache: true }).
       then(function(res) {
         $scope.serviceData = res.data;
-        getSightingsForServices(params.stop_id, $scope.serviceData);
+        getSightingsForServices(params.stopId, $scope.serviceData);
       }, function(err) {
         $scope.serviceData = {};
         $scope.handleError(err);
@@ -39,7 +39,7 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
     $scope.sightingsData = [];
     for (var i=0; i<services.length; i++) {
       var svc = services[i];
-      getSighting(params.stop_id, svc.id, svc.name);
+      getSighting(params.stopId, svc.id, svc.name);
     }
     $timeout(function() { $scope.loading = false; }, 500);
   };
@@ -83,9 +83,11 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
     $location.search({});
   }
 
-  if ($location.path() === '/main') {
-    $scope.getStopName(params.stop_id);
-    $scope.getServicesAt(params.stop_id);
+  // Path matches /stop/:stopId
+  if ($location.path().match(/\/stop\/\d+/)) {
+    console.log('here')
+    $scope.getStopName(params.stopId);
+    $scope.getServicesAt(params.stopId);
   }
 
   $scope.closeModal = function() {
