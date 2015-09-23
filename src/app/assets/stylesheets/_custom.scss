@@ -1,0 +1,57 @@
+// This overrides components in the Ratchet theme
+
+.bar {
+  background-color: $std-blue;
+  border-bottom: none;
+  .btn-link {
+    color: #4c9797;
+  }
+}
+
+.title {
+  color: #fff;
+}
+
+.table-view {
+  border: none;
+}
+
+.table-view-divider {
+  background-color: $std-orange;
+  color: #fff;
+  border: none;
+}
+
+.table-view-cell {
+  padding: 11px 30px 11px 15px;
+}
+
+.table-view-cell:last-child {
+  border-bottom: 1px solid #ddd;
+}
+
+.segmented-control {
+  background-color: #58aeae;
+  border: none;
+  top: 9px;
+  .control-item {
+    color: #fff;
+    border-left: 1px solid #4c9797;
+  }
+  .control-item.active {
+      background-color: #4c9797;
+  }
+}
+
+.content-padded {
+  margin: 0;
+}
+
+input[type="search"] {
+  border: none;
+  margin: 0;
+}
+
+a:active {
+  color: red;
+}
