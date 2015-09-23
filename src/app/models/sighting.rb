@@ -22,7 +22,7 @@ class Sighting
     # Hash of all stops that belongs to this service
     # all_stops_timing = { stop_id: {name: <>, last_seen: <>, status: <>}, ... }
     all_stops_timing = eval($redis.hget('tracking', this_service.id))
-    all_stops = this_service.stops
+    all_stops = this_service.stops.order('services_stops.id ASC')
 
     returnHash[:prev_stops] = get_latest_valid(all_stops_timing, all_stops, this_stop)
     returnHash[:this_stop] = elapsed(all_stops_timing[this_stop.id][:last_seen])
