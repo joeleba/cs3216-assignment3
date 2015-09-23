@@ -26,6 +26,7 @@
       }, 100);
     } else {
       $("#busType").val($(o).attr('id').split('-')[1]);
+      $(".bus-type").removeClass("active");
       $(o).addClass("active");
     }
   }
@@ -37,6 +38,7 @@
       }, 100);
     } else {
       $("#fullnessLevel").val(o.innerHTML.trim());
+      $(".fullness-level").removeClass("active");
       $(o).addClass("active");
     }
   }
