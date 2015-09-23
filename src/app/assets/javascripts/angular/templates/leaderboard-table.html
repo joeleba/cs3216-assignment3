@@ -4,6 +4,8 @@
          ng-model="searchText"/>
 </div>
 
+<div class="points-explain">Earn points by contributing bus sightings!</div>
+
 <ul class="table-view leaderboard-table">
   <li ng-repeat="user in leaderboard | filter: searchText"
       class="table-view-cell user-cell">

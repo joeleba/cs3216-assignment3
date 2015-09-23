@@ -4,10 +4,10 @@
 
 <ul class="table-view" ng-hide="hasError">
   <li class="table-view-divider last-seen-header" ng-hide="loading">
-    Last Seen&nbsp;
     <span ng-click="getSightingsAtStop(true)">
       <i class="fa fa-refresh" ng-class="{'fa-spin': clientLoading}"></i>
     </span>
+    Last Seen
   </li>
   <li ng-repeat="bus in sightingsData"
       ng-click="toggleDetail(bus)"
