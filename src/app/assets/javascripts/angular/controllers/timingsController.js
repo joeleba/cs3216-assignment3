@@ -91,5 +91,9 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
   $scope.closeModal = function() {
     $('#contributeModal').removeClass('active');
   }
+
+  $scope.openModal = function() {
+    $('#contributeModal').addClass('active');
+  }
 }
 })();
