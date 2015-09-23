@@ -16,20 +16,16 @@
         controller: 'LoginController'
       })
       .when('/main', {
-        templateUrl: 'timings.html',
-        controller: 'TimingsController',
+        templateUrl: 'timings.html'
       })
       .when('/location', {
-        templateUrl: 'location.html',
-        controller: 'LocationController'
+        templateUrl: 'location.html'
       })
       .when('/all', {
-        templateUrl: 'all.html',
-        controller: 'LocationController',
+        templateUrl: 'all.html'
       })
       .when('/leaderboards', {
-        templateUrl: 'leaderboards.html',
-        controller: 'LeaderboardsController',
+        templateUrl: 'leaderboards.html'
       });
   }]);
   app
