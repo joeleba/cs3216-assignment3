@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20150921201538) do
 
   add_index "services", ["name"], name: "index_services_on_name", unique: true, using: :btree
 
-  create_table "services_stops", id: false, force: :cascade do |t|
+  create_table "services_stops", force: :cascade do |t|
     t.integer "service_id"
     t.integer "stop_id"
   end
