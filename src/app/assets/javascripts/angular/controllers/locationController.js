@@ -124,7 +124,7 @@
       $timeout(function() {
         $scope.loading = false;
         $scope.clientLoading = false;
-      }, 500);
+      }, 1000);
     }
 
     if ($location.path() === '/location' && !retrievedCachedStops(true)) {

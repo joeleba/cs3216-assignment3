@@ -13,7 +13,7 @@
     function getLeaderboard() {
       $http.get('/api/v1/users').
       then(function(res) {
-        $timeout(function() { $scope.clientLoading = false; }, 500);
+        $timeout(function() { $scope.clientLoading = false; }, 1000);
         $scope.leaderboard = res.data;
         $sessionStorage.leaderboardUsers = $scope.leaderboard;
       }, function (err) {
