@@ -86,7 +86,7 @@
       return (deltalat <= 0.001 && deltalon <= 0.001);
     }
 
-    function clientGetLocation() {
+    $scope.clientGetLocation = function () {
       $scope.clientLoading = true; // Ensure loading due to interactions with caching
       $scope.getLocation();
     }
