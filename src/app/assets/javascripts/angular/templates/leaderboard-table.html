@@ -2,6 +2,7 @@
   <input type="search" id="user-search"
          placeholder="Search for any user"
          ng-model="searchText"/>
+  <i class="fa fa-refresh refresh-icon" ng-click="clientGetLeaderboard()" ng-class="{'fa-spin': clientLoading}"></i>
 </div>
 
 <div class="points-explain">Earn points by contributing bus sightings!</div>

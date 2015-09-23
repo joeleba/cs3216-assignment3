@@ -6,6 +6,7 @@
   <input type="search" id="all-bus-stop-search"
           placeholder="Search for any bus stop"
           ng-model="searchText"/>
+  <i class="fa fa-refresh refresh-icon" ng-click="clientGetAllStops()" ng-class="{'fa-spin': clientLoading}"></i>
 </div>
 
 <ul class="table-view" ng-hide="loading">
