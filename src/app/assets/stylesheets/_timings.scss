@@ -16,8 +16,6 @@
 
 #open-contribute {
   font-size: 17px;
-  font-family: $font-stack;
-  color: #fff;
 }
 
 #to-location {
@@ -30,4 +28,13 @@
 
 .fa-times {
   color: white;
+}
+
+.contribute-footer {
+  background-color: #fff;
+  .btn-contribute {
+    background-color: #ddd;
+    border: none;
+    font-family: $font-stack;
+  }
 }
