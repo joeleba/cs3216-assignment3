@@ -73,10 +73,17 @@
     .fullness-level {
       width: 33%;
     }
+  }
 
-    .bus-type {
-      width: 100%;
-    }
+  .btn-inline-group {
+    display: flex;
+    width: 100%;
+  }
+
+  .btn-inline {
+    font-size: 17px;
+    font-family: "Montserrat", "Helvetica", "Roboto", sans-serif;
+    flex-basis: 100%;
   }
 
   #report-submit {

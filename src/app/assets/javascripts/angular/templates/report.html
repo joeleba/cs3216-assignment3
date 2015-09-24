@@ -1,12 +1,12 @@
 <div class="content">
   <div class="report-wrapper">
     <div class="report-text">Finally! The bus</div>
-    <div class="btn-group report-selector bus-types">
-      <button type="button" id="bus-{{service.id}}" class="btn btn-default bus-type" ng-repeat="service in serviceData" ng-class="{active : $first}" onclick="selectBusType(this)">{{service.name}}</button>
+    <div class="btn-group btn-inline-group report-selector bus-types" role="group" aria-label="bus-type-group">
+      <button type="button" id="bus-{{service.id}}" class="btn btn-default btn-inline bus-type" ng-repeat="service in serviceData" ng-class="{active : $first}" onclick="selectBusType(this)">{{service.name}}</button>
     </div>
     <div class="report-text">just arrived and it's</div>
-    <div class="btn-group report-selector fullness-levels">
-      <button type="button" class="btn btn-default fullness-level" ng-repeat="fullnessLevel in fullnessLevels" ng-class="{active : $first}" onclick="selectFullnessLevel(this)">{{fullnessLevel}}</button>
+    <div class="btn-group btn-inline-group report-selector fullness-levels" role="group" aria-label="fullness-level-group">
+      <button type="button" class="btn btn-inline fullness-level" ng-repeat="fullnessLevel in fullnessLevels" ng-class="{active : $first}" onclick="selectFullnessLevel(this)">{{fullnessLevel}}</button>
     </div>
     <form name="reportForm" ng-submit="submitReport()" novalidate>
       <input id="busType" name="busType" type="hidden" value=""/>
