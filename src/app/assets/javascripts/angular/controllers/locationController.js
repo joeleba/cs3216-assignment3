@@ -56,6 +56,7 @@
           break;
       }
       $scope.$apply();
+      $scope.locationRevealed = false;
       $scope.getAllStops();
     };
 
