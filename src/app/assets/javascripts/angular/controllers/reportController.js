@@ -1,9 +1,9 @@
 (function() {
   angular
   .module('nexbus')
-  .controller('ReportController', ["$scope", "$http", "$route", "$location", ReportController]);
+  .controller('ReportController', ["$scope", "$rootScope", "$http", "$route", "$location", "$sessionStorage", ReportController]);
 
-function ReportController($scope, $http, $route, $location) {
+function ReportController($scope, $rootScope, $http, $route, $location, $sessionStorage) {
   $scope.fullnessLevels = ['empty', 'half full', 'full'];
 
   var params = $route.current.params;
@@ -12,17 +12,23 @@ function ReportController($scope, $http, $route, $location) {
     var serviceId = $("#busType").val();
     var stopId = params.stopId;
     var fullnessStatus = $scope.fullnessLevels.indexOf($("#fullnessLevel").val());
+    var date = new Date();
+    var sighting = { service_id: serviceId, stop_id: stopId, status: fullnessStatus, time_seen: date.getTime() };
 
-    $http.post('/api/v1/sightings', { service_id: serviceId, stop_id: stopId, status: fullnessStatus }).
-      then(function(res) {
-        $(".alert-block").text('Thank you for your submission!');
-        location.reload();
-      }, function(err) {
-        // ========================
-        //  Add error handler here
-        // ========================
-        console.log(err);
-      });
+    if ($rootScope.shouldQueue === false) {
+      $http.post('/api/v1/sightings', sighting).
+        then(function(res) {
+          $(".alert-block").text('Thank you for your submission!');
+          location.reload();
+        }, function(err) {
+          alert('Oops, something went wrong with your submission. Try again in a few minutes?');
+        });
+    } else {
+      undef = typeof $sessionStorage.cachedSightings === 'undefined';
+      $sessionStorage.cachedSightings = undef ? [] : $sessionStorage.cachedSightings;
+      $sessionStorage.cachedSightings.push(sighting);
+      location.reload();
+    }
   }
 
   // Returns the selected Stop name given the stop_id
