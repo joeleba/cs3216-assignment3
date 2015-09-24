@@ -1,7 +1,3 @@
-# WARNING:
-# Params are not finalized. Will need further discussion
-# I/O Documentations will be added later
-
 module Api
   module V1
     class ServicesController < ApplicationController
