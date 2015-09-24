@@ -10,7 +10,7 @@ function ReportController($scope, $http, $route, $location) {
 
   $scope.submitReport = function(serviceId, fullnessLevel) {
     var serviceId = $("#busType").val();
-    var stopId = params.stop_id;
+    var stopId = params.stopId;
     var fullnessStatus = $scope.fullnessLevels.indexOf($("#fullnessLevel").val());
 
     $http.post('/api/v1/sightings', { service_id: serviceId, stop_id: stopId, status: fullnessStatus }).
@@ -51,9 +51,10 @@ function ReportController($scope, $http, $route, $location) {
       });
   };
 
-  if ($location.path() === '/main') {
-    $scope.getStopName(params.stop_id);
-    $scope.getServicesAt(params.stop_id);
+  // Path matches /stop/:stopId
+  if ($location.path().match(/\/stop\/\d+/)) {
+    $scope.getStopName(params.stopId);
+    $scope.getServicesAt(params.stopId);
   }
 }
 })();
