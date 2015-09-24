@@ -9,12 +9,7 @@
     $routeProvider
       .when('/', {
         templateUrl: 'location.html',
-        controller: 'MainController',
-        resolve: {
-          authenticated: ['checkLoggedIn', function(checkLoggedIn) {
-            return checkLoggedIn();
-          }]
-        }
+        controller: 'MainController'
       })
       .when('/login', {
         templateUrl: 'ng-index.html',
@@ -54,10 +49,10 @@
       });
   }])
   .run(['$rootScope', '$location', function ($rootScope, $location) {
-    $rootScope.$on("$routeChangeError", ['event', 'current', 'previous', 'rejection', function(event, current, previous, rejection) {
+    $rootScope.$on("$routeChangeError", function(event, current, previous, rejection) {
       console.log(rejection);
       $location.path('/login');
-    }]);
+    });
   }]);
 
   app
