@@ -37,15 +37,15 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
 
   // Retrieves the Sighting data for the Services specified
   function getSightingsForServices(stop_id, services) {
+    var svc;
     $scope.sightingsData = [];
     for (var i=0; i<services.length; i++) {
-      var svc = services[i];
+      svc = services[i];
       getSighting(params.stopId, svc.id, svc.name);
     }
-    $timeout(function() {
-      $scope.loading = false;
-      $scope.clientLoading = false;
-    }, 1000);
+    if (!$scope.hasError) {
+      $scope.stopLoadingIndicators();
+    }
   };
 
   // Returns the Sighting data for a particular Service
@@ -77,8 +77,16 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
   };
 
   $scope.handleError = function(err) {
+    $scope.stopLoadingIndicators();
     $scope.hasError = true;
     $scope.error = err;
+  }
+
+  $scope.stopLoadingIndicators = function() {
+    $timeout(function() {
+      $scope.loading = false;
+      $scope.clientLoading = false;
+    }, 1000);
   }
 
   // Hack due to some push.js and angularjs compatibility issue

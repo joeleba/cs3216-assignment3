@@ -1,4 +1,4 @@
-<ul class="table-view error-list" ng-show="hasError">
+<ul class="table-view error-list" ng-show="!loading && hasError">
   <li class="table-view-cell error-message-cell">
     <%= image_tag 'err.png', class: 'error-icon' %>
     <span>Hey bus stalker, looks like your request fell through a time warp.
