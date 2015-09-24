@@ -91,9 +91,9 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
     $scope.clientLoading = clientInitiated;
     // Path matches /stop/:stopId
     if ($location.path().match(/\/stop\/\d+/)) {
-      console.log('here')
       $scope.getStopName(params.stopId);
       $scope.getServicesAt(params.stopId);
+    }
   }
 
   $scope.closeModal = function() {
