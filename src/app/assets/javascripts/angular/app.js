@@ -15,7 +15,7 @@
         templateUrl: 'ng-index.html',
         controller: 'LoginController'
       })
-      .when('/main', {
+      .when('/stop/:stopId', {
         templateUrl: 'timings.html',
         resolve: {
           authenticated: ['checkLoggedIn', function(checkLoggedIn) {

@@ -27,7 +27,7 @@
         $http.get('/api/v1/locations' + query).then(function (res) {
           $scope.locationRevealed = true;
           $scope.allStops = res.data.nearby_stops;
-          stopLoadingIndicators();
+          $scope.stopLoadingIndicators();
           $sessionStorage.nearbyStops = $scope.allStops;
           $sessionStorage.coords = currentCoords;
         }, function (err) {
@@ -97,7 +97,7 @@
       $http.get('/api/v1/stops').
       then(function(response) {
         $scope.allStops = response.data;
-        stopLoadingIndicators();
+        $scope.stopLoadingIndicators();
         $localStorage.allStops = $scope.allStops;
       }, function(err) {
         retrievedCachedStops(false);
@@ -120,7 +120,7 @@
       $scope.error = err;
     }
 
-    function stopLoadingIndicators () {
+    $scope.stopLoadingIndicators = function() {
       $timeout(function() {
         $scope.loading = false;
         $scope.clientLoading = false;
