@@ -86,6 +86,10 @@
     flex-basis: 100%;
   }
 
+  .btn:focus {
+    outline: none;
+  }
+
   #report-submit {
     font-size: 17px;
   }
