@@ -8,26 +8,58 @@
   app.config(['$routeProvider', function($routeProvider){
     $routeProvider
       .when('/', {
-        templateUrl: 'ng-index.html',
-        controller: 'MainController'
+        templateUrl: 'location.html',
+        controller: 'MainController',
+        resolve: {
+          authenticated: function(checkLoggedIn) {
+            return checkLoggedIn();
+          }
+        }
       })
       .when('/login', {
         templateUrl: 'ng-index.html',
         controller: 'LoginController'
       })
       .when('/main', {
-        templateUrl: 'timings.html'
+        templateUrl: 'timings.html',
+        resolve: {
+          authenticated: function(checkLoggedIn) {
+            return checkLoggedIn();
+          }
+        }
       })
       .when('/location', {
-        templateUrl: 'location.html'
+        templateUrl: 'location.html',
+        resolve: {
+          authenticated: function(checkLoggedIn) {
+            return checkLoggedIn();
+          }
+        }
       })
       .when('/all', {
-        templateUrl: 'all.html'
+        templateUrl: 'all.html',
+        resolve: {
+          authenticated: function(checkLoggedIn) {
+            return checkLoggedIn();
+          }
+        }
       })
       .when('/leaderboards', {
-        templateUrl: 'leaderboards.html'
+        templateUrl: 'leaderboards.html',
+        resolve: {
+          authenticated: function(checkLoggedIn) {
+            return checkLoggedIn();
+          }
+        }
       });
-  }]);
+  }])
+  .run(function ($rootScope, $location) {
+    $rootScope.$on("$routeChangeError", function (event, current, previous, rejection) {
+      console.log(rejection);
+      $location.path('/login');
+    });
+  });
+
   app
   .directive('nbHeader', function() {
     return {
