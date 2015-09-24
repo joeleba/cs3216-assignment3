@@ -28,7 +28,7 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
     $http.get('/api/v1/stops/' + stop_id + '/services', { cache: true }).
       then(function(res) {
         $scope.serviceData = res.data;
-        getSightingsForServices(params.stop_id, $scope.serviceData);
+        getSightingsForServices(params.stopId, $scope.serviceData);
       }, function(err) {
         $scope.serviceData = {};
         $scope.handleError(err);
@@ -37,15 +37,15 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
 
   // Retrieves the Sighting data for the Services specified
   function getSightingsForServices(stop_id, services) {
+    var svc;
     $scope.sightingsData = [];
     for (var i=0; i<services.length; i++) {
-      var svc = services[i];
-      getSighting(params.stop_id, svc.id, svc.name);
+      svc = services[i];
+      getSighting(params.stopId, svc.id, svc.name);
     }
-    $timeout(function() {
-      $scope.loading = false;
-      $scope.clientLoading = false;
-    }, 1000);
+    if (!$scope.hasError) {
+      $scope.stopLoadingIndicators();
+    }
   };
 
   // Returns the Sighting data for a particular Service
@@ -77,8 +77,16 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
   };
 
   $scope.handleError = function(err) {
+    $scope.stopLoadingIndicators();
     $scope.hasError = true;
     $scope.error = err;
+  }
+
+  $scope.stopLoadingIndicators = function() {
+    $timeout(function() {
+      $scope.loading = false;
+      $scope.clientLoading = false;
+    }, 1000);
   }
 
   // Hack due to some push.js and angularjs compatibility issue
@@ -89,9 +97,10 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
 
   $scope.getSightingsAtStop = function (clientInitiated) {
     $scope.clientLoading = clientInitiated;
-    if ($location.path() === '/main') {
-      $scope.getStopName(params.stop_id);
-      $scope.getServicesAt(params.stop_id);
+    // Path matches /stop/:stopId
+    if ($location.path().match(/\/stop\/\d+/)) {
+      $scope.getStopName(params.stopId);
+      $scope.getServicesAt(params.stopId);
     }
   }
 
