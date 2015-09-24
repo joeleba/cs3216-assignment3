@@ -11,9 +11,9 @@
         templateUrl: 'location.html',
         controller: 'MainController',
         resolve: {
-          authenticated: function(checkLoggedIn) {
+          authenticated: ['checkLoggedIn', function(checkLoggedIn) {
             return checkLoggedIn();
-          }
+          }]
         }
       })
       .when('/login', {
@@ -23,41 +23,41 @@
       .when('/main', {
         templateUrl: 'timings.html',
         resolve: {
-          authenticated: function(checkLoggedIn) {
+          authenticated: ['checkLoggedIn', function(checkLoggedIn) {
             return checkLoggedIn();
-          }
+          }]
         }
       })
       .when('/location', {
         templateUrl: 'location.html',
         resolve: {
-          authenticated: function(checkLoggedIn) {
+          authenticated: ['checkLoggedIn', function(checkLoggedIn) {
             return checkLoggedIn();
-          }
+          }]
         }
       })
       .when('/all', {
         templateUrl: 'all.html',
         resolve: {
-          authenticated: function(checkLoggedIn) {
+          authenticated: ['checkLoggedIn', function(checkLoggedIn) {
             return checkLoggedIn();
-          }
+          }]
         }
       })
       .when('/leaderboards', {
         templateUrl: 'leaderboards.html',
         resolve: {
-          authenticated: function(checkLoggedIn) {
+          authenticated: ['checkLoggedIn', function(checkLoggedIn) {
             return checkLoggedIn();
-          }
+          }]
         }
       });
   }])
   .run(['$rootScope', '$location', function ($rootScope, $location) {
-    $rootScope.$on("$routeChangeError", function (event, current, previous, rejection) {
+    $rootScope.$on("$routeChangeError", ['event', 'current', 'previous', 'rejection', function(event, current, previous, rejection) {
       console.log(rejection);
       $location.path('/login');
-    });
+    }]);
   }]);
 
   app
