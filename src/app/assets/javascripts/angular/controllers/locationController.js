@@ -23,6 +23,11 @@
       // Only send request if lat and lon are present
       if (lat==='' || lon==='') {
         $scope.getAllStops();
+      } else if (typeof $sessionStorage.coords !== 'undefined' &&
+        hasNotMoved(currentCoords, $sessionStorage.coords)) {
+        $scope.locationRevealed = true;
+        $scope.allStops = $sessionStorage.nearbyStops;
+        $scope.stopLoadingIndicators();
       } else {
         $http.get('/api/v1/locations' + query).then(function (res) {
           $scope.locationRevealed = true;
