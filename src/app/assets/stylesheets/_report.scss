@@ -65,7 +65,7 @@
     min-height: 40px;
     width: 100%;
 
-    a {
+    button {
       vertical-align: middle;
       font-size: 17px;
     }
@@ -73,6 +73,26 @@
     .fullness-level {
       width: 33%;
     }
+  }
+
+  .btn-inline-group {
+    display: flex;
+    width: 100%;
+  }
+
+  .btn-inline {
+    font-size: 17px;
+    font-family: "Montserrat", "Helvetica", "Roboto", sans-serif;
+    flex-basis: 100%;
+  }
+
+  .btn:focus {
+    outline: none;
+  }
+
+  .btn {
+    border-radius: 0;
+    border-right: none;
   }
 
   #report-submit {
