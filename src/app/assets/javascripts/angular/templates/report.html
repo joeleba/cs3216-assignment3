@@ -1,12 +1,12 @@
 <div class="content">
   <div class="report-wrapper">
     <div class="report-text">Finally! The bus</div>
-    <div class="segmented-control report-selector bus-types">
-      <a id="bus-{{service.id}}" class="control-item bus-type" ng-repeat="service in serviceData" ng-class="{active : $first}" onclick="selectBusType(this)">{{service.name}}</a>
+    <div class="btn-group report-selector bus-types">
+      <button type="button" id="bus-{{service.id}}" class="btn btn-default bus-type" ng-repeat="service in serviceData" ng-class="{active : $first}" onclick="selectBusType(this)">{{service.name}}</button>
     </div>
     <div class="report-text">just arrived and it's</div>
-    <div class="segmented-control report-selector fullness-levels">
-      <a class="control-item fullness-level" ng-repeat="fullnessLevel in fullnessLevels" ng-class="{active : $first}" onclick="selectFullnessLevel(this)">{{fullnessLevel}}</a>
+    <div class="btn-group report-selector fullness-levels">
+      <button type="button" class="btn btn-default fullness-level" ng-repeat="fullnessLevel in fullnessLevels" ng-class="{active : $first}" onclick="selectFullnessLevel(this)">{{fullnessLevel}}</button>
     </div>
     <form name="reportForm" ng-submit="submitReport()" novalidate>
       <input id="busType" name="busType" type="hidden" value=""/>

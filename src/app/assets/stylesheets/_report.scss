@@ -65,13 +65,17 @@
     min-height: 40px;
     width: 100%;
 
-    a {
+    button {
       vertical-align: middle;
       font-size: 17px;
     }
 
     .fullness-level {
       width: 33%;
+    }
+
+    .bus-type {
+      width: 100%;
     }
   }
 
