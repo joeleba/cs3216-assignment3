@@ -53,12 +53,12 @@
         }
       });
   }])
-  .run(function ($rootScope, $location) {
+  .run(['$rootScope', '$location', function ($rootScope, $location) {
     $rootScope.$on("$routeChangeError", function (event, current, previous, rejection) {
       console.log(rejection);
       $location.path('/login');
     });
-  });
+  }]);
 
   app
   .directive('nbHeader', function() {
