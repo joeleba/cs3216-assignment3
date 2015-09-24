@@ -51,8 +51,10 @@ module Api
       # Return val:
       # { result: <failed/success> }
       def post_sighting
-        params[:sighting][:user_id] = session[:user_id]
-        render json: Sighting.post_sighting(params[:sighting])
+        params_with_uid = params[:sighting]
+        params_with_uid[:user_id] = session[:user_id]
+
+        render json: Sighting.post_sighting(params_with_uid)
       end
     end
   end
