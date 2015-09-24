@@ -1,7 +1,7 @@
 (function() {
   angular
     .module('nexbus')
-    .controller('LocationController', ['$scope', '$http', '$location',  '$timeout',
+    .controller('LocationController', ['$scope', '$http', '$location', '$timeout',
     '$localStorage', '$sessionStorage', LocationController]);
 
   function LocationController($scope, $http, $location, $timeout, $localStorage, $sessionStorage) {
