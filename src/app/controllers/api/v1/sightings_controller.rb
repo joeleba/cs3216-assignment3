@@ -1,7 +1,3 @@
-# WARNING:
-# Params are not finalized. Will need further discussion
-# I/O Documentations will be added later
-
 module Api
   module V1
     class SightingsController < ApplicationController
@@ -51,8 +47,10 @@ module Api
       # Return val:
       # { result: <failed/success> }
       def post_sighting
-        params[:sighting][:user_id] = session[:user_id]
-        render json: Sighting.post_sighting(params[:sighting])
+        params_with_uid = params[:sighting]
+        params_with_uid[:user_id] = session[:user_id]
+
+        render json: Sighting.post_sighting(params_with_uid)
       end
     end
   end
