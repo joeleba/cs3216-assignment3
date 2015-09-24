@@ -1,13 +1,23 @@
-.user-cell {
-  padding-right: 0px;
-}
-
-.credits {
-  margin-right: 10px;
-}
-
 .points-explain {
   margin-top: 10px;
-  margin-bottom: -10px;
   text-align: center;
+}
+
+.leaderboard-table {
+  padding-bottom: 29px;
+  .user-cell {
+    padding-right: 0px;
+  }
+
+  .credits {
+    margin-right: 10px;
+  }
+}
+
+.logout-footer {
+  background-color: #fff;
+  .btn-logout {
+    background-color: #ddd;
+    border: none;
+  }
 }

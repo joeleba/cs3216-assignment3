@@ -9,6 +9,7 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
   var params = $route.current.params;
 
   $scope.loading = true;
+  $scope.clientLoading = false;
   $scope.hasError = false;
 
   // Returns the selected Stop name given the stop_id
@@ -41,7 +42,10 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
       var svc = services[i];
       getSighting(params.stop_id, svc.id, svc.name);
     }
-    $timeout(function() { $scope.loading = false; }, 500);
+    $timeout(function() {
+      $scope.loading = false;
+      $scope.clientLoading = false;
+    }, 1000);
   };
 
   // Returns the Sighting data for a particular Service
@@ -54,7 +58,7 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
       var lastSeen;
       var thisStopMinutes = res.data.this_stop === 'No data' ? '' : ' m ago';
 
-      if (res.data.prev_stops.last_seen) {
+      if (res.data.prev_stops.last_seen !== '') {
         lastSeen = res.data.prev_stops.stop.name + ' | ' + res.data.prev_stops.last_seen + ' m ago';
       } else {
         lastSeen = 'No data';
@@ -83,9 +87,12 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
     $location.search({});
   }
 
-  if ($location.path() === '/main') {
-    $scope.getStopName(params.stop_id);
-    $scope.getServicesAt(params.stop_id);
+  $scope.getSightingsAtStop = function (clientInitiated) {
+    $scope.clientLoading = clientInitiated;
+    if ($location.path() === '/main') {
+      $scope.getStopName(params.stop_id);
+      $scope.getServicesAt(params.stop_id);
+    }
   }
 
   $scope.closeModal = function() {
@@ -95,5 +102,7 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
   $scope.openModal = function() {
     $('#contributeModal').addClass('active');
   }
+
+  $scope.getSightingsAtStop(false);
 }
 })();

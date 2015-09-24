@@ -23,7 +23,7 @@ class CreateTables < ActiveRecord::Migration
       t.index :name, unique: true
     end
 
-    create_table :services_stops, id: false do |t|
+    create_table :services_stops do |t|
       t.belongs_to :service, index: true
       t.belongs_to :stop, index:true
       t.index [:service_id, :stop_id], unique: true

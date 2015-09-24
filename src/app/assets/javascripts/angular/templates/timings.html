@@ -1,3 +1,4 @@
+<div ng-controller="TimingsController as timingsCtrl">
 <header class="bar bar-nav">
   <button ng-click="goTo('/location')"
           class="btn btn-link pull-left navbar-link">
@@ -8,8 +9,7 @@
 </header>
 
 <div class="content">
-  <div ng-controller="TimingsController as timingsCtrl"
-       nb-timings></div>
+  <div nb-timings></div>
 </div>
 
 <div id="contributeModal" class="modal">
@@ -20,4 +20,5 @@
   </div>
   </header>
   <div id="report-modal" nb-report ng-controller="ReportController"></div>
+</div>
 </div>

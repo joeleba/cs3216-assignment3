@@ -1,12 +1,13 @@
-<header class="bar bar-nav">
-  <div nb-header></div>
-</header>
+<div ng-controller="LeaderboardsController">
+  <header class="bar bar-nav">
+    <div nb-header></div>
+  </header>
 
-<div class="content">
-  <div class="points-explain">Earn points by contributing/using!</div>
-  <div ng-controller="LeaderboardsController as boardCtrl" nb-boards></div>
-</div>
+  <div class="content">
+    <div nb-boards></div>
+  </div>
 
-<div class="bar bar-standard bar-footer">
-  <a class="btn btn-block" ng-click="logOut()">Logout</a>
+  <div class="bar bar-standard bar-footer logout-footer">
+    <a class="btn btn-block btn-logout" ng-click="logOut()">Logout</a>
+  </div>
 </div>

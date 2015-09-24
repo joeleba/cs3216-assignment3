@@ -27,10 +27,7 @@
         $http.get('/api/v1/locations' + query).then(function (res) {
           $scope.locationRevealed = true;
           $scope.allStops = res.data.nearby_stops;
-          $timeout(function() {
-            $scope.loading = false;
-            $scope.clientLoading = false;
-          }, 500);
+          stopLoadingIndicators();
           $sessionStorage.nearbyStops = $scope.allStops;
           $sessionStorage.coords = currentCoords;
         }, function (err) {
@@ -86,11 +83,6 @@
       return (deltalat <= 0.001 && deltalon <= 0.001);
     }
 
-    function clientGetLocation() {
-      $scope.clientLoading = true; // Ensure loading due to interactions with caching
-      $scope.getLocation();
-    }
-
     // Main function to get location
     $scope.getLocation = function () {
       if (navigator.geolocation) {
@@ -104,8 +96,8 @@
     $scope.getAllStops = function () {
       $http.get('/api/v1/stops').
       then(function(response) {
-        $scope.loading = false;
         $scope.allStops = response.data;
+        stopLoadingIndicators();
         $localStorage.allStops = $scope.allStops;
       }, function(err) {
         retrievedCachedStops(false);
@@ -113,9 +105,26 @@
       });
     };
 
+    $scope.clientGetLocation = function () {
+      $scope.clientLoading = true; // Ensure loading due to interactions with caching
+      $scope.getLocation();
+    }
+
+    $scope.clientGetAllStops = function() {
+      $scope.clientLoading = true;
+      $scope.getAllStops();
+    }
+
     $scope.handleError = function(err) {
       $scope.hasError = true;
       $scope.error = err;
+    }
+
+    function stopLoadingIndicators () {
+      $timeout(function() {
+        $scope.loading = false;
+        $scope.clientLoading = false;
+      }, 1000);
     }
 
     if ($location.path() === '/location' && !retrievedCachedStops(true)) {

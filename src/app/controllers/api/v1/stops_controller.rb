@@ -1,6 +1,3 @@
-# WARNING:
-# Params are not finalized. Will need further discussion
-# I/O Documentations will be added later
 require 'actionpack/action_caching'
 
 module Api

@@ -12,6 +12,7 @@ h1 {
 }
 
 .error-list {
+  border-top: none;
   border-bottom: none;
   .error-message-cell {
     display: flex;
@@ -26,4 +27,8 @@ h1 {
   .error-icon {
     width: 30vw;
   }
+}
+
+.loading {
+  padding-top: 20px;
 }
