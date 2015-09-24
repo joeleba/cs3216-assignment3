@@ -5,7 +5,7 @@
 
 function MainController($scope, $location, $http) {
   $http.get('/auth/signed_in').
-    then(function(res) {
+    then(function (res) {
       if (res.data.user !== null) {
         console.log('main signed in');
         $location.path('/location');
@@ -13,7 +13,8 @@ function MainController($scope, $location, $http) {
         console.log('main not signed in');
         $location.path('/login');
       }
-    }, function(err) {
+    }, function (err) {
       $scope.error = err;
     });
-}})();
+  }
+})();
