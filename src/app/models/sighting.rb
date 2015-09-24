@@ -44,19 +44,21 @@ class Sighting
     this_service = Service.find(params[:service_id])
     this_stop = Stop.find(params[:stop_id])
     this_user = User.find(params[:user_id])
+    # :time_seen is an optional params. If there's none, Time.now is used instead
+    time_seen = params[:time_seen] ? params[:time_seen].to_i : Time.now.to_i
     bus_status = params[:status]
     result = 'failed'
 
     User.transaction do
       time_sheet = eval($redis.hget('tracking', this_service.id))
-      existing_time = time_sheet[this_stop.id][:last_seen]
+      existing_time = time_sheet[this_stop.id][:last_seen].to_i
 
       # If the time input is legit
       # Update the time sheet hash & push changes to redis
       # Update credit for user
       # Time is saved as timestamp
-      if is_legit(existing_time)
-        time_sheet[this_stop.id][:last_seen] = Time.now.to_i
+      if is_legit(existing_time, time_seen)
+        time_sheet[this_stop.id][:last_seen] = time_seen
         time_sheet[this_stop.id][:status] = bus_status
         $redis.hset('tracking', this_service.id, time_sheet)
 
@@ -106,12 +108,13 @@ class Sighting
     Time.now.to_i - time.to_i <= VALID_WINDOW
   end
 
-  def self.is_legit(time)
+  # Check if the reported time is legit
+  def self.is_legit(existing_time, reported_time)
     # For now assume users don't post false reports.
     # Only check if the input is reasonable:
     # If it's VALID_WINDOW seconds after the last data then it's legit
-    return true if time === ''
-    Time.now.to_i - time.to_i >= REASONABLE_WINDOW
+    return true if existing_time === ''
+    reported_time - existing_time >= REASONABLE_WINDOW
   end
 
   # Return time elapsed (in minutes, round up to closet min)
