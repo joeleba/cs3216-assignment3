@@ -7,7 +7,6 @@ function LoginController($scope, $window) {
   $scope.facebookAuth = function() {
     // Hack due to push.js and angularjs compatibility issues
     $window.location.href = '/auth/facebook';
-  }
-
+  };
 }
 })();

@@ -8,7 +8,7 @@
   app.config(['$routeProvider', function($routeProvider){
     $routeProvider
       .when('/', {
-        templateUrl: 'ng-index.html',
+        templateUrl: 'location.html',
         controller: 'MainController'
       })
       .when('/login', {
@@ -16,18 +16,45 @@
         controller: 'LoginController'
       })
       .when('/stop/:stopId', {
-        templateUrl: 'timings.html'
+        templateUrl: 'timings.html',
+        resolve: {
+          authenticated: ['checkLoggedIn', function(checkLoggedIn) {
+            return checkLoggedIn();
+          }]
+        }
       })
       .when('/location', {
-        templateUrl: 'location.html'
+        templateUrl: 'location.html',
+        resolve: {
+          authenticated: ['checkLoggedIn', function(checkLoggedIn) {
+            return checkLoggedIn();
+          }]
+        }
       })
       .when('/all', {
-        templateUrl: 'all.html'
+        templateUrl: 'all.html',
+        resolve: {
+          authenticated: ['checkLoggedIn', function(checkLoggedIn) {
+            return checkLoggedIn();
+          }]
+        }
       })
       .when('/leaderboards', {
-        templateUrl: 'leaderboards.html'
+        templateUrl: 'leaderboards.html',
+        resolve: {
+          authenticated: ['checkLoggedIn', function(checkLoggedIn) {
+            return checkLoggedIn();
+          }]
+        }
       });
+  }])
+  .run(['$rootScope', '$location', function ($rootScope, $location) {
+    $rootScope.$on("$routeChangeError", function(event, current, previous, rejection) {
+      console.log(rejection);
+      $location.path('/login');
+    });
   }]);
+
   app
   .directive('nbHeader', function() {
     return {
