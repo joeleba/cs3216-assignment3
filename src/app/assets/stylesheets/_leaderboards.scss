@@ -1,9 +1,11 @@
 .points-explain {
   margin-top: 10px;
+  margin-bottom: 10px;
   text-align: center;
 }
 
 .leaderboard-table {
+  border-top: 1px solid #ddd;
   padding-bottom: 29px;
   .user-cell {
     padding-right: 0px;
