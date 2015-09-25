@@ -13,7 +13,7 @@ function ReportController($scope, $rootScope, $http, $route, $location, $session
     var stopId = params.stopId;
     var fullnessStatus = $scope.fullnessLevels.indexOf($("#fullnessLevel").val());
     var date = new Date();
-    var sighting = { service_id: serviceId, stop_id: stopId, status: fullnessStatus, time_seen: date.getTime() };
+    var sighting = { service_id: serviceId, stop_id: stopId, status: fullnessStatus, time_seen: date.getTime()/1000 };
 
     if ($rootScope.shouldQueue === false) {
       $http.post('/api/v1/sightings', sighting).
