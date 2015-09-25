@@ -47,21 +47,27 @@
     // Callback to handle errors
     $scope.showError = function (error) {
       switch (error.code) {
-        case error.PERMISSION_DENIED:
-          $scope.error = "User denied the request for Geolocation.";
+        case 1:
+          $scope.error = {status: 401, error: error,
+            message: "User denied the request for Geolocation."};
           break;
-        case error.POSITION_UNAVAILABLE:
-          $scope.error = "Location information is unavailable.";
+        case 2:
+          $scope.error = {status: 401, error: error,
+            message: "Location information is unavailable." };
           break;
-        case error.TIMEOUT:
-          $scope.error = "The request to get user location timed out.";
+        case 3:
+          $scope.error = {status: 408, error: error,
+            message: "The request to get user location timed out."};
           break;
-        case error.UNKNOWN_ERROR:
-          $scope.error = "An unknown error occurred.";
+        default:
+          $scope.error = {status: 500, error: error,
+            message: "An unknown error occurred."};
           break;
       }
       $scope.$apply();
       $scope.locationRevealed = false;
+      $scope.hasError = true;
+      console.log(error);
       $scope.getAllStops();
     };
 
