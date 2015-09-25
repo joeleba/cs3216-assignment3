@@ -12,6 +12,6 @@ NUS staff and students often want to know how long they will have to wait for th
 | Member Name | Contribution | 
 |-------------|--------------|
 | DJ Andhieka Putra| Project manager, backend contributor, algorithm obsessor  |
-| DJ JOE Le Ba Hieu Gang | Backend master, DB schema designer, finder of lost souls (geolocation)  |
+| DJ Joe Le Ba Hieu Gang | Backend master, DB schema designer, finder of lost souls (geolocation)  |
 | DJ Karen Ang | Front end master, UI/UX Designer, time traveller |
 | DJ Tham Zheng Yi | Server lord, frontend contributor, Copywriting lead, UI/UX contributor|
