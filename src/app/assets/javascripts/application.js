@@ -18,7 +18,7 @@
 //= require angular-rails-templates
 //= require angular-animate
 //= require angular-touch
-//= require angular-cookies
+//= require angular-cookie
 //= require ngstorage
 //= require ratchet/dist/js/ratchet.min.js
 //= require_tree .
