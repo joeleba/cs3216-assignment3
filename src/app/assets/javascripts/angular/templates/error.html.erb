@@ -1,7 +1,13 @@
 <ul class="table-view error-list" ng-show="!loading && hasError">
   <li class="table-view-cell error-message-cell">
     <%= image_tag 'err.png', class: 'error-icon' %>
-    <span>Hey bus stalker, looks like your request fell through a time warp.
-    Try again in a few minutes.</span>
+    <div ng-switch="error.status">
+      <span ng-switch-when="401">Did you enable geolocation permissions for us on
+        your device?</span>
+      <span ng-switch-when="404">We couldn't find what you were looking
+      for, but as the saying goes, not all those who wander are lost.</span>
+      <span ng-switch-default>Hey bus stalker, looks like your request fell through a time warp.
+      Try again in a few minutes.</span>
+    </diV>
   </li>
 <ul>
