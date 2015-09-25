@@ -89,12 +89,6 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
     }, 1000);
   }
 
-  // Hack due to some push.js and angularjs compatibility issue
-  $scope.goTo = function(path) {
-    $location.path(path);
-    $location.search({});
-  }
-
   $scope.getSightingsAtStop = function (clientInitiated) {
     $scope.clientLoading = clientInitiated;
     // Path matches /stop/:stopId
@@ -112,6 +106,8 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
     $('#contributeModal').addClass('active');
   }
 
-  $scope.getSightingsAtStop(false);
+  if ($location.path().match(/\/stop\/\d+/)) {
+    $scope.getSightingsAtStop(false);
+  }
 }
 })();

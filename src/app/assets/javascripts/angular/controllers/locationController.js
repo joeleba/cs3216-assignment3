@@ -5,6 +5,7 @@
     '$localStorage', '$sessionStorage', LocationController]);
 
   function LocationController($scope, $http, $location, $timeout, $localStorage, $sessionStorage) {
+    // Initialise some defaults
     $scope.page = $location.path();
     $scope.allStops = [];
     $scope.locationRevealed = false;

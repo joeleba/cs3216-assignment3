@@ -9,13 +9,14 @@ function ReportController($scope, $rootScope, $http, $route, $location, $session
   var params = $route.current.params;
 
   $scope.submitReport = function(serviceId, fullnessLevel) {
+    var fallbackOnCache = $rootScope.shouldQueue;
     var serviceId = $("#busType").val();
     var stopId = params.stopId;
     var fullnessStatus = $scope.fullnessLevels.indexOf($("#fullnessLevel").val());
-    var date = new Date();
-    var sighting = { service_id: serviceId, stop_id: stopId, status: fullnessStatus, time_seen: date.getTime()/1000 };
+    var time_seen = Math.ceil((new Date()).getTime()/1000);
+    var sighting = { service_id: serviceId, stop_id: stopId, status: fullnessStatus, time_seen: time_seen };
 
-    if ($rootScope.shouldQueue === false) {
+    if (!fallbackOnCache) {
       $http.post('/api/v1/sightings', sighting).
         then(function(res) {
           $(".alert-block").text('Thank you for your submission!');
@@ -44,18 +45,37 @@ function ReportController($scope, $rootScope, $http, $route, $location, $session
 
   // Returns all the Services available at a particular Stop
   $scope.getServicesAt = function(stop_id) {
-    $http.get('/api/v1/stops/' + stop_id + '/services').
-      then(function(res) {
-        $scope.serviceData = res.data;
-        var initialBusService = $scope.serviceData[0].id;
-        $("#busType").val(initialBusService);
-        var initialFullnessLevel = $scope.fullnessLevels[0];
-        $("#fullnessLevel").val(initialFullnessLevel);
-      }, function(err) {
-        $scope.serviceData = {};
-        $scope.error = err;
-      });
+    var fallbackOnCache = $rootScope.shouldQueue;
+    var cachedServiceData = $sessionStorage.serviceData;
+    if (fallbackOnCache && exists(cachedServiceData)) {
+      $scope.serviceData = cachedServiceData[stop_id]
+    } else if (!fallbackOnCache) {
+      $http.get('/api/v1/stops/' + stop_id + '/services').
+        then(function(res) {
+          $scope.serviceData = res.data;
+          // Update cache with latest data available
+          $sessionStorage.serviceData = {};
+          $sessionStorage.serviceData[stop_id] = res.data;
+          var initialBusService = $scope.serviceData[0].id;
+          $("#busType").val(initialBusService);
+          var initialFullnessLevel = $scope.fullnessLevels[0];
+          $("#fullnessLevel").val(initialFullnessLevel);
+        }, function(err) {
+          if (exists(cachedServiceData)) {
+            $scope.serviceData = cachedServiceData[stop_id];
+          }
+          $scope.error = err;
+        });
+    } else {
+      $scope.serviceData = {};
+      $scope.error = {status: 500,
+        message: 'There was no cached data and the User is offline.'};
+    }
   };
+
+  function exists(data) {
+    return typeof data === 'undefined';
+  }
 
   // Path matches /stop/:stopId
   if ($location.path().match(/\/stop\/\d+/)) {
