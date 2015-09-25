@@ -30,7 +30,7 @@
           delete $sessionStorage.cachedSightings;
           deferred.resolve({message: 'Successfully submitted ' + successes + ' sightings spotted while offline.'});
         }, function(err) {
-          deferred.resolve(err);
+          deferred.reject(err);
         })
 
       return deferred.promise;
