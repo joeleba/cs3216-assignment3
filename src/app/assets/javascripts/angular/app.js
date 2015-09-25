@@ -46,6 +46,9 @@
             return checkLoggedIn();
           }]
         }
+      })
+      .otherwise({
+        templateUrl: '404.html'
       });
   }])
   .run(['$rootScope', '$location', function ($rootScope, $location) {
