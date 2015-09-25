@@ -56,5 +56,13 @@
     $rootScope.$on("$routeChangeError", function(event, current, previous, rejection) {
       $location.path('/login');
     });
+
+    // Hack due to some push.js and angularjs compatibility issue
+    // Since it is function to be shared across controllers and is rather
+    // small, it's placed in the $rootScope.
+    $rootScope.goTo = function(path) {
+      $location.path(path);
+      $location.search({});
+    }
   }]);
 })();
