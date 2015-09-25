@@ -2,15 +2,16 @@
   angular
     .module('nexbus')
     .controller('LocationController', ['$scope', '$http', '$location', '$timeout',
-    '$localStorage', '$sessionStorage', LocationController]);
+    '$localStorage', '$sessionStorage', '$window', LocationController]);
 
-  function LocationController($scope, $http, $location, $timeout, $localStorage, $sessionStorage) {
+  function LocationController($scope, $http, $location, $timeout, $localStorage, $sessionStorage, $window) {
     // Initialise some defaults
     $scope.page = $location.path();
     $scope.allStops = [];
     $scope.locationRevealed = false;
     $scope.loading = true;
     $scope.hasError = false;
+    $scope.locationError = false;
 
     // Callback when the location is handled correctly
     $scope.toServer = function (geo) {
@@ -49,10 +50,12 @@
     $scope.showError = function (error) {
       switch (error.code) {
         case 1:
+          $scope.locationError = true;
           $scope.error = {status: 401, error: error,
             message: "User denied the request for Geolocation."};
           break;
         case 2:
+          $scope.locationError = true;
           $scope.error = {status: 401, error: error,
             message: "Location information is unavailable." };
           break;
@@ -105,6 +108,10 @@
       }
     };
 
+    $scope.reloadPage = function () {
+      $window.location.reload();
+    };
+
     $scope.getAllStops = function () {
       $http.get('/api/v1/stops').
       then(function(response) {
@@ -120,24 +127,24 @@
     $scope.clientGetLocation = function () {
       $scope.clientLoading = true; // Ensure loading due to interactions with caching
       $scope.getLocation();
-    }
+    };
 
     $scope.clientGetAllStops = function() {
       $scope.clientLoading = true;
       $scope.getAllStops();
-    }
+    };
 
     $scope.handleError = function(err) {
       $scope.hasError = true;
       $scope.error = err;
-    }
+    };
 
     $scope.stopLoadingIndicators = function() {
       $timeout(function() {
         $scope.loading = false;
         $scope.clientLoading = false;
       }, 1000);
-    }
+    };
 
     if ($location.path() === '/location' && !retrievedCachedStops(true)) {
       $scope.getLocation();
