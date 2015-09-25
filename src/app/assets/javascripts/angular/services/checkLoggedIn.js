@@ -17,7 +17,7 @@
               return deferred.promise;
             }
           }, function(err) {
-            console.log(err);
+            $scope.error = err;
           });
       }
     }]);

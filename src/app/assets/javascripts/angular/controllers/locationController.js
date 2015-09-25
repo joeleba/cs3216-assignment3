@@ -67,7 +67,6 @@
       $scope.$apply();
       $scope.locationRevealed = false;
       $scope.hasError = true;
-      console.log(error);
       $scope.getAllStops();
     };
 
