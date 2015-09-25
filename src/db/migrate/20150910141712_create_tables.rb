@@ -28,19 +28,6 @@ class CreateTables < ActiveRecord::Migration
       t.belongs_to :stop, index:true
       t.index [:service_id, :stop_id], unique: true
     end
-
-    # One bus might have multiple timings depends on the time of the day
-    # But I think currently can ignore this
-    create_table :timings do |t|
-      t.integer :time_before
-      t.integer :frequency
-      t.boolean :is_saturday
-      t.boolean :is_sunday_ph
-      t.boolean :is_sch_holiday
-      t.boolean :no_service
-
-      t.integer :service_id, null: false
-      t.foreign_key :services, column: :service_id
-    end
+    
   end
 end

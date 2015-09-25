@@ -39,16 +39,6 @@ ActiveRecord::Schema.define(version: 20150921201538) do
 
   add_index "stops", ["name"], name: "index_stops_on_name", unique: true, using: :btree
 
-  create_table "timings", force: :cascade do |t|
-    t.integer "time_before"
-    t.integer "frequency"
-    t.boolean "is_saturday"
-    t.boolean "is_sunday_ph"
-    t.boolean "is_sch_holiday"
-    t.boolean "no_service"
-    t.integer "service_id",     null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.integer  "credit",                       null: false
     t.string   "provider"
@@ -61,5 +51,4 @@ ActiveRecord::Schema.define(version: 20150921201538) do
     t.integer  "title",            default: 0, null: false
   end
 
-  add_foreign_key "timings", "services"
 end
