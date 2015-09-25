@@ -7,6 +7,7 @@ asset 'angular-route'
 asset 'angular-resource'
 asset 'angular-animate'
 asset 'angular-touch'
+asset 'ng-token-auth'
 asset 'ngstorage'
 asset 'ratchet'
 

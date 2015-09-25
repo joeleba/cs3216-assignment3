@@ -18,6 +18,7 @@
 //= require angular-rails-templates
 //= require angular-animate
 //= require angular-touch
+//= require ng-token-auth
 //= require ngstorage
 //= require ratchet/dist/js/ratchet.min.js
 //= require_tree .
