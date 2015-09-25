@@ -47,7 +47,7 @@ function ReportController($scope, $rootScope, $http, $route, $location, $session
   $scope.getServicesAt = function(stop_id) {
     var fallbackOnCache = $rootScope.shouldQueue;
     var cachedServiceData = $sessionStorage.serviceData;
-    if (fallbackOnCache && exists(cachedServiceData)) {
+    if (fallbackOnCache && $scope.exists(cachedServiceData)) {
       $scope.serviceData = cachedServiceData[stop_id]
     } else if (!fallbackOnCache) {
       $http.get('/api/v1/stops/' + stop_id + '/services').
@@ -61,7 +61,7 @@ function ReportController($scope, $rootScope, $http, $route, $location, $session
           var initialFullnessLevel = $scope.fullnessLevels[0];
           $("#fullnessLevel").val(initialFullnessLevel);
         }, function(err) {
-          if (exists(cachedServiceData)) {
+          if ($scope.exists(cachedServiceData)) {
             $scope.serviceData = cachedServiceData[stop_id];
           }
           $scope.error = err;
@@ -73,7 +73,7 @@ function ReportController($scope, $rootScope, $http, $route, $location, $session
     }
   };
 
-  function exists(data) {
+  $scope.exists = function(data) {
     return typeof data === 'undefined';
   }
 
