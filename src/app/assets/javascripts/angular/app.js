@@ -97,7 +97,7 @@
     };
   });
   app.run(['$window', '$rootScope', 'asyncQ', '$sessionStorage', '$interval', function($window, $rootScope, asyncQ, $sessionStorage, $interval) {
-
+    $rootScope.shouldQueue = false;
     $rootScope.postOfflineSightings = function () {
       if (typeof $sessionStorage.cachedSightings !== 'undefined') {
         asyncQ.postOfflineSightings()
