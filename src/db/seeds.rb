@@ -107,7 +107,7 @@ services_and_stops = [
             {name: 'Blk S17', longitude: '103.7814260000000000', latitude: '1.2974930000000000'},
             {name: 'Opp. KR MRT', longitude: '103.7850630000000000', latitude: '1.2941130000000000'},
             {name: 'PGPR', longitude: '103.781174', latitude: '1.290972'},
-            {name: 'BIZ2 Terminal', longitude: '103.7804949540100000', latitude: '1.2919256943123000'}]
+            {name: 'BIZ2 Terminal', longitude: '103.775145', latitude: '1.294205'}]
   },
   {
     name: 'A1E',
