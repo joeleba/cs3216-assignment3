@@ -4,7 +4,7 @@
   background-color: $std-blue;
   border-bottom: none;
   .btn-link {
-    color: #4c9797;
+    color: $darker-blue;
   }
 }
 
@@ -36,10 +36,10 @@
   top: 9px;
   .control-item {
     color: #fff;
-    border-left: 1px solid #4c9797;
+    border-left: 1px solid $darker-blue;
   }
   .control-item.active {
-      background-color: #4c9797;
+      background-color: $darker-blue;
   }
 }
 

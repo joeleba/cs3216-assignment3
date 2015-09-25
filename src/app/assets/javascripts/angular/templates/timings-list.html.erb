@@ -13,11 +13,11 @@
       ng-click="toggleDetail(bus)"
       class="table-view-cell">
       {{bus.name.toUpperCase()}}
-      <span class="pull-right">{{bus.thisLastSeen}}</span>
+      <span class="pull-right here-timing">Here | {{bus.thisLastSeen}}</span>
       <div ng-switch="bus.capacity">
       <span ng-switch-when="2"><%= image_tag 'full_sm.png', class: 'capacity-icon pull-left' %></span>
       <span ng-switch-when="0"><%= image_tag 'empty_sm.png', class: 'capacity-icon pull-left' %></span>
-      <span ng-switch-default><%= image_tag 'ok_sm.png', class: 'capacity-icon pull-left' %></span><span class="arrival-timing pull-right">{{bus.otherLastSeen}}</span>
+      <span ng-switch-default><%= image_tag 'ok_sm.png', class: 'capacity-icon pull-left' %></span><span class="other-timing pull-right">{{bus.otherLastSeen}}</span>
     </div>
   </li>
 </ul>
