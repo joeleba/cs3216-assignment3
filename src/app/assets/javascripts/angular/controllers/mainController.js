@@ -1,11 +1,11 @@
 (function() {
   angular
   .module('nexbus')
-  .controller('MainController', ["$scope", "$location", "$cookies", MainController]);
+  .controller('MainController', ["$scope", "$location", "ipCookie", MainController]);
 
-function MainController($scope, $location, $cookies) {
+function MainController($scope, $location, ipCookie) {
 
-  if ($cookies.getObject('user') !== undefined) {
+  if (ipCookie('user') !== undefined) {
     $location.path('/location');
   } else {
     $location.path('/login');

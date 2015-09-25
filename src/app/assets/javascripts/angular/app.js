@@ -3,7 +3,7 @@
 
   var app = angular
         .module('nexbus', ['ngRoute', 'ngAnimate', 'ngTouch',
-                           'templates', 'ngStorage', 'ngCookies']);
+                           'templates', 'ngStorage', 'ipCookie']);
 
   //app.config(['$authProvider', function($authProvider) {
   //

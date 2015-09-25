@@ -1,11 +1,10 @@
 (function() {
   angular
     .module('nexbus')
-    .factory('checkLoggedIn', ['$q', '$cookies', function($q, $cookies) {
+    .factory('checkLoggedIn', ['$q', 'ipCookie', function($q, ipCookie) {
       return function() {
         var deferred = $q.defer();
-        if ($cookies.getObject('user') !== undefined) {
-          console.log($cookies.getObject('user'));
+        if (ipCookie('user') !== undefined) {
           deferred.resolve();
           return deferred.promise;
         } else {

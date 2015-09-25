@@ -1,9 +1,9 @@
 (function() {
   angular
   .module('nexbus')
-  .controller('LoginController', ["$scope", "$window", "$cookies", "$http", "$location", LoginController]);
+  .controller('LoginController', ["$scope", "$window", "ipCookie", "$http", "$location", LoginController]);
 
-function LoginController($scope, $window, $cookies, $http, $location) {
+function LoginController($scope, $window, ipCookie, $http, $location) {
   $scope.facebookAuth = function() {
     // Hack due to push.js and angularjs compatibility issues
     $window.location.href = '/auth/facebook';
@@ -11,7 +11,7 @@ function LoginController($scope, $window, $cookies, $http, $location) {
   $http.get('/auth/signed_in').
     then(function (res) {
       if (res.data.user !== null) {
-        $cookies.putObject('user', res.data.user);
+        ipCookie('user', res.data.user, { expires: 24, expirationUnit: 'hours'});
         $location.path('/location');
       } else {
         $location.path('/login');
