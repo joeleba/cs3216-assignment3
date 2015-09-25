@@ -112,6 +112,8 @@ function TimingsController($scope, $http, $route, $location, $timeout) {
     $('#contributeModal').addClass('active');
   }
 
-  $scope.getSightingsAtStop(false);
+  if ($location.path().match(/\/stop\/\d+/)) {
+    $scope.getSightingsAtStop(false);
+  }
 }
 })();
