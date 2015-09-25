@@ -120,6 +120,10 @@ class Sighting
   # Return time elapsed (in minutes, round up to closet min)
   def self.elapsed(time)
     return 'No data' if time === ''
-    (Time.now.to_i - time.to_i).div(60).ceil
+    returnTime = (Time.now.to_i - time.to_i).div(60).ceil
+    if returnTime < 0
+      returnTime = 0
+    end
+    returnTime
   end
 end
