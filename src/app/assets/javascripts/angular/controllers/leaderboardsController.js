@@ -3,9 +3,9 @@
   .module('nexbus')
   .controller('LeaderboardsController',
 
-  ["$scope", "$http", "$location", "$window", "$sessionStorage", "$timeout", LeaderboardsController]);
+  ["$scope", "$http", "$location", "$window", "$sessionStorage", "$timeout", "ipCookie", LeaderboardsController]);
 
-  function LeaderboardsController($scope, $http, $location, $window, $sessionStorage, $timeout) {
+  function LeaderboardsController($scope, $http, $location, $window, $sessionStorage, $timeout, ipCookie) {
     $scope.page = $location.path();
     $scope.leaderboard = [];
     $scope.clientLoading = false;
@@ -29,6 +29,7 @@
     // Workaround because push.js doesn't seem to work well with the fragment identifier
     $scope.logOut = function() {
       // When caching is merged in: $sessionStorage.$reset();
+      ipCookie.remove('user');
       $window.location.href = '/auth/logout';
     }
 
