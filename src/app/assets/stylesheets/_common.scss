@@ -30,6 +30,20 @@ h1 {
   }
 }
 
+.reload-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nb-btn {
+  font-family: $font-stack;
+  background-color: $std-orange;
+  border-radius: 5px;
+  border: none;
+}
+
 .loading {
   padding-top: 20px;
 }
