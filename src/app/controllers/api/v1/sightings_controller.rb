@@ -43,16 +43,14 @@ module Api
       #   stop_id: ...
       #   status: ...
       #   time_seen: ...
+      #   user_id: ...
       # }
       # :time_seen is an optional params. If there's none, Time.now is used instead
       #
       # Return val:
       # { result: <failed/success> }
       def post_sighting
-        params_with_uid = params[:sighting]
-        params_with_uid[:user_id] = session[:user_id]
-
-        render json: Sighting.post_sighting(params_with_uid)
+        render json: Sighting.post_sighting(params[:sighting])
       end
     end
   end

@@ -1,9 +1,9 @@
 (function() {
   angular
   .module('nexbus')
-  .controller('ReportController', ["$scope", "$rootScope", "$http", "$route", "$location", "$sessionStorage", ReportController]);
+  .controller('ReportController', ["$scope", "$rootScope", "$http", "$route", "$location", "$sessionStorage", "ipCookie", ReportController]);
 
-function ReportController($scope, $rootScope, $http, $route, $location, $sessionStorage) {
+function ReportController($scope, $rootScope, $http, $route, $location, $sessionStorage, ipCookie) {
   $scope.fullnessLevels = ['empty', 'half full', 'full'];
 
   var params = $route.current.params;
@@ -13,8 +13,9 @@ function ReportController($scope, $rootScope, $http, $route, $location, $session
     var serviceId = $("#busType").val();
     var stopId = params.stopId;
     var fullnessStatus = $scope.fullnessLevels.indexOf($("#fullnessLevel").val());
+    var userId = ipCookie('user');
     var time_seen = Math.ceil((new Date()).getTime()/1000);
-    var sighting = { service_id: serviceId, stop_id: stopId, status: fullnessStatus, time_seen: time_seen };
+    var sighting = { service_id: serviceId, stop_id: stopId, status: fullnessStatus, time_seen: time_seen, user_id: userId };
 
     if (!fallbackOnCache) {
       $http.post('/api/v1/sightings', sighting).
